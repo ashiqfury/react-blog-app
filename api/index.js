@@ -2,8 +2,11 @@ const express = require('express')
 const app = express()
 const dotenv = require('dotenv')
 const mongoose = require('mongoose')
+const authRoute = require('./routes/auth')
 
 dotenv.config()
+
+app.use(express.json())
 
 mongoose
 	.connect(process.env.MONGO_URL, {
@@ -14,6 +17,9 @@ mongoose
 	.then(() => console.log('Database is connected successfully...👍'))
 	.catch(err => console.log('Connection Failed..😢 ', err))
 
-app.listen(2506, () => {
-	console.log('Server is running...🔥')
+app.use('/api/auth', authRoute)
+
+const port = 2506
+app.listen(port, () => {
+	console.log(`Server is running...🔥 on port ${port}..🚀`)
 })
