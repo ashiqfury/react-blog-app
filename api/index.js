@@ -12,7 +12,7 @@ mongoose
 		// useCreateIndex: true,
 	})
 	.then(() => console.log('Database is connected successfully...👍'))
-	.catch(err => console.log('Connection Failed..😢', err))
+	.catch(err => console.log('Connection Failed..😢 ', err))
 
 app.listen(2506, () => {
 	console.log('Server is running...🔥')
