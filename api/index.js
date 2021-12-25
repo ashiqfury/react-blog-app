@@ -3,6 +3,7 @@ const app = express()
 const dotenv = require('dotenv')
 const mongoose = require('mongoose')
 const authRoute = require('./routes/auth')
+const usersRoute = require('./routes/users')
 
 dotenv.config()
 
@@ -18,6 +19,7 @@ mongoose
 	.catch(err => console.log('Connection Failed..😢 ', err))
 
 app.use('/api/auth', authRoute)
+app.use('/api/users', usersRoute)
 
 const port = 2506
 app.listen(port, () => {
