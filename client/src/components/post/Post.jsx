@@ -2,9 +2,10 @@ import './post.css'
 import { Link } from 'react-router-dom'
 
 const Post = ({ post }) => {
+	const PF = 'http://localhost:2506/images/'
 	return (
 		<div className="post">
-			{post.photo && <img src={post.photo} alt="" className="postImg" />}
+			{post.photo && <img src={PF + post.photo} alt="" className="postImg" />}
 			<div className="postInfo">
 				<div className="postCats">
 					{post?.categories.map(cat => (
