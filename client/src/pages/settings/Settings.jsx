@@ -11,7 +11,6 @@ const Settings = () => {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [success, setSuccess] = useState(false)
-
 	const PF = 'http://localhost:2506/images/'
 
 	const handleSubmit = async e => {
@@ -41,17 +40,36 @@ const Settings = () => {
 			dispatch({ type: 'UPDATE_FAILURE' })
 		}
 	}
+
+	const handleDelete = async () => {
+		try {
+			await axios.delete(`/users/${user._id}`, { data: { userId: user._id } })
+			dispatch({ type: 'LOGOUT' })
+		} catch (err) {}
+	}
+
 	return (
 		<div className="settings">
 			<div className="settingsWrapper">
 				<div className="settingsTitle">
 					<span className="settingsUpdateTitle">Update your account</span>
-					<span className="settingsDeleteTitle">Delete account</span>
+					<span className="settingsDeleteTitle" onClick={handleDelete}>
+						Delete account
+					</span>
 				</div>
 				<form className="form settingsForm" onSubmit={handleSubmit}>
 					<label>Profile picture</label>
 					<div className="settingsProfilePicture">
-						<img src={file ? URL.createObjectURL(file) : PF + user.profilePic} alt="" />
+						<img
+							src={
+								file
+									? URL.createObjectURL(file)
+									: user.profilePic
+									? PF + user.profilePic
+									: `${PF}avatar.jpg`
+							}
+							alt=""
+						/>
 						<label htmlFor="fileInput">
 							<i className="settingsProfilePictureIcon far fa-user-circle"></i>
 						</label>

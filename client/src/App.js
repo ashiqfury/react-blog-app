@@ -8,6 +8,7 @@ import Write from './pages/write/Write'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { useContext } from 'react'
 import { Context } from './context/Context'
+import '../src/scss/style.scss'
 
 const App = () => {
 	const { user } = useContext(Context)

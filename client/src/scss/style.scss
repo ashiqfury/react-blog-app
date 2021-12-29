@@ -1,0 +1,17 @@
+@use './globals';
+
+// components
+@use './components/header';
+@use './components/post';
+@use './components/posts';
+@use './components/sidebar';
+@use './components/singlePost';
+@use './components/topbar';
+
+// pages
+@use './pages/home';
+@use './pages/login';
+@use './pages/register';
+@use './pages/settings';
+@use './pages/single';
+@use './pages/write';

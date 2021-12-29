@@ -36,6 +36,12 @@
 	object-fit: cover;
 	cursor: pointer;
 }
+.topUsername {
+	font-size: 20px;
+	color: #444;
+	margin: 0 10px;
+	cursor: default;
+}
 
 .topList {
 	display: flex;

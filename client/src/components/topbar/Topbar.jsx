@@ -48,13 +48,16 @@ const Topbar = () => {
 			</div>
 			<div className="topRight">
 				{user ? (
-					<Link to="/settings">
-						{user.profilePic ? (
-							<img className="topImg" src={PF + user.profilePic} alt="" />
-						) : (
-							<img className="topImg" src={'http://localhost:2506/images/avatar.jpg'} alt="" />
-						)}
-					</Link>
+					<>
+						<Link to="/settings" className="link">
+							{user.profilePic ? (
+								<img className="topImg" src={PF + user.profilePic} alt="" />
+							) : (
+								<img className="topImg" src={'http://localhost:2506/images/avatar.jpg'} alt="" />
+							)}
+						</Link>
+						<span className="topUsername">{user.username}</span>
+					</>
 				) : (
 					<ul className="topList">
 						<li className="topListItem">
