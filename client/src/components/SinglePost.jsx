@@ -1,8 +1,7 @@
-import './singlePost.css'
 import { useState, useEffect, useContext } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import axios from 'axios'
-import { Context } from '../../context/Context'
+import { Context } from '../context/Context'
 
 const SinglePost = () => {
 	const location = useLocation()

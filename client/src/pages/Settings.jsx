@@ -1,8 +1,7 @@
 import axios from 'axios'
 import { useContext, useState } from 'react'
-import Sidebar from '../../components/sidebar/Sidebar'
-import { Context } from '../../context/Context'
-import './settings.css'
+import Sidebar from '../components/Sidebar'
+import { Context } from '../context/Context'
 
 const Settings = () => {
 	const { user, dispatch } = useContext(Context)

@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { useContext, useState } from 'react'
-import { Context } from '../../context/Context'
-import './write.css'
+import { Context } from '../context/Context'
 
 const Write = () => {
 	const [title, setTitle] = useState('')

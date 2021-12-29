@@ -1,7 +1,6 @@
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { Context } from '../../context/Context'
-import './topbar.css'
+import { Context } from '../context/Context'
 
 const Topbar = () => {
 	const { user, dispatch } = useContext(Context)
