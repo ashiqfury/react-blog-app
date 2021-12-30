@@ -31,7 +31,7 @@ const SinglePost = () => {
 	const handleDelete = async () => {
 		try {
 			await axios.delete(`/posts/${path}`, {
-				data: { username: user.username, userId: post.userId },
+				data: { username: user.username, userId: user._id, admin: user.admin },
 			})
 			window.location.replace('/')
 		} catch (err) {}
@@ -40,7 +40,13 @@ const SinglePost = () => {
 	const handleUpdate = async () => {
 		setUpdateMode(false)
 		try {
-			await axios.put(`/posts/${path}`, { username: user.username, title, desc })
+			await axios.put(`/posts/${path}`, {
+				username: user.username,
+				title,
+				desc,
+				userId: user._id,
+				admin: user.admin,
+			})
 		} catch (err) {}
 	}
 
