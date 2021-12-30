@@ -17,8 +17,8 @@ const Settings = () => {
 		dispatch({ type: 'UPDATE_START' })
 		const updatedUser = {
 			userId: user._id,
-			username,
-			email,
+			username: username || user.username,
+			email: email || user.email,
 			password,
 		}
 		if (file) {

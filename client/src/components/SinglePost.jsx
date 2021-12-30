@@ -18,17 +18,21 @@ const SinglePost = () => {
 
 	useEffect(() => {
 		const getPost = async () => {
-			const res = await axios.get(`/posts/${path}`)
-			setPost(res.data)
-			setTitle(res.data.title)
-			setDesc(res.data.desc)
+			try {
+				const res = await axios.get(`/posts/${path}`)
+				setPost(res.data)
+				setTitle(res.data.title)
+				setDesc(res.data.desc)
+			} catch (err) {}
 		}
 		getPost()
 	}, [path])
 
 	const handleDelete = async () => {
 		try {
-			await axios.delete(`/posts/${path}`, { data: { username: user.username } })
+			await axios.delete(`/posts/${path}`, {
+				data: { username: user.username, userId: post.userId },
+			})
 			window.location.replace('/')
 		} catch (err) {}
 	}
@@ -56,7 +60,7 @@ const SinglePost = () => {
 				) : (
 					<h1 className="singlePostTitle">
 						{title}
-						{post.username === user?.username && (
+						{(post.userId === user?._id || user?.admin) && (
 							<div className="singlePostEdit">
 								<i className="singlePostIcon far fa-edit" onClick={() => setUpdateMode(true)}></i>
 								<i className="singlePostIcon far fa-trash-alt" onClick={handleDelete}></i>

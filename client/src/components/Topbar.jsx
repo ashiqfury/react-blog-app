@@ -8,6 +8,7 @@ const Topbar = () => {
 
 	const handleLogout = () => {
 		dispatch({ type: 'LOGOUT' })
+		window.location.replace('/login')
 	}
 
 	return (
