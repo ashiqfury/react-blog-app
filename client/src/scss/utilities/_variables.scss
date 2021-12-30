@@ -18,8 +18,59 @@ $color4: #cea993;
 // site colors
 $clr-primary: hsla(213, 72%, 16%, 1);
 $clr-secondary: hsla(212, 72%, 26%, 1);
+$clr-teritary: hsla(201, 100%, 36%, 1);
 $clr-muted: hsla(209, 32%, 66%, 1);
 $clr-white: hsla(111, 24%, 94%, 1);
 
 // fonts
 $logo-font: 'The Nautigal', cursive;
+
+/* ----------------------------------- */
+/*          CUSTOM PROPERTIES          */
+/* ------------------------------------*/
+
+$clr-dark: hsl(0 0% 0%); //#000000
+$clr-med-grey: hsl(0 0% 3%); //#7D7D7D
+$clr-lt-grey: hsl(0 0% 90%); //#E5E5E5
+$clr-off-white: hsl(0 0% 95%); //#F3F3F3
+$clr-white: hsl(0 0% 100%); //#FFFFFF
+
+/* ----------------------------------- */
+/*          FONT FAMILIES              */
+/* ------------------------------------*/
+$ft-libre: 'Libre Baskerville', serif;
+
+/* ----------------------------------- */
+/*          FONT SIZES                 */
+/* ------------------------------------*/
+
+$fs-100: 0.5625rem; //9px
+$fs-200: 0.625rem; //10px
+$fs-300: 0.75rem; //12px
+$fs-400: 0.8125rem; //13px
+$fs-500: 0.875rem; //14px
+$fs-600: 0.9375rem; //15px
+$fs-700: 1rem; //16px
+$fs-800: 1.125rem; //18px
+$fs-900: 1.5rem; //24px
+$fs-1000: 2rem; //32px
+$fs-1100: 3.5rem; //56px
+$fs-1200: 6.25rem; //100px;
+$fs-1300: 12.5rem; //200px
+
+/* ----------------------------------- */
+/*          SPACINGS                   */
+/* ------------------------------------*/
+
+$spacer-1: 1.5rem;
+$spacer-2: 1.8125rem;
+$spacer-3: 2.5rem;
+$spacer-4: 3rem;
+$spacer-5: 4.9375rem;
+$spacer-6: 8.5rem;
+
+/* ----------------------------------- */
+/*       FONT WEIGHTS                  */
+/* ------------------------------------*/
+$fw-normal: 400;
+$fw-bold: 700;

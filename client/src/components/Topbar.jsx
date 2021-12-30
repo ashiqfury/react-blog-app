@@ -14,7 +14,10 @@ const Topbar = () => {
 		<div className="topbar">
 			<div className="topbar__left">
 				<Link to="/" className="link">
-					<span className="topbar__logo">Fury Blogz.</span>
+					<span className="topbar__logo">
+						<span className="topbar__logo--sm">F</span>
+						<span className="topbar__logo--lg">ury Blogz.</span>
+					</span>
 				</Link>
 				{/* <i className="topbar__icon fab fa-facebook-square"></i>
 				<i className="topbar__icon fab fa-twitter-square"></i>
@@ -80,7 +83,8 @@ const Topbar = () => {
 						</li>
 					</ul>
 				)}
-				<i className="topbar__icon--search fas fa-search"></i>
+				<i className="topbar__icon--theme fas fa-moon"></i>
+				<i className="topbar__icon--theme fas fa-sun hidden"></i>
 			</div>
 		</div>
 	)

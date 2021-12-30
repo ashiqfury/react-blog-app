@@ -1,0 +1,137 @@
+// dimensions
+@mixin box($width, $height: $width) {
+	width: $width;
+	height: $height;
+}
+/* .square {
+  @include box(50px);
+} */
+
+// positionsing
+@mixin position($position, $args) {
+	@each $o in top right bottom left {
+		$i: index($args, $o);
+		@if $i and $i + 1 <= length($args) and type-of(nth($args, $i + 1)) == number {
+			#{$o}: nth($args, $i + 1);
+		}
+	}
+	position: $position;
+}
+// Positioning helpers
+@mixin absolute($args: '') {
+	@include position(absolute, $args);
+}
+@mixin fixed($args: '') {
+	@include position(fixed, $args);
+}
+@mixin relative($args: '') {
+	@include position(relative, $args);
+}
+/* .menu li {
+  @include relative;
+}
+.sub-menu {
+  @include absolute(top 100% left 0);
+}
+.sticky-bar {
+  @include fixed(top 0 left 0);
+} */
+
+// rem units
+@mixin font-size($size, $base: 16) {
+	font-size: $size; // fallback for old browsers
+	font-size: ($size / $base) * 1rem;
+}
+/* body {
+  @include font-size(16);
+} */
+
+// media queries
+@mixin screen($size) {
+	$desktop: '(min-width: 1024px)';
+	$tablet: '(min-width: 768px) and (max-width: 1023px)';
+	$mobile: '(max-width: 767px)';
+	@if $size == desktop {
+		@media only screen and #{$desktop} {
+			@content;
+		}
+	} @else if $size == tablet {
+		@media only screen and #{$tablet} {
+			@content;
+		}
+	} @else if $size == mobile {
+		@media only screen and #{$mobile} {
+			@content;
+		}
+	} @else {
+		@media only screen and #{$size} {
+			@content;
+		}
+	}
+}
+/* @include screen('tablet') {
+  width: 90%;
+} */
+
+// background gradient
+@mixin gradient($start-color, $end-color, $orientation) {
+	background: $start-color;
+	@if $orientation == 'vertical' {
+		background: -webkit-linear-gradient(top, $start-color, $end-color);
+		background: linear-gradient(to bottom, $start-color, $end-color);
+	} @else if $orientation == 'horizontal' {
+		background: -webkit-linear-gradient(left, $start-color, $end-color);
+		background: linear-gradient(to right, $start-color, $end-color);
+	} @else {
+		background: -webkit-radial-gradient(center, ellipse cover, $start-color, $end-color);
+		background: radial-gradient(ellipse at center, $start-color, $end-color);
+	}
+}
+/* .gradient {
+  @include gradient(#07c, #06f, vertical);
+} */
+
+// fontface
+@mixin font-face($font-name, $file-name, $weight: normal, $style: normal) {
+	@font-face {
+		font-family: quote($font-name);
+		src: url($file-name + '.eot');
+		src: url($file-name + '.eot?#iefix') format('embedded-opentype'),
+			url($file-name + '.woff') format('woff'), url($file-name + '.ttf') format('truetype'),
+			url($file-name + '.svg##{$font-name}') format('svg');
+		font-weight: $weight;
+		font-style: $style;
+	}
+}
+/* @include font-face("MyFont", "path/to/MyFont", $style: normal, $weight: normal); */
+
+// centering a block
+@mixin center-block {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+/* .wrapper {
+  @include center-block;
+} */
+
+// vertically centering
+@mixin center-vertically {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	@include prefix(transform, translate(-50%, -50%), 'webkit' 'ms');
+}
+/* .vc-box {
+  @include center-vertically;
+} */
+
+// text shortening
+@mixin text-shorten {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+/* div {
+  @include text-shorten();
+} */
