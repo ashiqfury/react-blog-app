@@ -33,6 +33,8 @@ const Register = () => {
 					type="text"
 					placeholder="Enter your username..."
 					onChange={e => setUsername(e.target.value)}
+					required
+					autoFocus
 				/>
 				<label>Email</label>
 				<input
@@ -40,6 +42,7 @@ const Register = () => {
 					type="text"
 					placeholder="Enter your email..."
 					onChange={e => setEmail(e.target.value)}
+					required
 				/>
 				<label>Password</label>
 				<input
@@ -47,6 +50,7 @@ const Register = () => {
 					type="password"
 					placeholder="Enter your password..."
 					onChange={e => setPassword(e.target.value)}
+					required
 				/>
 				<button className="registerButton">Register</button>
 

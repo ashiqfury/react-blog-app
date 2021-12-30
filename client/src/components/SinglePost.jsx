@@ -15,6 +15,7 @@ const SinglePost = () => {
 	const [title, setTitle] = useState('')
 	const [desc, setDesc] = useState('')
 	const [updateMode, setUpdateMode] = useState(false)
+	const [hidden, setHidden] = useState(true)
 
 	useEffect(() => {
 		const getPost = async () => {
@@ -26,7 +27,8 @@ const SinglePost = () => {
 			} catch (err) {}
 		}
 		getPost()
-	}, [path])
+		user ? setHidden(false) : setHidden(true)
+	}, [path, user])
 
 	const handleDelete = async () => {
 		try {
@@ -67,7 +69,7 @@ const SinglePost = () => {
 					<h1 className="singlePostTitle">
 						{title}
 						{(post.userId === user?._id || user?.admin) && (
-							<div className="singlePostEdit">
+							<div className="singlePostEdit" hidden={hidden}>
 								<i className="singlePostIcon far fa-edit" onClick={() => setUpdateMode(true)}></i>
 								<i className="singlePostIcon far fa-trash-alt" onClick={handleDelete}></i>
 							</div>

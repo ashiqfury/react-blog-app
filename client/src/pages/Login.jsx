@@ -32,6 +32,8 @@ const Login = () => {
 					type="text"
 					placeholder="Enter your username..."
 					ref={usernameRef}
+					required
+					autoFocus
 				/>
 				<label>Password</label>
 				<input
@@ -39,6 +41,7 @@ const Login = () => {
 					type="password"
 					placeholder="Enter your password..."
 					ref={passwordRef}
+					required
 				/>
 				<button className="loginButton" disabled={isFetching}>
 					Login
