@@ -3,7 +3,21 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+body {
+	font-size: 100%;
+	width: 100%;
+}
 .link {
 	text-decoration: none;
 	color: inherit;
+}
+
+::-webkit-scrollbar,
+::-webkit-scrollbar-track {
+	width: 5px;
+	background: lightgray;
+}
+::-webkit-scrollbar-thumb {
+	width: 3px;
+	background-color: teal;
 }

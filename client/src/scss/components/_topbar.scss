@@ -1,6 +1,6 @@
 .topbar {
 	width: 100%;
-	height: 50px;
+	height: 10vh;
 	background: white;
 	position: sticky;
 	top: 0;
@@ -8,57 +8,62 @@
 	align-items: center;
 	font-family: 'Josefin Sans', sans-serif;
 	z-index: 999;
-}
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
 
-.topLeft,
-.topRight {
-	flex: 3;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
+	&__left,
+	&__right {
+		flex: 3;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	&__center {
+		flex: 6;
+	}
+	&__logo {
+		font-size: 3rem;
+		font-weight: 700;
+		letter-spacing: 2px;
+		font-family: $logo-font;
+		color: $clr-primary;
+	}
 
-.topCenter {
-	flex: 6;
-}
+	// &__icon {
+	// 	font-size: 20px;
+	// 	margin: 0 50px;
+	// 	color: #444;
+	// 	cursor: pointer;
+	// }
+	&__img {
+		width: 45px;
+		height: 45px;
+		border-radius: 50%;
+		object-fit: cover;
+		cursor: pointer;
+	}
+	&__username {
+		font-size: 1.5rem;
+		color: #444;
+		margin: 0 10px;
+		font-weight: 400;
+		cursor: pointer;
+	}
+	&__list {
+		display: flex;
+		justify-content: center;
+		list-style: none;
 
-.topIcon {
-	font-size: 20px;
-	margin-right: 10px;
-	color: #444;
-	cursor: pointer;
-}
-
-.topImg {
-	width: 40px;
-	height: 40px;
-	border-radius: 50%;
-	object-fit: cover;
-	cursor: pointer;
-}
-.topUsername {
-	font-size: 20px;
-	color: #444;
-	margin: 0 10px;
-	cursor: default;
-}
-
-.topList {
-	display: flex;
-	justify-content: center;
-	list-style: none;
-}
-
-.topListItem {
-	margin-right: 20px;
-	font-size: 18px;
-	font-weight: 300;
-	cursor: pointer;
-}
-
-.topSearchIcon {
-	font-size: 18px;
-	color: #666;
-	cursor: pointer;
-	margin-left: 20px;
+		&--item {
+			margin: 0 10px;
+			font-size: 1.2rem;
+			font-weight: 300;
+			cursor: pointer;
+		}
+	}
+	&__icon--search {
+		font-size: 18px;
+		color: #666;
+		cursor: pointer;
+		margin-left: 20px;
+	}
 }
