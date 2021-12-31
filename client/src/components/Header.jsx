@@ -1,15 +1,17 @@
+import img from '../assets/evie-s-_8vovuZCj0c-unsplash.jpg'
+
 const Header = () => {
 	return (
 		<div className="header">
-			<div className="headerTitles">
-				<span className="headerTitleSm">React &amp; Node</span>
-				<span className="headerTitleLg">Blog</span>
+			<div className="header__title">
+				{/* <span className="header__title--sm">React &amp; Node</span> */}
+				<span className="header__title--sm">Blog application using react and node.</span>
+				<span className="header__title--lg">Blog</span>
+				<a href="#postId" className="header__explore">
+					Lets explore <i class="fas fa-angle-right"></i>
+				</a>
 			</div>
-			<img
-				src="https://images.pexels.com/photos/4101555/pexels-photo-4101555.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-				alt=""
-				className="headerImg"
-			/>
+			<img src={img} alt="" className="header__img" />
 		</div>
 	)
 }
