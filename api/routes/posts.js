@@ -23,7 +23,10 @@ router.put('/:id', async (req, res) => {
 				const updatedPost = await Post.findByIdAndUpdate(
 					req.params.id,
 					{
-						$set: req.body,
+						$set: {
+							title: req.body.title,
+							desc: req.body.desc,
+						},
 					},
 					{ new: true }
 				)

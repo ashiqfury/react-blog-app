@@ -24,11 +24,11 @@ const Login = () => {
 
 	return (
 		<div className="login" onSubmit={handleSubmit}>
-			<span className="loginTitle">Login</span>
-			<form className="loginForm">
+			<span className="login__title">Login</span>
+			<form className="login__form">
 				<label>Username</label>
 				<input
-					className="loginInput"
+					className="login__input"
 					type="text"
 					placeholder="Enter your username..."
 					ref={usernameRef}
@@ -37,16 +37,16 @@ const Login = () => {
 				/>
 				<label>Password</label>
 				<input
-					className="loginInput"
+					className="login__input"
 					type="password"
 					placeholder="Enter your password..."
 					ref={passwordRef}
 					required
 				/>
-				<button className="loginButton" disabled={isFetching}>
+				<button className="login__button" disabled={isFetching}>
 					Login
 				</button>
-				<button className="loginRegisterButton" type="submit">
+				<button className="login__button--register" type="submit">
 					<Link className="link" to="/register">
 						Register
 					</Link>

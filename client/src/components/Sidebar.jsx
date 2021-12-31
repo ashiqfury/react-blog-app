@@ -1,9 +1,12 @@
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Context } from '../context/Context'
 
 const Sidebar = () => {
 	const [cats, setCats] = useState([])
+	const [users, setUsers] = useState([])
+	const { user } = useContext(Context)
 
 	useEffect(() => {
 		const getCats = async () => {
@@ -12,6 +15,16 @@ const Sidebar = () => {
 		}
 		getCats()
 	}, [])
+
+	useEffect(() => {
+		const getUsers = async () => {
+			const res = await axios.get('/users')
+			const data = res.data
+			const filteredUser = data.filter(u => u._id !== user?._id)
+			setUsers(filteredUser)
+		}
+		getUsers()
+	}, [user?._id])
 
 	return (
 		<div className="sidebar">
@@ -37,6 +50,18 @@ const Sidebar = () => {
 					))}
 				</ul>
 			</div>
+
+			<div className="sidebarItem">
+				<span className="sidebarTitle">USERS</span>
+				<ul className="sidebarList">
+					{users.map(u => (
+						<Link to={`/?user=${u.username}`} className="link" key={u.username}>
+							<li className="sidebarListItem">{u.username}</li>
+						</Link>
+					))}
+				</ul>
+			</div>
+
 			<div className="sidebarItem">
 				<span className="sidebarTitle">FOLLOW US</span>
 				<div className="sidebarSocial">

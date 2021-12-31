@@ -25,44 +25,50 @@ const Register = () => {
 
 	return (
 		<div className="register">
-			<span className="registerTitle">Register</span>
-			<form className="registerForm" onSubmit={handleSubmit}>
-				<label>Username</label>
-				<input
-					className="registerInput"
-					type="text"
-					placeholder="Enter your username..."
-					onChange={e => setUsername(e.target.value)}
-					required
-					autoFocus
-				/>
-				<label>Email</label>
-				<input
-					className="registerInput"
-					type="text"
-					placeholder="Enter your email..."
-					onChange={e => setEmail(e.target.value)}
-					required
-				/>
-				<label>Password</label>
-				<input
-					className="registerInput"
-					type="password"
-					placeholder="Enter your password..."
-					onChange={e => setPassword(e.target.value)}
-					required
-				/>
-				<button className="registerButton">Register</button>
+			<div className="register__left">
+				<span>Fury Blogz.</span>
+				<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, dolorem.</p>
+			</div>
+			<div className="register__right">
+				<span className="register__title">Register</span>
+				<form className="register__form" onSubmit={handleSubmit}>
+					<label>Username</label>
+					<input
+						className="register__input"
+						type="text"
+						placeholder="Enter your username..."
+						onChange={e => setUsername(e.target.value)}
+						required
+						autoFocus
+					/>
+					<label>Email</label>
+					<input
+						className="register__input"
+						type="text"
+						placeholder="Enter your email..."
+						onChange={e => setEmail(e.target.value)}
+						required
+					/>
+					<label>Password</label>
+					<input
+						className="register__input"
+						type="password"
+						placeholder="Enter your password..."
+						onChange={e => setPassword(e.target.value)}
+						required
+					/>
+					<button className="register__button">Register</button>
 
-				<button className="registerLoginButton" type="submit">
-					<Link className="link" to="/login">
-						Login
-					</Link>
-				</button>
-				{error && (
-					<span style={{ color: 'crimson', marginTop: '10px' }}>Something went wrong!</span>
-				)}
-			</form>
+					{error && <span className="register__error">Something went wrong!</span>}
+
+					<p className="register__login">
+						Already have an account?{' '}
+						<Link className="link signin" to="/login">
+							Sign In
+						</Link>
+					</p>
+				</form>
+			</div>
 		</div>
 	)
 }

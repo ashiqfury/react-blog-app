@@ -43,7 +43,6 @@ const SinglePost = () => {
 		setUpdateMode(false)
 		try {
 			await axios.put(`/posts/${path}`, {
-				username: user.username,
 				title,
 				desc,
 				userId: user._id,
