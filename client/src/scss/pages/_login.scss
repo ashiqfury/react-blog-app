@@ -1,24 +1,30 @@
 .login {
 	height: calc(100vh - 10vh);
 	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
-		url('https://images.pexels.com/photos/3389536/pexels-photo-3389536.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');
-	background-size: cover;
-	position: relative;
 
+	&__left {
+		flex: 5;
+		height: 100%;
+		background: white;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+	}
 	&__title {
-		font-size: 50px;
+		font-size: 4rem;
+		color: $color1;
 	}
 	&__form {
-		margin-top: 20px;
+		margin-top: 30px;
 		display: flex;
+		width: 400px;
 		flex-direction: column;
 
 		& > label {
-			margin: 10px 0;
+			margin: 10px 0 0 0;
+			font-size: 1rem;
+			color: $cerulean-crayola;
 		}
 	}
 
@@ -26,31 +32,79 @@
 		padding: 10px;
 		background: white;
 		border: none;
+		border-bottom: 2px solid $color1;
+		outline: none;
+		font-size: 1rem;
+		margin-bottom: 20px;
+		transition: all 150ms ease-in-out;
+
+		&:focus {
+			border-bottom: 2px solid $cerulean-crayola;
+		}
+
+		&::placeholder {
+			color: #bbb;
+		}
 	}
 	&__button {
+		width: 50%;
+		align-self: center;
 		margin-top: 20px;
-		cursor: pointer;
-		background: lightcoral;
-		border: none;
+		background: $cerulean-crayola;
+		border: 2px solid white;
 		color: white;
-		border-radius: 10px;
 		padding: 10px;
+		font-size: 1rem;
+		border-radius: 3px;
+		cursor: pointer;
+		transition: all 150ms ease-in-out;
 
 		&:disabled {
 			cursor: not-allowed;
-			background: rgb(247, 171, 171);
+			opacity: 0.8;
 		}
 
-		&--register {
-			position: absolute;
-			top: 30px;
-			right: 20px;
-			background: teal;
-			cursor: pointer;
-			border: none;
-			padding: 10px;
+		&:hover {
+			border: 2px solid $cerulean-crayola;
+			background-color: white;
+			color: $cerulean-crayola;
+		}
+	}
+	&__register {
+		text-align: center;
+		font-size: 1.1rem;
+		margin-top: 20px;
+
+		.signup {
+			color: $cerulean-crayola;
+		}
+	}
+	.login__right {
+		flex: 4;
+		height: 100%;
+		padding: 50px;
+		box-sizing: 10px 0 10px rgba(0, 0, 0, 0.3);
+		background: linear-gradient(to bottom, $color1, $cerulean-crayola);
+
+		display: flex;
+		align-items: flex-start;
+		justify-content: center;
+		flex-direction: column;
+
+		span {
+			font-size: 10rem;
+			font-weight: 700;
+			letter-spacing: 2px;
+			font-family: $logo-font;
 			color: white;
-			border-radius: 10px;
+			margin: 0 0 100px 0;
+		}
+		p {
+			font-size: 2rem;
+			font-weight: 700;
+			letter-spacing: 2px;
+			font-family: $logo-font;
+			color: white;
 		}
 	}
 }

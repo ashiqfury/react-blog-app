@@ -1,33 +1,18 @@
 .register {
 	height: calc(100vh - 10vh);
 	display: flex;
-	// flex-direction: column;
-	// align-items: center;
-	// justify-content: center;
-	background: url('../../assets/jeremy-bishop-G9i_plbfDgk-unsplash.jpg');
-	// url('../../assets/alex-perez-ioJBsYQ-pPM-unsplash.jpg');
-	// url('../../assets/evie-s-_8vovuZCj0c-unsplash.jpg');
-	// url('../../assets/gradienta-LeG68PrXA6Y-unsplash.jpg');
-	// url('../../assets/istockphoto-1285395672-170667a.jpg');
-	// url('../../assets/w-qjCHPZbeXCQ-unsplash.jpg');
-	background-size: cover;
-	position: relative;
 
 	.register__left {
 		flex: 4;
 		height: 100%;
 		padding: 50px;
 		box-sizing: 10px 0 10px rgba(0, 0, 0, 0.3);
+		background: linear-gradient(to bottom, $color1, $cerulean-crayola);
 
 		display: flex;
 		align-items: flex-start;
 		justify-content: center;
 		flex-direction: column;
-
-		background: linear-gradient(to bottom, $color1, $cerulean-crayola);
-		// background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),
-		// url('../../assets/jeremy-bishop-G9i_plbfDgk-unsplash.jpg');
-		// background-size: cover;
 
 		span {
 			font-size: 10rem;

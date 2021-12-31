@@ -24,34 +24,42 @@ const Login = () => {
 
 	return (
 		<div className="login" onSubmit={handleSubmit}>
-			<span className="login__title">Login</span>
-			<form className="login__form">
-				<label>Username</label>
-				<input
-					className="login__input"
-					type="text"
-					placeholder="Enter your username..."
-					ref={usernameRef}
-					required
-					autoFocus
-				/>
-				<label>Password</label>
-				<input
-					className="login__input"
-					type="password"
-					placeholder="Enter your password..."
-					ref={passwordRef}
-					required
-				/>
-				<button className="login__button" disabled={isFetching}>
-					Login
-				</button>
-				<button className="login__button--register" type="submit">
-					<Link className="link" to="/register">
-						Register
-					</Link>
-				</button>
-			</form>
+			<div className="login__left">
+				<span className="login__title">Login</span>
+				<form className="login__form">
+					<label>Username</label>
+					<input
+						className="login__input"
+						type="text"
+						placeholder="Enter your username..."
+						ref={usernameRef}
+						required
+						autoFocus
+					/>
+					<label>Password</label>
+					<input
+						className="login__input"
+						type="password"
+						placeholder="Enter your password..."
+						ref={passwordRef}
+						required
+					/>
+					<button className="login__button" disabled={isFetching}>
+						Login
+					</button>
+
+					<p className="login__register">
+						You don't have an account?&nbsp;
+						<Link className="link signup" to="/register">
+							Sign Up
+						</Link>
+					</p>
+				</form>
+			</div>
+			<div className="login__right">
+				<span>Fury Blogz.</span>
+				<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, dolorem.</p>
+			</div>
 		</div>
 	)
 }
