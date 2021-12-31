@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+.contact {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Poppins', sans-serif;
+	min-height: calc(100vh - 10vh);
+	// background: #112d42;
+	background: linear-gradient(45deg, $cerulean-crayola, $color1);
+
+	&::before {
+		content: '';
+		position: relative;
+		top: 0;
+		left: 0;
+		width: 50%;
+		height: 100%;
+		background: #03a9f4;
+		// background: $cerulean-crayola;
+	}
+
+	.container {
+		position: relative;
+		right: 10%;
+		// min-width: 1100px;
+		min-width: 75%;
+		min-height: 550px;
+		display: flex;
+		z-index: 1000;
+	}
+
+	&-info {
+		position: absolute;
+		top: 40px;
+		// width: 350px;
+		min-width: 30%;
+		height: calc(100% - 80px);
+		background: #0f3959;
+		z-index: 1;
+		padding: 40px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		box-shadow: 10px 0 10px rgba(0, 0, 0, 0.3);
+
+		h2 {
+			color: #fff;
+			font-size: 24px;
+			font-weight: 500;
+		}
+
+		.info {
+			position: relative;
+			margin: 20px 0;
+
+			li {
+				position: relative;
+				list-style: none;
+				display: flex;
+				margin: 20px 0;
+				cursor: pointer;
+				align-items: flex-start;
+
+				span:nth-child(1) {
+					width: 30px;
+					min-width: 30px;
+
+					i {
+						max-width: 100%;
+						filter: invert(1);
+						opacity: 0.5;
+						transition: all 150ms ease-in-out;
+					}
+				}
+				span:nth-child(2) {
+					color: #fff;
+					margin-left: 10px;
+					font-weight: 300;
+					opacity: 0.5;
+					transition: all 150ms ease-in-out;
+				}
+			}
+		}
+
+		.sci {
+			position: relative;
+			display: flex;
+
+			li {
+				list-style: none;
+				margin-right: 15px;
+
+				&:hover a i {
+					opacity: 1;
+				}
+
+				a {
+					text-decoration: none;
+
+					i {
+						color: white;
+						font-size: 1.5rem;
+						opacity: 0.5;
+						transition: all 150ms ease-in-out;
+					}
+				}
+			}
+		}
+	}
+}
+
+.info li:hover span:nth-child(1) i,
+.info li:hover span:nth-child(2) {
+	opacity: 1;
+}
+
+.contact .container .contactForm {
+	position: absolute;
+	padding: 70px 50px;
+	background-color: #fff;
+	margin-left: 150px;
+	padding-left: 250px;
+	width: calc(100% - 150px);
+	height: 100%;
+	box-sizing: 0 50px 50px rgba(0, 0, 0, 0.5);
+}
+
+.contact .container .contactForm h2 {
+	color: #0f3959;
+	font-size: 24px;
+	font-weight: 500;
+}
+.contact .container .contactForm .formBox {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	padding-top: 30px;
+}
+.contact .container .contactForm .formBox .inputBox {
+	position: relative;
+	margin: 0 0 35px 0;
+}
+.contact .container .contactForm .formBox .inputBox.w50 {
+	width: 47%;
+}
+.contact .container .contactForm .formBox .inputBox.w100 {
+	width: 100%;
+}
+.contact .container .contactForm .formBox .inputBox input,
+.contact .container .contactForm .formBox .inputBox textarea {
+	width: 100% !important;
+	padding: 5px 0;
+	resize: none;
+	font-size: 18px;
+	font-weight: 300;
+	color: #333;
+	border: none;
+	border-bottom: 1px solid #777;
+	outline: none;
+}
+.contact .container .contactForm .formBox .inputBox textarea {
+	min-height: 120px;
+}
+
+.contact .container .contactForm .formBox .inputBox span {
+	position: absolute;
+	left: 0;
+	padding: 5px 0;
+	font-size: 18px;
+	font-weight: 300;
+	color: #333;
+	transition: 0.5s;
+	pointer-events: none;
+}
+
+.contact .container .contactForm .formBox .inputBox input:focus ~ span,
+.contact .container .contactForm .formBox .inputBox textarea:focus ~ span,
+.contact .container .contactForm .formBox .inputBox input:valid ~ span,
+.contact .container .contactForm .formBox .inputBox textarea:valid ~ span {
+	transform: translateY(-20px);
+	font-size: 12px;
+	font-weight: 400;
+	letter-spacing: 1px;
+	// color: #ff568c;
+	color: $cerulean-crayola;
+}
+
+.contact .container .contactForm .formBox .inputBox input[type='submit'] {
+	position: relative;
+	cursor: pointer;
+	background-color: #0f3959;
+	color: #fff;
+	border: none;
+	max-width: 150px;
+	padding: 12px;
+	transition: all 300ms ease-in-out;
+}
+.contact .container .contactForm .formBox .inputBox input[type='submit']:hover {
+	background-color: $cerulean-crayola;
+}
+
+.formMessage {
+	font-size: 1rem;
+	margin-top: -15px;
+
+	.formSuccess {
+		color: green;
+	}
+	.formFailure {
+		color: crimson;
+	}
+}

@@ -39,12 +39,12 @@ const Topbar = () => {
 					</li>
 					<li className="topbar__list--item">
 						<Link to="/" className="link">
-							CONTACT
+							ABOUT
 						</Link>
 					</li>
 					<li className="topbar__list--item">
-						<Link to="/" className="link">
-							ABOUT
+						<Link to="/contact" className="link">
+							CONTACT
 						</Link>
 					</li>
 					<li className="topbar__list--item" onClick={handleLogout}>

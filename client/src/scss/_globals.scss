@@ -25,5 +25,8 @@ body {
 }
 ::-webkit-scrollbar-thumb {
 	width: 3px;
-	background-color: teal;
+	background-color: $color1;
+}
+::selection {
+	background: $cerulean-crayola;
 }
