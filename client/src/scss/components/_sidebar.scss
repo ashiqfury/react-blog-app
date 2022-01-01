@@ -49,11 +49,11 @@
 	}
 
 	&__list {
-		width: 100%;
+		width: 75%;
 		list-style: none;
 		margin-bottom: 30px;
 		display: flex;
-		justify-content: space-evenly;
+		justify-content: space-between;
 		flex-wrap: wrap;
 
 		&--item {

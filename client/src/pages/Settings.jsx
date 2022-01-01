@@ -110,7 +110,7 @@ const Settings = () => {
 
 					<label>Bio</label>
 					<textarea
-						placholder={user?.bio || 'Enter your interests...'}
+						placeholder="Enter your interests..."
 						onChange={e => setBio(e.target.value)}
 					></textarea>
 
