@@ -8,7 +8,6 @@ const Sidebar = () => {
 	const [cats, setCats] = useState([])
 	const [users, setUsers] = useState([])
 	const { user } = useContext(Context)
-	console.log(users)
 	const PF = 'http://localhost:2506/images/'
 
 	useEffect(() => {
@@ -33,7 +32,11 @@ const Sidebar = () => {
 		<div className="sidebar">
 			<div className="sidebar__item">
 				<span className="sidebar__title">ABOUT ME</span>
-				<img className="sidebar__img" src={user?.profilePic || avatar} alt="Avatar" />
+				{user?.profilePic ? (
+					<img className="sidebar__img" src={PF + user?.profilePic} alt="Avatar" />
+				) : (
+					<img className="sidebar__img" src={avatar} alt="Avatar" />
+				)}
 				<p className="sidebar__bio">
 					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime doloremque saepe qui,
 					molestias delectus necessitatibus dignissimos ut nam.
