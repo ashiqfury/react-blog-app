@@ -1,15 +1,17 @@
 import axios from 'axios'
-import { useContext, useRef } from 'react'
+import { useContext, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Context } from '../context/Context'
 
 const Login = () => {
 	const usernameRef = useRef()
 	const passwordRef = useRef()
+	const [error, setError] = useState(false)
 	const { dispatch, isFetching } = useContext(Context)
 
 	const handleSubmit = async e => {
 		e.preventDefault()
+		setError(false)
 		dispatch({ type: 'LOGIN_START' })
 		try {
 			const res = await axios.post('/auth/login', {
@@ -19,6 +21,7 @@ const Login = () => {
 			dispatch({ type: 'LOGIN_SUCCESS', payload: res.data })
 		} catch (err) {
 			dispatch({ type: 'LOGIN_FAILURE' })
+			setError(true)
 		}
 	}
 
@@ -45,8 +48,10 @@ const Login = () => {
 						required
 					/>
 					<button className="login__button" disabled={isFetching}>
-						Login
+						{isFetching ? 'Loading...' : 'Login'}
 					</button>
+
+					{error && <span className="register__error">Something went wrong!</span>}
 
 					<p className="login__register">
 						You don't have an account?&nbsp;
