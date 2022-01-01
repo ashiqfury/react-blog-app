@@ -20,6 +20,22 @@ const UserSchema = new mongoose.Schema(
 			type: String,
 			default: '',
 		},
+		bio: {
+			type: String,
+			default: '',
+		},
+		facebook: {
+			type: String,
+			default: '',
+		},
+		instagram: {
+			type: String,
+			default: '',
+		},
+		twitter: {
+			type: String,
+			default: '',
+		},
 		admin: {
 			type: Boolean,
 			default: false,

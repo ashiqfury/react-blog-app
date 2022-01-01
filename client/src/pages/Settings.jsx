@@ -9,6 +9,10 @@ const Settings = () => {
 	const [username, setUsername] = useState('')
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
+	const [bio, setBio] = useState('')
+	const [facebook, setFacebook] = useState('')
+	const [instagram, setInstagram] = useState('')
+	const [twitter, setTwitter] = useState('')
 	const [success, setSuccess] = useState(false)
 	const PF = 'http://localhost:2506/images/'
 
@@ -19,6 +23,10 @@ const Settings = () => {
 			userId: user._id,
 			username: username || user.username,
 			email: email || user.email,
+			bio: bio || user.bio,
+			facebook: facebook || user.facebook,
+			instagram: instagram || user.instagram,
+			twitter: twitter || user.twitter,
 			password,
 		}
 		if (file) {
@@ -49,16 +57,16 @@ const Settings = () => {
 
 	return (
 		<div className="settings">
-			<div className="settingsWrapper">
-				<div className="settingsTitle">
-					<span className="settingsUpdateTitle">Update your account</span>
-					<span className="settingsDeleteTitle" onClick={handleDelete}>
+			<div className="settings__wrapper">
+				<div className="settings__title">
+					<span className="settings__title--update">Update your account</span>
+					<span className="settings__title--delete" onClick={handleDelete}>
 						Delete account
 					</span>
 				</div>
-				<form className="form settingsForm" onSubmit={handleSubmit}>
+				<form className="form settings__form" onSubmit={handleSubmit}>
 					<label>Profile picture</label>
-					<div className="settingsProfilePicture">
+					<div className="settings__profilePicture">
 						<img
 							src={
 								file
@@ -70,7 +78,7 @@ const Settings = () => {
 							alt=""
 						/>
 						<label htmlFor="fileInput">
-							<i className="settingsProfilePictureIcon far fa-user-circle"></i>
+							<i className="settings__profilePicture--icon far fa-user-circle"></i>
 						</label>
 						<input
 							type="file"
@@ -79,24 +87,49 @@ const Settings = () => {
 							onChange={e => setFile(e.target.files[0])}
 						/>
 					</div>
+
 					<label>Username</label>
 					<input
 						type="text"
 						placeholder={user.username}
 						onChange={e => setUsername(e.target.value)}
 					/>
+
 					<label>Email</label>
 					<input type="email" placeholder={user.email} onChange={e => setEmail(e.target.value)} />
+
+					<label>Bio</label>
+					<textarea onChange={e => setBio(e.target.value)}></textarea>
+
+					<label>Social Media</label>
+					<div className="settings__social">
+						<input
+							type="text"
+							placeholder={user.facebook || 'facebook'}
+							className="settings__social--input"
+							onChange={e => setFacebook(e.target.value)}
+						/>
+						<input
+							type="text"
+							placeholder={user.instagram || 'instagram'}
+							className="settings__social--input"
+							onChange={e => setInstagram(e.target.value)}
+						/>
+						<input
+							type="text"
+							placeholder={user.twitter || 'twitter'}
+							className="settings__social--input"
+							onChange={e => setTwitter(e.target.value)}
+						/>
+					</div>
+
 					<label>Password</label>
 					<input type="password" required onChange={e => setPassword(e.target.value)} />
-					<button className="settingsSubmit" type="submit">
+
+					<button className="settings__submit" type="submit">
 						Update
 					</button>
-					{success && (
-						<span style={{ color: 'green', textAlign: 'center', marginTop: '20px' }}>
-							Your profile has been updated!
-						</span>
-					)}
+					{success && <span className="settings__success">Your profile has been updated!</span>}
 				</form>
 			</div>
 			<Sidebar />

@@ -1,83 +1,121 @@
 .settings {
 	display: flex;
-}
 
-.settingsWrapper {
-	flex: 9;
-	padding: 20px;
-}
+	&__wrapper {
+		flex: 9;
+		padding: 20px;
+	}
+	&__title {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
 
-.settingsTitle {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-}
+		&--update {
+			font-size: 30px;
+			color: $color1;
+			margin-bottom: 20px;
+		}
+		&--delete {
+			color: crimson;
+			text-transform: uppercase;
+			font-family: 'Poppins';
+			font-size: 14px;
+			border: 2px solid crimson;
+			padding: 5px 10px;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: all 150ms ease-in-out;
 
-.settingsUpdateTitle {
-	font-size: 30px;
-	color: lightcoral;
-	margin-bottom: 20px;
-}
+			&:hover {
+				background: crimson;
+				color: white;
+			}
+		}
+	}
+	&__form {
+		display: flex;
+		flex-direction: column;
 
-.settingsDeleteTitle {
-	color: red;
-	font-size: 12px;
-	cursor: pointer;
-}
+		& > label {
+			font-size: 1.2rem;
+			margin-top: 20px;
+			color: $cerulean-crayola;
+		}
 
-.settingsForm {
-	display: flex;
-	flex-direction: column;
-}
+		& input,
+		& > textarea {
+			resize: none;
+			font-size: 1rem;
+			color: gray;
+			margin: 10px 0;
+			height: 30px;
+			border: none;
+			outline: none;
+			border-bottom: 1px solid lightgray;
+			transition: all 150ms ease-in-out;
 
-.settingsProfilePicture {
-	display: flex;
-	align-items: center;
-	margin: 10px 0;
-}
+			&:focus {
+				border-bottom: 1px solid $cerulean-crayola;
+			}
+		}
+		& > textarea {
+			height: 50px;
+		}
+	}
 
-.settingsProfilePicture > img {
-	width: 70px;
-	height: 70px;
-	border-radius: 20px;
-	object-fit: cover;
-}
+	&__social {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
 
-.settingsProfilePictureIcon {
-	width: 25px;
-	height: 25px;
-	border-radius: 50%;
-	background: lightcoral;
-	color: white;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin-left: 10px;
-	cursor: pointer;
-}
+		&--input {
+			width: 30%;
+		}
+	}
 
-.settingsForm > label {
-	font-size: 20px;
-	margin-top: 20px;
-}
+	&__profilePicture {
+		display: flex;
+		align-items: center;
+		margin: 10px 0;
 
-.settingsForm > input {
-	color: gray;
-	margin: 10px 0;
-	height: 30px;
-	border: none;
-	outline: none;
-	border-bottom: 1px solid lightgray;
-}
+		img {
+			width: 70px;
+			height: 70px;
+			border-radius: 20px;
+			object-fit: cover;
+		}
 
-.settingsSubmit {
-	width: 150px;
-	align-self: center;
-	border: none;
-	border-radius: 10px;
-	color: white;
-	background: teal;
-	padding: 10px;
-	margin-top: 20px;
-	cursor: pointer;
+		&--icon {
+			width: 25px;
+			height: 25px;
+			border-radius: 50%;
+			background: $cerulean-crayola;
+			color: white;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-left: 10px;
+			cursor: pointer;
+		}
+	}
+
+	&__submit {
+		width: 150px;
+		align-self: flex-start;
+		border: none;
+		border-radius: 5px;
+		font-family: 'Poppins';
+		text-transform: uppercase;
+		color: white;
+		background: green;
+		padding: 10px;
+		margin-top: 20px;
+		cursor: pointer;
+	}
+	&__success {
+		color: green;
+		text-align: center;
+		margin-top: 20px;
+	}
 }
