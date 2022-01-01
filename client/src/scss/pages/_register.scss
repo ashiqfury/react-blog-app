@@ -7,7 +7,10 @@
 		height: 100%;
 		padding: 50px;
 		box-sizing: 10px 0 10px rgba(0, 0, 0, 0.3);
-		background: linear-gradient(to bottom, $color1, $cerulean-crayola);
+		// background: linear-gradient(to bottom, $color1, $cerulean-crayola);
+		background: url('../../assets/sun-tornado-register.svg');
+		background-size: cover;
+		background-repeat: no-repeat;
 
 		display: flex;
 		align-items: flex-start;

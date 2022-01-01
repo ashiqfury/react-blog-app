@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { Context } from '../context/Context'
+import avatar from '../assets/avatar.jpg'
 
 const Topbar = () => {
 	const { user, dispatch } = useContext(Context)
@@ -61,7 +62,8 @@ const Topbar = () => {
 							) : (
 								<img
 									className="topbar__img"
-									src={'http://localhost:2506/images/avatar.jpg'}
+									// src={'http://localhost:2506/images/avatar.jpg'}
+									src={avatar}
 									alt=""
 								/>
 							)}

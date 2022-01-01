@@ -8,61 +8,92 @@
 	align-items: center;
 	flex-direction: column;
 	border-radius: 10px;
-}
 
-.sidebarItem {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
+	&__item {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
 
-.sidebarTitle {
-	margin: 10px;
-	padding: 5px;
-	width: 80%;
-	border-top: 1px solid #a7a4a4;
-	border-bottom: 1px solid #a7a4a4;
-	font-size: 12px;
-	color: #222;
-	font-family: 'Varela Round', sans-serif;
-	font-weight: 600;
-	line-height: 20px;
-	text-align: center;
-}
+	&__title {
+		margin: 10px;
+		padding: 5px;
+		width: 90%;
+		border-top: 1px solid #a7a4a4;
+		border-bottom: 1px solid #a7a4a4;
+		font-size: 12px;
+		color: #222;
+		font-family: 'Varela Round', sans-serif;
+		font-weight: 600;
+		line-height: 20px;
+		text-align: center;
+	}
+	&__img {
+		width: 80%;
+		aspect-ratio: 1 / 1;
+		object-fit: cover;
+	}
 
-.sidebarImg {
-	margin-top: 15px;
-	width: 90%;
-	aspect-ratio: 1 / 1;
-	object-fit: cover;
-}
+	&__bio {
+		padding: 30px;
+	}
 
-.sidebar p {
-	padding: 30px;
-}
+	&__list {
+		width: 100%;
+		list-style: none;
+		margin-bottom: 30px;
+		display: flex;
+		justify-content: space-evenly;
+		flex-wrap: wrap;
 
-.sidebarList {
-	list-style: none;
-	margin-bottom: 30px;
-}
+		&--item {
+			width: 40%;
+			display: flex;
+			align-items: center;
+			margin-top: 15px;
+			cursor: pointer;
+			transition: all 150ms ease-in-out;
 
-.sidebarListItem {
-	display: inline-block;
-	width: 50%;
-	margin-top: 15px;
-	cursor: pointer;
-}
+			&:hover {
+				color: $cerulean-crayola;
+			}
+		}
 
-.sidebarSocial {
-	margin-top: 15px;
-	width: 250px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
+		.category {
+			display: inline;
+			width: 30%;
+			text-transform: capitalize;
+			margin: 0 10px;
+			margin-top: 15px;
+			cursor: pointer;
 
-.sidebarIcon {
-	font-size: 16px;
-	margin-left: 10px;
-	cursor: pointer;
+			li {
+				text-align: center;
+			}
+		}
+
+		&--img {
+			width: 35px;
+			border-radius: 50%;
+			aspect-ratio: 1 / 1;
+			margin-right: 10px;
+		}
+
+		&--name {
+			font-size: 1rem;
+		}
+	}
+	&__social {
+		margin-top: 15px;
+		width: 250px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	&__icon {
+		font-size: 16px;
+		margin-left: 10px;
+		cursor: pointer;
+	}
 }
