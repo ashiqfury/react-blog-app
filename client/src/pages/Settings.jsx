@@ -9,6 +9,7 @@ const Settings = () => {
 	const [username, setUsername] = useState('')
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
+	const [name, setName] = useState('')
 	const [bio, setBio] = useState('')
 	const [facebook, setFacebook] = useState('')
 	const [instagram, setInstagram] = useState('')
@@ -23,6 +24,7 @@ const Settings = () => {
 			userId: user._id,
 			username: username || user.username,
 			email: email || user.email,
+			name: name || user.name,
 			bio: bio || user.bio,
 			facebook: facebook || user.facebook,
 			instagram: instagram || user.instagram,
@@ -43,6 +45,7 @@ const Settings = () => {
 			const res = await axios.put(`/users/${user._id}`, updatedUser)
 			setSuccess(true)
 			dispatch({ type: 'UPDATE_SUCCESS', payload: res.data })
+			e.target.reset()
 		} catch (err) {
 			dispatch({ type: 'UPDATE_FAILURE' })
 		}
@@ -98,26 +101,36 @@ const Settings = () => {
 					<label>Email</label>
 					<input type="email" placeholder={user.email} onChange={e => setEmail(e.target.value)} />
 
+					<label>Full Name</label>
+					<input
+						type="text"
+						placeholder={user?.name || 'full name'}
+						onChange={e => setName(e.target.value)}
+					/>
+
 					<label>Bio</label>
-					<textarea onChange={e => setBio(e.target.value)}></textarea>
+					<textarea
+						placholder={user?.bio || 'Enter your interests...'}
+						onChange={e => setBio(e.target.value)}
+					></textarea>
 
 					<label>Social Media</label>
 					<div className="settings__social">
 						<input
 							type="text"
-							placeholder={user.facebook || 'facebook'}
+							placeholder={user.facebook ? `facebook @${user.facebook}` : 'facebook'}
 							className="settings__social--input"
 							onChange={e => setFacebook(e.target.value)}
 						/>
 						<input
 							type="text"
-							placeholder={user.instagram || 'instagram'}
+							placeholder={user.instagram ? `instagram @${user.instagram}` : 'instagram'}
 							className="settings__social--input"
 							onChange={e => setInstagram(e.target.value)}
 						/>
 						<input
 							type="text"
-							placeholder={user.twitter || 'twitter'}
+							placeholder={user.twitter ? `twitter @${user.twitter}` : 'twitter'}
 							className="settings__social--input"
 							onChange={e => setTwitter(e.target.value)}
 						/>

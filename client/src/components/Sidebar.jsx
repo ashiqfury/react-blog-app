@@ -37,10 +37,8 @@ const Sidebar = () => {
 				) : (
 					<img className="sidebar__img" src={avatar} alt="Avatar" />
 				)}
-				<p className="sidebar__bio">
-					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime doloremque saepe qui,
-					molestias delectus necessitatibus dignissimos ut nam.
-				</p>
+				<span className="sidebar__name">{user?.name}</span>
+				<p className="sidebar__bio">{user?.bio}</p>
 			</div>
 			<div className="sidebar__item">
 				<span className="sidebar__title">CATEGORIES</span>
@@ -71,13 +69,43 @@ const Sidebar = () => {
 			</div>
 
 			<div className="sidebar__item">
-				<span className="sidebar__title">FOLLOW US</span>
-				<div className="sidebar__social">
-					<i className="sidebar__icon fab fa-facebook-square"></i>
-					<i className="sidebar__icon fab fa-twitter-square"></i>
-					<i className="sidebar__icon fab fa-pinterest-square"></i>
-					<i className="sidebar__icon fab fa-instagram-square"></i>
-				</div>
+				{(user?.facebook || user?.instagram || user?.twitter) && (
+					<>
+						<span className="sidebar__title">FOLLOW US</span>
+						<div className="sidebar__social">
+							{user?.facebook && (
+								<a
+									href={`https://facebook.com/${user?.facebook}`}
+									target="_blank"
+									rel="noreferrer"
+									className="link"
+								>
+									<i className="sidebar__icon fab fa-facebook-square"></i>
+								</a>
+							)}
+							{user?.instagram && (
+								<a
+									href={`https://instagram.com/${user?.instagram}`}
+									target="_blank"
+									rel="noreferrer"
+									className="link"
+								>
+									<i className="sidebar__icon fab fa-instagram-square"></i>
+								</a>
+							)}
+							{user?.twitter && (
+								<a
+									href={`https://twitter.com/${user?.twitter}`}
+									target="_blank"
+									rel="noreferrer"
+									className="link"
+								>
+									<i className="sidebar__icon fab fa-twitter-square"></i>
+								</a>
+							)}
+						</div>
+					</>
+				)}
 			</div>
 		</div>
 	)
