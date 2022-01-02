@@ -55,7 +55,7 @@ const Sidebar = () => {
 				<span className="sidebar__title">USERS</span>
 				<ul className="sidebar__list">
 					{users.map(u => (
-						<Link to={`/?userId=${u.userId}`} className="link sidebar__list--item" key={u.username}>
+						<Link to={`/?userId=${u._id}`} className="link sidebar__list--item" key={u.username}>
 							{u?.profilePic ? (
 								<img src={PF + u.profilePic} alt="Profile" className="sidebar__list--img" />
 							) : (
