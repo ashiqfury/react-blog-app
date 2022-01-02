@@ -188,17 +188,24 @@
 	color: $cerulean-crayola;
 }
 
-.contact .container .contactForm .formBox .inputBox input[type='submit'] {
+// .contact .container .contactForm .formBox .inputBox input[type='submit'] {
+.contact .container .contactForm .formBox .inputBox button {
 	position: relative;
 	cursor: pointer;
 	background-color: #0f3959;
+	width: 150px;
 	color: #fff;
 	border: none;
 	max-width: 150px;
 	padding: 12px;
+	font-size: 1rem;
 	transition: all 300ms ease-in-out;
+
+	i {
+		margin-left: 10px;
+	}
 }
-.contact .container .contactForm .formBox .inputBox input[type='submit']:hover {
+.contact .container .contactForm .formBox .inputBox button:hover {
 	background-color: $cerulean-crayola;
 }
 

@@ -5,10 +5,12 @@ const Contact = () => {
 	const formRef = useRef(null)
 	const [success, setSuccess] = useState(false)
 	const [failure, setFailure] = useState(false)
+	const [isSending, setIsSending] = useState(false)
 
 	const sendEmail = e => {
 		setSuccess(false)
 		setFailure(false)
+		setIsSending(true)
 		e.preventDefault()
 
 		emailjs
@@ -21,12 +23,12 @@ const Contact = () => {
 			.then(
 				result => {
 					setSuccess(true)
-					console.log(result.text)
+					setIsSending(false)
 					e.target.reset()
 				},
 				error => {
 					setFailure(true)
-					console.log(error.text)
+					setIsSending(false)
 				}
 			)
 	}
@@ -124,7 +126,16 @@ const Contact = () => {
 							<span>Write your message here...</span>
 						</div>
 						<div className="inputBox w100">
-							<input type="submit" value="Send" />
+							{/* <input type="submit" value="Send" /> */}
+							{isSending ? (
+								<button type="submit">
+									Sending...<i class="fas fa-paper-plane"></i>
+								</button>
+							) : (
+								<button type="submit">
+									Send<i class="fas fa-paper-plane"></i>
+								</button>
+							)}
 						</div>
 						<div className="formMessage">
 							{success && <span className="formSuccess">Email successfully sent! 👍 </span>}

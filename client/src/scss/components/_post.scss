@@ -6,10 +6,14 @@
 	padding-bottom: 10px;
 	border-radius: 7px;
 	transition: all 300ms ease-in-out;
+	cursor: pointer;
 
 	&:hover {
 		transform: scale(1.03);
 		box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+	}
+	&:hover &__img {
+		filter: grayscale(0.6);
 	}
 
 	&__img {
@@ -18,6 +22,8 @@
 		object-fit: cover;
 		border-radius: 7px;
 		margin-bottom: 10px;
+		border: 1px solid lightgray;
+		transition: all 300ms ease-in-out;
 	}
 	&__info {
 		display: flex;
