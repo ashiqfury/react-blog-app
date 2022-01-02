@@ -5,6 +5,7 @@ import axios from 'axios'
 import { useContext, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { Context } from '../context/Context'
+import SidebarUsers from '../components/SidebarUsers'
 
 const Home = () => {
 	const [posts, setPosts] = useState([])
@@ -25,7 +26,7 @@ const Home = () => {
 			<Header />
 			<div className="home">
 				<Posts posts={posts} />
-				{user && <Sidebar />}
+				{user && <>{search.includes('userId') ? <SidebarUsers /> : <Sidebar />}</>}
 			</div>
 		</>
 	)

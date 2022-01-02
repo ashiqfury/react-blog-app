@@ -2,7 +2,6 @@ import Post from './Post'
 import noPostImg from '../assets/NoMessage.svg'
 
 const Posts = ({ posts }) => {
-	console.log(posts)
 	return (
 		<div className="posts" id="postId">
 			{posts.map(post => (
