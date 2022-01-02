@@ -53,48 +53,48 @@ const SinglePost = () => {
 
 	return (
 		<div className="singlePost">
-			<div className="singlePostWrapper">
-				{post.photo && <img src={PF + post.photo} alt="" className="singlePostImg" />}
+			<div className="singlePost__wrapper">
+				{post.photo && <img src={PF + post.photo} alt="" className="singlePost__img" />}
 
 				{updateMode ? (
 					<input
 						type="text"
-						className="singlePostTitleInput"
+						className="singlePost__title--input"
 						value={title}
 						autoFocus
 						onChange={e => setTitle(e.target.value)}
 					/>
 				) : (
-					<h1 className="singlePostTitle">
+					<h1 className="singlePost__title">
 						{title}
 						{(post.userId === user?._id || user?.admin) && (
-							<div className="singlePostEdit" hidden={hidden}>
-								<i className="singlePostIcon far fa-edit" onClick={() => setUpdateMode(true)}></i>
-								<i className="singlePostIcon far fa-trash-alt" onClick={handleDelete}></i>
+							<div className="singlePost__edit" hidden={hidden}>
+								<i className="singlePost__icon far fa-edit" onClick={() => setUpdateMode(true)}></i>
+								<i className="singlePost__icon far fa-trash-alt" onClick={handleDelete}></i>
 							</div>
 						)}
 					</h1>
 				)}
-				<div className="singlePostInfo">
-					<span className="singlePostAuthor">
+				<div className="singlePost__info">
+					<span className="singlePost__author">
 						Author:
 						<Link to={`/?user=${post.username}`} className="link">
 							<strong> {post.username}</strong>
 						</Link>
 					</span>
-					<span className="singlePostDate">{new Date(post.createdAt).toDateString()}</span>
+					<span className="singlePost__date">{new Date(post.createdAt).toDateString()}</span>
 				</div>
 				{updateMode ? (
 					<textarea
 						value={desc}
-						className="singlePostDescInput"
+						className="singlePost__desc--input"
 						onChange={e => setDesc(e.target.value)}
 					/>
 				) : (
-					<p className="singlePostDesc">{desc}</p>
+					<p className="singlePost__desc">{desc}</p>
 				)}
 				{updateMode && (
-					<button className="singlePostButton" onClick={handleUpdate}>
+					<button className="singlePost__button" onClick={handleUpdate}>
 						Update
 					</button>
 				)}
