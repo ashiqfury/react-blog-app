@@ -1,12 +1,17 @@
 import axios from 'axios'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { gsap } from 'gsap'
 
 const Register = () => {
 	const [username, setUsername] = useState('')
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [error, setError] = useState(false)
+
+	useEffect(() => {
+		gsap.from('.register__left', { x: '100%', duration: 0.5, ease: 'ease-out' })
+	}, [])
 
 	const handleSubmit = async e => {
 		e.preventDefault()
@@ -27,7 +32,10 @@ const Register = () => {
 		<div className="register">
 			<div className="register__left">
 				<span>Fury Blogz.</span>
-				<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, dolorem.</p>
+				<p>
+					Don't waste your time on thinking, share your ideas with us and we will turn them into
+					reality...
+				</p>
 			</div>
 			<div className="register__right">
 				<span className="register__title">Register</span>

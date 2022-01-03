@@ -1,13 +1,18 @@
 import axios from 'axios'
-import { useContext, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Context } from '../context/Context'
+import { gsap } from 'gsap'
 
 const Login = () => {
 	const usernameRef = useRef()
 	const passwordRef = useRef()
 	const [error, setError] = useState(false)
 	const { dispatch, isFetching } = useContext(Context)
+
+	useEffect(() => {
+		gsap.from('.login__right', { x: '-100%', duration: 0.5, ease: 'ease-out' })
+	}, [])
 
 	const handleSubmit = async e => {
 		e.preventDefault()
@@ -63,7 +68,10 @@ const Login = () => {
 			</div>
 			<div className="login__right">
 				<span>Fury Blogz.</span>
-				<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, dolorem.</p>
+				<p>
+					Don't waste your time on thinking, share your ideas with us and we will turn them into
+					reality...
+				</p>
 			</div>
 		</div>
 	)

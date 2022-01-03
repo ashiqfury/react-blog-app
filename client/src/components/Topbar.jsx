@@ -1,7 +1,8 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Context } from '../context/Context'
 import avatar from '../assets/avatar.jpg'
+import { gsap } from 'gsap'
 
 const Topbar = () => {
 	const { user, dispatch } = useContext(Context)
@@ -11,6 +12,10 @@ const Topbar = () => {
 		dispatch({ type: 'LOGOUT' })
 		window.location.replace('/login')
 	}
+
+	useEffect(() => {
+		gsap.from('.topbar', { y: '-100%', duration: 0.5, ease: 'ease-out' })
+	}, [])
 
 	return (
 		<div className="topbar">
