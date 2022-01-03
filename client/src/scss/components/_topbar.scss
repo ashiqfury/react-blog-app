@@ -25,7 +25,7 @@
 		font-size: 3rem;
 		font-weight: 700;
 		letter-spacing: 2px;
-		font-family: $logo-font;
+		font-family: 'The Nautigal';
 		color: $color1;
 	}
 
@@ -45,11 +45,24 @@
 			margin: 0 15px;
 			font-size: 1.2rem;
 			font-weight: 300;
-			color: $color1;
-
 			text-transform: uppercase;
+			color: $color1;
 			cursor: pointer;
 			transition: all 150ms ease-in-out;
+
+			&.disabled {
+				opacity: 0.4;
+				cursor: not-allowed !important;
+				pointer-events: none;
+
+				&:hover {
+					color: inherit;
+				}
+
+				&:after {
+					content: none;
+				}
+			}
 
 			&::after {
 				content: '';

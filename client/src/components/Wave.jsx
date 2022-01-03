@@ -9,7 +9,7 @@ const Wave = () => {
 				id="svg"
 				viewBox="0 0 1440 400"
 				xmlns="http://www.w3.org/2000/svg"
-				class="transition duration-300 ease-in-out delay-150"
+				className="transition duration-300 ease-in-out delay-150"
 			>
 				<defs>
 					<linearGradient id="gradient" x1="0%" y1="50%" x2="100%" y2="50%">
@@ -22,7 +22,7 @@ const Wave = () => {
 					stroke="none"
 					stroke-width="0"
 					fill="url(#gradient)"
-					class="transition-all duration-300 ease-in-out delay-150 path-0"
+					className="transition-all duration-300 ease-in-out delay-150 path-0"
 				></path>
 			</svg>
 		</span>

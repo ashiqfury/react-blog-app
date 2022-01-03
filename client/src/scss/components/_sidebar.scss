@@ -48,6 +48,11 @@
 		padding-top: 20px;
 	}
 
+	&__admin {
+		color: $cerulean-crayola;
+		font-size: 0.9rem;
+	}
+
 	&__list {
 		width: 75%;
 		list-style: none;

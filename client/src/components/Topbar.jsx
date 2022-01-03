@@ -38,7 +38,7 @@ const Topbar = () => {
 							WRITE
 						</Link>
 					</li>
-					<li className="topbar__list--item">
+					<li className="topbar__list--item disabled">
 						<Link to="/" className="link">
 							ABOUT
 						</Link>

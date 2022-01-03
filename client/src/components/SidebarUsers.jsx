@@ -10,7 +10,6 @@ const SidebarUsers = () => {
 	const PF = 'http://localhost:2506/images/'
 	const { search } = useLocation()
 	const ID = search.split('=')[1]
-	console.log(ID)
 
 	useEffect(() => {
 		const getUser = async () => {

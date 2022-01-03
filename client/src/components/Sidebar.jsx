@@ -62,7 +62,15 @@ const Sidebar = () => {
 								<img src={avatar} alt="Profile" className="sidebar__list--img" />
 							)}
 
-							<li className="sidebar__list--name">{u.username}</li>
+							<li className="sidebar__list--name">
+								{u.admin === true ? (
+									<>
+										{u.username} <i className="sidebar__admin fas fa-crown"></i>
+									</>
+								) : (
+									<>{u.username}</>
+								)}
+							</li>
 						</Link>
 					))}
 				</ul>

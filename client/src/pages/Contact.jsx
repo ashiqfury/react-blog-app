@@ -42,7 +42,7 @@ const Contact = () => {
 						<ul className="info">
 							<li>
 								<span>
-									<i class="fas fa-user"></i>
+									<i className="fas fa-user"></i>
 								</span>
 								<span>ashiq @fury</span>
 							</li>
@@ -129,11 +129,11 @@ const Contact = () => {
 							{/* <input type="submit" value="Send" /> */}
 							{isSending ? (
 								<button type="submit">
-									Sending...<i class="fas fa-paper-plane"></i>
+									Sending...<i className="fas fa-paper-plane"></i>
 								</button>
 							) : (
 								<button type="submit">
-									Send<i class="fas fa-paper-plane"></i>
+									Send<i className="fas fa-paper-plane"></i>
 								</button>
 							)}
 						</div>

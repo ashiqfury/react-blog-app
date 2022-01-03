@@ -53,6 +53,7 @@ const Write = () => {
 						className="write__input"
 						onChange={e => setTitle(e.target.value)}
 						autoFocus
+						required
 					/>
 				</div>
 				<div className="write__form--group">
@@ -61,6 +62,7 @@ const Write = () => {
 						placeholder="Tell your story.."
 						className="write__input write__text"
 						onChange={e => setDesc(e.target.value)}
+						required
 					></textarea>
 				</div>
 				<button className="write__submit" type="submit">
