@@ -26,10 +26,6 @@ const Topbar = () => {
 						<span className="topbar__logo--lg">ury Blogz.</span>
 					</span>
 				</Link>
-				{/* <i className="topbar__icon fab fa-facebook-square"></i>
-				<i className="topbar__icon fab fa-twitter-square"></i>
-				<i className="topbar__icon fab fa-pinterest-square"></i>
-				<i className="topbar__icon fab fa-instagram-square"></i> */}
 			</div>
 			<div className="topbar__center">
 				<ul className="topbar__list">
