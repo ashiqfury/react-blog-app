@@ -11,6 +11,7 @@ import { Context } from './context/Context'
 import '../src/scss/style.scss'
 import Contact from './pages/Contact'
 import NotFound404 from './pages/NotFound404'
+import About from './pages/About'
 
 const App = () => {
 	const { user } = useContext(Context)
@@ -31,6 +32,9 @@ const App = () => {
 				</Route>
 				<Route path="/contact">
 					<Contact />
+				</Route>
+				<Route path="/about">
+					<About />
 				</Route>
 				<Route path="*">
 					<NotFound404 />

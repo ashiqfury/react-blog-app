@@ -39,14 +39,14 @@ const Topbar = () => {
 							WRITE
 						</Link>
 					</li>
-					<li className="topbar__list--item disabled">
-						<Link to="/" className="link">
-							ABOUT
-						</Link>
-					</li>
 					<li className="topbar__list--item">
 						<Link to="/contact" className="link">
 							CONTACT
+						</Link>
+					</li>
+					<li className="topbar__list--item">
+						<Link to="/about" className="link">
+							ABOUT
 						</Link>
 					</li>
 					<li className="topbar__list--item" onClick={handleLogout}>
