@@ -73,6 +73,7 @@
 			object-fit: cover;
 			border-radius: 50%;
 			object-position: center 20%;
+			opacity: 0.8;
 			// border: 3px solid;
 			// border-color: white $cerulean-crayola $cerulean-crayola white;
 		}
@@ -139,7 +140,7 @@
 			position: relative;
 			left: -40px;
 
-			border-radius: 0 10px 10px 0;
+			border-radius: 10px;
 			backdrop-filter: blur(5px);
 			box-shadow: 0 24px 45px rgba(0, 0, 0, 0.1);
 			border: 1px solid rgba(255, 255, 255, 0.5);

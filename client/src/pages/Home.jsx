@@ -6,6 +6,7 @@ import { useContext, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { Context } from '../context/Context'
 import SidebarUsers from '../components/SidebarUsers'
+import Footer from '../components/Footer'
 
 const Home = () => {
 	const [posts, setPosts] = useState([])
@@ -24,10 +25,11 @@ const Home = () => {
 	return (
 		<>
 			<Header />
-			<div className="home">
+			<div className="home" id="home">
 				<Posts posts={posts} />
 				{user && <>{search.includes('userId') ? <SidebarUsers /> : <Sidebar />}</>}
 			</div>
+			<Footer />
 		</>
 	)
 }
