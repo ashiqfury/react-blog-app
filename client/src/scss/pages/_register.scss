@@ -117,3 +117,22 @@
 		font-size: 1rem;
 	}
 }
+
+body.dark {
+	.register {
+		&__right {
+			background: $dark-bg2;
+		}
+		&__title {
+			color: white;
+			opacity: 0.87;
+		}
+		&__input {
+			background-color: transparent;
+			color: white;
+		}
+		&__button {
+			border: none;
+		}
+	}
+}
