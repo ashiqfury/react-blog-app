@@ -14,6 +14,7 @@ const SinglePost = () => {
 
 	const [title, setTitle] = useState('')
 	const [desc, setDesc] = useState('')
+	const [cats, setCats] = useState([])
 	const [updateMode, setUpdateMode] = useState(false)
 	const [hidden, setHidden] = useState(true)
 
@@ -24,6 +25,7 @@ const SinglePost = () => {
 				setPost(res.data)
 				setTitle(res.data.title)
 				setDesc(res.data.desc)
+				setCats(res.data.categories)
 			} catch (err) {}
 		}
 		getPost()
@@ -83,6 +85,16 @@ const SinglePost = () => {
 						</Link>
 					</span>
 					<span className="singlePost__date">{new Date(post.createdAt).toDateString()}</span>
+				</div>
+				<div className="singlePost__info">
+					<div className="singlePost__categories">
+						<span>Categories: </span>
+						{cats.map(c => (
+							<Link to={`/?cat=${c}`} className="link">
+								<strong>{`${c} `}&nbsp;</strong>
+							</Link>
+						))}
+					</div>
 				</div>
 				{updateMode ? (
 					<textarea

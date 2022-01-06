@@ -14,6 +14,9 @@
 		transform: scale(1.03);
 		box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 	}
+	&:hover &__title {
+		color: $cerulean-crayola;
+	}
 	&:hover &__img {
 		filter: grayscale(0.6);
 	}
@@ -53,9 +56,9 @@
 		cursor: pointer;
 		transition: all 300ms ease-in-out;
 
-		&:hover {
-			color: $cerulean-crayola;
-		}
+		// &:hover {
+		// 	color: $cerulean-crayola;
+		// }
 	}
 	&__date {
 		font-family: 'Lora', serif;

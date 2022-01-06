@@ -5,14 +5,25 @@ import { Context } from '../context/Context'
 const Write = () => {
 	const [title, setTitle] = useState('')
 	const [desc, setDesc] = useState('')
+	const [cats, setCats] = useState([])
 	const [file, setFile] = useState(null)
 	const { user } = useContext(Context)
+
+	const handleCats = e => {
+		const text = e.target.value
+		const filtered = text
+			.trim()
+			.split(/\W/)
+			.filter(c => c)
+		setCats(filtered)
+	}
 
 	const handleSubmit = async e => {
 		e.preventDefault()
 		const newPost = {
 			username: user.username,
 			userId: user._id,
+			categories: cats,
 			title,
 			desc,
 		}
@@ -52,6 +63,17 @@ const Write = () => {
 						placeholder="Title"
 						className="write__input"
 						onChange={e => setTitle(e.target.value)}
+						autoFocus
+						required
+					/>
+				</div>
+
+				<div className="write__form--group">
+					<input
+						type="text"
+						placeholder="Categories eg. music, life"
+						className="write__input cats"
+						onChange={handleCats}
 						autoFocus
 						required
 					/>

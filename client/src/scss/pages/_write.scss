@@ -53,6 +53,10 @@
 		font-family: 'Lora', sans-serif;
 		background: transparent;
 
+		&.cats {
+			font-size: 25px;
+		}
+
 		&:focus {
 			outline: none;
 		}
