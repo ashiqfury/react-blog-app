@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Context } from '../context/Context'
 import avatar from '../assets/avatar.jpg'
@@ -7,6 +7,12 @@ import { gsap } from 'gsap'
 const Topbar = () => {
 	const { user, dispatch } = useContext(Context)
 	const PF = 'http://localhost:2506/images/'
+	const [dark, setDark] = useState(false)
+
+	useEffect(() => {
+		dark && document.body.classList.add('dark')
+		!dark && document.body.classList.remove('dark')
+	}, [dark])
 
 	const handleLogout = () => {
 		dispatch({ type: 'LOGOUT' })
@@ -87,8 +93,13 @@ const Topbar = () => {
 						</li>
 					</ul>
 				)}
-				<i className="topbar__icon--theme fas fa-moon"></i>
-				<i className="topbar__icon--theme fas fa-sun hidden"></i>
+				<button className="topbar__btn" onClick={() => setDark(!dark)}>
+					{dark ? (
+						<i className="topbar__icon--theme fas fa-sun"></i>
+					) : (
+						<i className="topbar__icon--theme fas fa-moon"></i>
+					)}
+				</button>
 			</div>
 		</div>
 	)

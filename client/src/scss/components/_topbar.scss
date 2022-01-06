@@ -10,6 +10,7 @@
 	font-family: 'Josefin Sans', sans-serif;
 	z-index: 999;
 	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+	transition: all 300ms ease-out;
 
 	&__left,
 	&__right {
@@ -106,15 +107,36 @@
 			color: $cerulean-crayola;
 		}
 	}
+	&__btn {
+		outline: none;
+		border: none;
+		margin-left: 20px;
+		background: transparent;
+	}
 	&__icon--theme {
 		font-size: 20px;
 		color: #666;
 		cursor: pointer;
-		margin-left: 20px;
 		transition: all 150ms ease-in-out;
 
 		&:hover {
 			color: $color1;
+		}
+	}
+}
+
+body.dark {
+	.topbar {
+		background: #0d1117;
+		background: #161b22;
+		transition: all 300ms ease-out;
+
+		&__logo,
+		&__list--item,
+		&__username,
+		&__icon--theme {
+			color: white;
+			opacity: 0.87;
 		}
 	}
 }
