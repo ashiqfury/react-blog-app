@@ -56,3 +56,33 @@
 		filter: grayscale(0.4);
 	}
 }
+
+body.dark {
+	.header {
+		background: #0d2132;
+
+		&__title {
+			flex: 3;
+			width: 100%;
+			color: white;
+			opacity: 0.87;
+		}
+
+		&__explore {
+			color: white;
+			border: 2px solid $cerulean-crayola;
+			opacity: 0.87;
+
+			i {
+				color: $cerulean-crayola;
+			}
+		}
+
+		&__img {
+			flex: 4;
+			width: 55%;
+			backdrop-filter: blur(16px) saturate(180%);
+			-webkit-backdrop-filter: blur(16px) saturate(180%);
+		}
+	}
+}

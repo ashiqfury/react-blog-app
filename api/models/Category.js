@@ -6,6 +6,11 @@ const CategorySchema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
+		// categories: {
+		// 	type: Array,
+		// 	required: false,
+		// 	default: [],
+		// },
 	},
 	{ timestamps: true }
 )

@@ -1,6 +1,7 @@
 import img from '../assets/evie-s-_8vovuZCj0c-unsplash.jpg'
+import imgDark from '../assets/istockphoto-1285395672-170667a.jpg'
 
-const Header = () => {
+const Header = ({ dark }) => {
 	return (
 		<div className="header">
 			<div className="header__title">
@@ -11,7 +12,11 @@ const Header = () => {
 					Lets explore <i className="fas fa-angle-right"></i>
 				</a>
 			</div>
-			<img src={img} alt="Hero" className="header__img" />
+			{dark ? (
+				<img src={imgDark} alt="Hero" className="header__img" />
+			) : (
+				<img src={img} alt="Hero" className="header__img" />
+			)}
 		</div>
 	)
 }

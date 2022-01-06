@@ -133,10 +133,20 @@ body.dark {
 
 		&__logo,
 		&__list--item,
-		&__username,
-		&__icon--theme {
+		&__username {
 			color: white;
 			opacity: 0.87;
+		}
+		&__icon--theme {
+			color: white;
+			opacity: 0.6;
+			&:hover {
+				opacity: 0.87;
+			}
+		}
+		&__list--item:hover,
+		&__username:hover {
+			color: $cerulean-crayola;
 		}
 	}
 }
