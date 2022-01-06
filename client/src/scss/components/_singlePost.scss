@@ -25,6 +25,7 @@
 			font-family: 'Lora', serif;
 			font-size: 28px;
 			color: gray;
+			background: transparent;
 			border: none;
 			border-bottom: 1px solid lightgray;
 			outline: none;
@@ -68,6 +69,7 @@
 			font-size: 18px;
 			line-height: 25px;
 			color: #666;
+			background: transparent;
 			outline: none;
 		}
 
@@ -89,7 +91,6 @@
 		// text-transform: uppercase;
 		// align-self: flex-end;
 		margin-top: 30px;
-		border: 2px solid white;
 		transition: all 150ms ease-out;
 
 		&:hover {

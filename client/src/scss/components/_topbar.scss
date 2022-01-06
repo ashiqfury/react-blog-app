@@ -128,7 +128,7 @@
 body.dark {
 	.topbar {
 		background: #0d1117;
-		background: #161b22;
+		background: $dark-bg;
 		transition: all 300ms ease-out;
 
 		&__logo,

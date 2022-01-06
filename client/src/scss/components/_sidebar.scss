@@ -117,3 +117,20 @@
 		}
 	}
 }
+
+body.dark {
+	.sidebar {
+		background: $dark-bg;
+		color: white;
+
+		&__title,
+		&__name,
+		&__bio,
+		&__admin,
+		&__icon,
+		&__list {
+			color: white;
+			opacity: 0.87;
+		}
+	}
+}

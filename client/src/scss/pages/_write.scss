@@ -87,3 +87,18 @@
 		}
 	}
 }
+
+body.dark {
+	.write {
+		background: #0d1117;
+		color: white;
+
+		&__heading {
+			color: $cerulean-crayola;
+		}
+		&__input {
+			color: white;
+			opacity: 0.87;
+		}
+	}
+}

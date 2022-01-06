@@ -159,6 +159,7 @@
 	color: #333;
 	border: none;
 	border-bottom: 1px solid #777;
+	background: transparent;
 	outline: none;
 }
 .contact .container .contactForm .formBox .inputBox textarea {
@@ -218,5 +219,30 @@
 	}
 	.formFailure {
 		color: crimson;
+	}
+}
+
+body.dark {
+	.contact {
+		// &-info {
+		// 	background: $dark-bg2;
+		// }
+		.contactForm {
+			background: $dark-bg;
+
+			h2 {
+				color: $cerulean-crayola;
+			}
+			span {
+				color: white !important;
+				opacity: 0.87;
+			}
+			textarea:focus ~ span,
+			textarea:valid ~ span,
+			input:focus ~ span,
+			input:valid ~ span {
+				color: $cerulean-crayola !important;
+			}
+		}
 	}
 }

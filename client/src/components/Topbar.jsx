@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Context } from '../context/Context'
 import avatar from '../assets/avatar.jpg'
 import { gsap } from 'gsap'
+import { retriveTheme, saveTheme } from '../localStorage'
 
 const Topbar = () => {
 	const { user, dispatch } = useContext(Context)
@@ -10,9 +11,14 @@ const Topbar = () => {
 	const [dark, setDark] = useState(false)
 
 	useEffect(() => {
-		dark && document.body.classList.add('dark')
-		!dark && document.body.classList.remove('dark')
+		document.body.classList.toggle('dark')
+		dark ? document.body.classList.add('dark') : document.body.classList.remove('dark')
+		saveTheme(dark)
 	}, [dark])
+
+	useEffect(() => {
+		retriveTheme(setDark)
+	}, [])
 
 	const handleLogout = () => {
 		dispatch({ type: 'LOGOUT' })

@@ -82,3 +82,19 @@
 		padding: 0 20px;
 	}
 }
+
+body.dark {
+	.post {
+		&__img {
+			border: 1px solid #171717;
+		}
+		&__title {
+			color: white;
+			opacity: 0.87;
+		}
+		&__desc {
+			color: white;
+			opacity: 0.65;
+		}
+	}
+}

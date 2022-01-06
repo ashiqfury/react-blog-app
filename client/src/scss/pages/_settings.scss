@@ -47,6 +47,7 @@
 			resize: none;
 			font-size: 1rem;
 			color: gray;
+			background: transparent;
 			margin: 10px 0;
 			padding: 10px;
 			height: 30px;
@@ -58,7 +59,6 @@
 
 			&:focus {
 				border-bottom: 1px solid $cerulean-crayola;
-				background: rgb(240, 240, 240);
 				border-radius: 5px;
 			}
 		}
@@ -116,10 +116,29 @@
 		padding: 10px;
 		margin-top: 20px;
 		cursor: pointer;
+		transition: all 150ms ease-out;
+
+		&:hover {
+			background: $cerulean-crayola;
+		}
 	}
 	&__success {
 		color: green;
 		text-align: center;
 		margin-top: 20px;
+	}
+}
+
+body.dark {
+	.settings {
+		&__title--update {
+			color: white;
+			opacity: 0.87;
+		}
+		input,
+		textarea {
+			color: white;
+			opacity: 0.87;
+		}
 	}
 }

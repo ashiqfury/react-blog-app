@@ -9,6 +9,11 @@ html {
 body {
 	font-size: 100%;
 	width: 100%;
+
+	&.dark {
+		background: $dark-bg;
+		color: white;
+	}
 }
 .link {
 	text-decoration: none;
