@@ -13,6 +13,7 @@ const Write = () => {
 		const text = e.target.value
 		const filtered = text
 			.trim()
+			.toLowerCase()
 			.split(/\W/)
 			.filter(c => c)
 		setCats(filtered)

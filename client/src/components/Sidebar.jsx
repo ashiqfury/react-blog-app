@@ -11,11 +11,13 @@ const Sidebar = () => {
 	const PF = 'http://localhost:2506/images/'
 
 	useEffect(() => {
-		const getCats = async () => {
-			const res = await axios.get('/categories')
-			setCats(res.data)
+		const list = []
+		const getPosts = async () => {
+			const res = await axios.get('/posts')
+			await res.data.map(p => p.categories.map(cat => list.push(cat)))
+			setCats(list)
 		}
-		getCats()
+		getPosts()
 	}, [])
 
 	useEffect(() => {
@@ -44,8 +46,8 @@ const Sidebar = () => {
 				<span className="sidebar__title">CATEGORIES</span>
 				<ul className="sidebar__list">
 					{cats.map(c => (
-						<Link to={`/?cat=${c.name}`} className="sidebar__list--item category link" key={c.name}>
-							<li className="">{c.name}</li>
+						<Link to={`/?cat=${c}`} className="sidebar__list--item category link" key={c}>
+							<li className="cat">{c}</li>
 						</Link>
 					))}
 				</ul>

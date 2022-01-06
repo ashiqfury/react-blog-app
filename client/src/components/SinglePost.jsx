@@ -90,7 +90,7 @@ const SinglePost = () => {
 					<div className="singlePost__categories">
 						<span>Categories: </span>
 						{cats.map(c => (
-							<Link to={`/?cat=${c}`} className="link">
+							<Link to={`/?cat=${c}`} key={c} className="link">
 								<strong>{`${c} `}&nbsp;</strong>
 							</Link>
 						))}
