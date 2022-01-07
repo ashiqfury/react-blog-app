@@ -132,5 +132,8 @@ body.dark {
 			color: white;
 			opacity: 0.87;
 		}
+		&__icon:hover {
+			color: $cerulean-crayola;
+		}
 	}
 }
