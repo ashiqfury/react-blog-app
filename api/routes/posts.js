@@ -95,4 +95,46 @@ router.get('/', async (req, res) => {
 	}
 })
 
+// UPDATE COMMENT
+router.put('/comment/:id', async (req, res) => {
+	try {
+		const post = await Post.findById(req.params.id)
+		try {
+			const updatedPost = await Post.findByIdAndUpdate(
+				req.params.id,
+				{
+					$set: {
+						comments: req.body.comments,
+					},
+				},
+				{ new: true }
+			)
+			res.status(200).json(updatedPost)
+		} catch (err) {
+			res.status(500).json(err)
+		}
+	} catch (err) {
+		res.status(500).json(err)
+	}
+})
+
+// DELETE POST
+router.delete('/comment/:id', async (req, res) => {
+	try {
+		const post = await Post.findById(req.params.id)
+		if (post.userId === req.body.userId || req.body.admin) {
+			try {
+				await post.delete()
+				res.status(200).json('Post has been deleted')
+			} catch (err) {
+				res.status(500).json(err)
+			}
+		} else {
+			res.status(401).json('You can delete only your post!')
+		}
+	} catch (err) {
+		res.status(500).json(err)
+	}
+})
+
 module.exports = router

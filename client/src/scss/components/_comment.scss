@@ -1,0 +1,12 @@
+// in comments component => .comment__wrapper
+.comment__wrapper {
+	padding: 10px;
+	margin: 20px 0;
+	background: rgb(243, 243, 243);
+	border-radius: 5px;
+
+	.comment {
+		width: 100%;
+		font-family: 'Varela Round', sans-serif;
+	}
+}

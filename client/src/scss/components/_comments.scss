@@ -1,0 +1,38 @@
+.comments {
+	width: 100%;
+	margin-top: 50px;
+
+	&__title {
+		font-size: 1.2rem;
+		font-family: 'Varela Round';
+		color: #b39656;
+		margin-bottom: 5px;
+	}
+
+	&__input {
+		width: 100%;
+		padding: 10px;
+		font-size: 1rem;
+		color: #444;
+		font-family: 'Varela Round', sans-serif;
+		resize: none;
+		border: none;
+		border-bottom: 1px solid lightgrey;
+		outline: none;
+	}
+	&__button {
+		padding: 10px 30px;
+		margin-top: 10px;
+		border-radius: 5px;
+		background: green;
+		color: white;
+		font-size: 1rem;
+		cursor: pointer;
+		border: none;
+		transition: all 150ms ease-out;
+
+		&:hover {
+			background: $cerulean-crayola;
+		}
+	}
+}

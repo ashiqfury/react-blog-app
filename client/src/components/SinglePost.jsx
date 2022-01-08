@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import axios from 'axios'
 import { Context } from '../context/Context'
+import Comments from './Comments'
 
 const SinglePost = () => {
 	const location = useLocation()
@@ -126,6 +127,7 @@ const SinglePost = () => {
 						Update
 					</button>
 				)}
+				<Comments post={post} path={path} />
 			</div>
 		</div>
 	)
