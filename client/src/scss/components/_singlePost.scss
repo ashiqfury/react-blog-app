@@ -65,8 +65,12 @@
 		line-height: 25px;
 
 		&--input {
+			font-family: 'Varela Round', sans-serif;
 			border: none;
+			border-bottom: 1px solid lightgray;
+			resize: vertical;
 			font-size: 18px;
+			height: auto;
 			line-height: 25px;
 			color: #666;
 			background: transparent;
@@ -79,6 +83,17 @@
 			font-weight: 600;
 			color: #b39656;
 		}
+	}
+	&__cats--input {
+		font-size: 1.3rem;
+		line-height: 25px;
+		background: transparent;
+		text-align: center;
+		font-family: 'Varela Round', sans-serif;
+		color: gray;
+		border: none;
+		border-bottom: 1px solid lightgray;
+		outline: none;
 	}
 	&__button {
 		width: 100px;

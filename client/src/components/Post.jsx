@@ -15,7 +15,6 @@ const Post = ({ post }) => {
 						))}
 					</div>
 					<span className="post__title">{post.title}</span>
-					<hr />
 					<span className="post__date">{new Date(post.createdAt).toDateString()}</span>
 				</div>
 				<p className="post__desc">{post.desc}</p>

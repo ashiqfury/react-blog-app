@@ -75,7 +75,6 @@ const Write = () => {
 						placeholder="Categories eg. music, life"
 						className="write__input cats"
 						onChange={handleCats}
-						autoFocus
 						required
 					/>
 				</div>
