@@ -1,12 +1,65 @@
 // in comments component => .comment__wrapper
 .comment__wrapper {
-	padding: 10px;
 	margin: 20px 0;
-	background: rgb(243, 243, 243);
-	border-radius: 5px;
 
 	.comment {
 		width: 100%;
+		padding: 10px 20px;
+		border-radius: 5px;
+		background: rgb(243, 243, 243);
+		margin: 5px 0;
 		font-family: 'Varela Round', sans-serif;
+
+		&__info {
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+
+			&--left {
+				display: flex;
+				align-items: center;
+
+				img {
+					width: 40px;
+					aspect-ratio: 1 / 1;
+					object-fit: cover;
+					border-radius: 50%;
+				}
+				span {
+					font-size: 1rem;
+					color: #b39656;
+					font-size: 1.1rem;
+					margin-left: 10px;
+				}
+			}
+			&--right {
+				span {
+					color: gray;
+					font-size: 0.95rem;
+				}
+			}
+		}
+		&__icon {
+			margin-left: 10px;
+			cursor: pointer;
+			transition: all 150ms ease-out;
+
+			&:hover {
+				transform: scale(1.1);
+			}
+
+			&:first-child {
+				color: teal;
+			}
+			&:last-child {
+				color: tomato;
+			}
+		}
+		p {
+			color: gray;
+			font-size: 1.1rem;
+			margin: 10px 0;
+		}
 	}
 }

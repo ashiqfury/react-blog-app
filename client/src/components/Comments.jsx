@@ -14,6 +14,8 @@ const Comments = ({ post, path }) => {
 			commentId: Math.random(),
 			commentedUserId: user._id,
 			postUserId: post.userId,
+			username: user.username,
+			userProfile: user.profilePic,
 			created: new Date().toDateString(),
 		}
 
