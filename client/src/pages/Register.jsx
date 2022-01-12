@@ -52,7 +52,7 @@ const Register = () => {
 					<label>Email</label>
 					<input
 						className="register__input"
-						type="text"
+						type="email"
 						placeholder="Enter your email..."
 						onChange={e => setEmail(e.target.value)}
 						required
