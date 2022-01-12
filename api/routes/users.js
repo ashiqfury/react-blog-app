@@ -29,7 +29,7 @@ router.put('/:id', async (req, res) => {
 
 // DELETE
 router.delete('/:id', async (req, res) => {
-	if (req.body.userId === req.params.id) {
+	if (req.body.userId === req.params.id || req.body.admin) {
 		try {
 			const user = await User.findById(req.params.id)
 			try {

@@ -1,9 +1,11 @@
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import avatar from '../assets/avatar.jpg'
+import { Context } from '../context/Context'
 
 const SidebarUsers = () => {
+	const context = useContext(Context)
 	const [cats, setCats] = useState([])
 	const [users, setUsers] = useState([])
 	const [user, setUser] = useState({})
@@ -38,6 +40,15 @@ const SidebarUsers = () => {
 		}
 		getUsers()
 	}, [user?._id])
+
+	const deleteUser = async () => {
+		try {
+			await axios.delete(`/users/${ID}`, {
+				data: { userId: context.user._id, admin: context.user.admin },
+			})
+			window.location.replace('/')
+		} catch (err) {}
+	}
 
 	return (
 		<div className="sidebar">
@@ -118,6 +129,14 @@ const SidebarUsers = () => {
 					</>
 				)}
 			</div>
+
+			{context.user.admin && context.user._id !== user._id && (
+				<div className="sidebar__item">
+					<button className="sidebar__item--delete" onClick={deleteUser}>
+						Delete User
+					</button>
+				</div>
+			)}
 		</div>
 	)
 }
