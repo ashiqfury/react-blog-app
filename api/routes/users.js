@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const User = require('../models/User')
 const Post = require('../models/Post')
+const Comment = require('../models/Comment')
 const bcrypt = require('bcrypt')
 
 // UPDATE
@@ -34,6 +35,7 @@ router.delete('/:id', async (req, res) => {
 			const user = await User.findById(req.params.id)
 			try {
 				await Post.deleteMany({ userId: user._id })
+				await Comment.deleteMany({ postUserId: user._id })
 				await User.findByIdAndDelete(req.params.id)
 				res.status(200).json('User had been deleted!')
 			} catch (err) {

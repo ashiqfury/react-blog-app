@@ -50,12 +50,8 @@ router.delete('/:id', async (req, res) => {
 		if (post.userId === req.body.userId || req.body.admin) {
 			try {
 				await Comment.deleteMany({ postId: req.params.id })
-				try {
-					await post.delete()
-					res.status(200).json('Post has been deleted')
-				} catch (err) {
-					res.status(500).json(err)
-				}
+				await post.delete()
+				res.status(200).json('Post has been deleted')
 			} catch (err) {
 				res.status(500).json(err)
 			}
