@@ -65,4 +65,14 @@ router.get('/:id', async (req, res) => {
 	}
 })
 
+// DELETE A PARTICULAR POST'S COMMENTS :id => post ID
+router.get('/:id', async (req, res) => {
+	try {
+		const comments = await Comment.deleteMany({ postId: req.params.id })
+		res.status(200).json(comments)
+	} catch (err) {
+		res.status(500).json(err)
+	}
+})
+
 module.exports = router
