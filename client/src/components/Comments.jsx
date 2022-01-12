@@ -1,29 +1,35 @@
 import axios from 'axios'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Context } from '../context/Context'
 import Comment from './Comment'
 
 const Comments = ({ post, path }) => {
 	const { user } = useContext(Context)
-	const [comment, setComment] = useState('')
-	const comments = post.comments
+	const [comment, setComment] = useState('') // for posting a new comment
+	const [comments, setComments] = useState([]) // storing all fetched comments
 
-	const handleUpdate = async () => {
-		const commentObject = {
-			comment,
-			commentId: Math.random(),
-			commentedUserId: user._id,
-			postUserId: post.userId,
-			username: user.username,
-			userProfile: user.profilePic,
-			created: new Date().toDateString(),
+	useEffect(() => {
+		const getComments = async () => {
+			try {
+				const res = await axios.get(`/comments/${path}`)
+				setComments(res.data)
+			} catch (err) {
+				console.log(err)
+			}
 		}
+		getComments()
+	}, [path])
 
+	const handleSubmit = async () => {
 		try {
 			await axios
-				.put(`/posts/comment/${path}`, {
-					comments: [...comments, commentObject],
-					userId: user._id,
+				.post('/comments/', {
+					comment,
+					postId: post._id,
+					postUserId: post.userId,
+					commentedUserId: user._id,
+					commentedUsername: user.username,
+					commentedUserProfile: user.profilePic,
 				})
 				.then(() => window.location.reload())
 		} catch (err) {}
@@ -31,18 +37,24 @@ const Comments = ({ post, path }) => {
 
 	return (
 		<div className="comments">
-			<span className="comments__title">Comments: </span>
-			<textarea
-				className="comments__input"
-				placeholder="Type your comments..."
-				onChange={e => setComment(e.target.value)}
-			></textarea>
-			<button className="comments__button" onClick={handleUpdate}>
-				Submit
-			</button>
+			{(comments?.length !== 0 || user._id !== post.userId) && (
+				<span className="comments__title">Comments: </span>
+			)}
+			{user._id !== post.userId && (
+				<>
+					<textarea
+						className="comments__input"
+						placeholder="Type your comments..."
+						onChange={e => setComment(e.target.value)}
+					></textarea>
+					<button className="comments__button" onClick={handleSubmit}>
+						Submit
+					</button>
+				</>
+			)}
 			<div className="comment__wrapper">
 				{comments?.length !== 0 &&
-					comments?.map(comment => <Comment key={comment.commentId} comment={comment} />)}
+					comments?.map(comment => <Comment key={comment._id} comment={comment} />)}
 			</div>
 		</div>
 	)

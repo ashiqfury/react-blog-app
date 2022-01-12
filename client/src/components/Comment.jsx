@@ -1,32 +1,34 @@
-// import { axios } from 'axios'
-// import { useEffect, useState } from 'react'
+import axios from 'axios'
+import { useContext } from 'react'
+import { Context } from '../context/Context'
 
 const Comment = ({ comment }) => {
 	const PF = 'http://localhost:2506/images/'
-	// const [commentedUser, setCommentedUser] = useState({})
-	// const { commentedUserId } = comment
+	const { user } = useContext(Context)
 
-	// useEffect(() => {
-	// 	const getCommentedUser = async () => {
-	// 		try {
-	// 			const res = await axios.get(`/users/${commentedUserId}`)
-	// 			setCommentedUser(res.data)
-	// 		} catch (err) {}
-	// 	}
-	// 	getCommentedUser()
-	// }, [commentedUserId, commentedUser])
+	const handleDelete = async () => {
+		try {
+			await axios.delete(`/comments/${comment._id}`).then(() => window.location.reload())
+		} catch (err) {
+			console.log(err)
+		}
+	}
 
 	return (
 		<div className="comment">
 			<div className="comment__info">
 				<div className="comment__info--left">
-					<img src={PF + comment?.userProfile} alt="" />
-					<span>{comment?.username}</span>
+					<img src={PF + comment.commentedUserProfile} alt="" />
+					<span>{comment.commentedUsername}</span>
 				</div>
 				<div className="comment__info--right">
-					<span>{comment?.created}</span>
-					<i className="comment__icon far fa-edit"></i>
-					<i className="comment__icon far fa-trash-alt"></i>
+					<span>{new Date(comment.createdAt).toDateString()}</span>
+					<i className="comment__icon far fa-edit edit"></i>
+					{(comment.postUserId === user._id ||
+						comment.commentedUserId === user._id ||
+						user.admin) && (
+						<i className="comment__icon far fa-trash-alt delete" onClick={handleDelete}></i>
+					)}
 				</div>
 			</div>
 			<p>{comment.comment}</p>

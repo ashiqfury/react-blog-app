@@ -92,23 +92,11 @@ const SinglePost = () => {
 						{cats.length !== 0 && (
 							<>
 								<span>Categories: </span>
-								{/* {updateMode ? (
-									<input
-										type="text"
-										className="singlePost__cats--input"
-										value={cats}
-										autoFocus
-										onChange={e => setCats(e.target.value)}
-									/>
-								) : (
-									<> */}
 								{cats.map(c => (
 									<Link to={`/?cat=${c}`} key={c} className="link">
 										<strong>{`${c} `}&nbsp;</strong>
 									</Link>
 								))}
-								{/* </> */}
-								{/* )} */}
 							</>
 						)}
 					</div>

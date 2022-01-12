@@ -4,11 +4,13 @@
 
 	.comment {
 		width: 100%;
-		padding: 10px 20px;
+		padding: 10px 30px;
 		border-radius: 5px;
-		background: rgb(243, 243, 243);
-		margin: 5px 0;
+		background: rgb(245, 245, 245);
+		margin: 15px 0;
+		box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
 		font-family: 'Varela Round', sans-serif;
+		border-bottom: 1px solid lightgrey;
 
 		&__info {
 			width: 100%;
@@ -36,7 +38,7 @@
 			&--right {
 				span {
 					color: gray;
-					font-size: 0.95rem;
+					font-size: 1rem;
 				}
 			}
 		}
@@ -49,17 +51,25 @@
 				transform: scale(1.1);
 			}
 
-			&:first-child {
+			&.edit {
 				color: teal;
+				display: none;
 			}
-			&:last-child {
+			&.delete {
 				color: tomato;
 			}
 		}
 		p {
 			color: gray;
 			font-size: 1.1rem;
-			margin: 10px 0;
+			margin: 10px 0 10px 50px;
 		}
+	}
+}
+
+body.dark {
+	.comment {
+		background: transparent;
+		box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 	}
 }

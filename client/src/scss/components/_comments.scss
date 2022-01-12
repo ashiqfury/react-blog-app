@@ -15,6 +15,7 @@
 		font-size: 1rem;
 		color: #444;
 		font-family: 'Varela Round', sans-serif;
+		background: transparent;
 		resize: none;
 		border: none;
 		border-bottom: 1px solid lightgrey;
@@ -33,6 +34,15 @@
 
 		&:hover {
 			background: $cerulean-crayola;
+		}
+	}
+}
+
+body.dark {
+	.comments {
+		&__input {
+			color: white;
+			opacity: 0.87;
 		}
 	}
 }
