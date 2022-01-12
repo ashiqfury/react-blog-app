@@ -29,6 +29,11 @@
 			border: none;
 			border-bottom: 1px solid lightgray;
 			outline: none;
+			transition: all 150ms ease-out;
+
+			&:focus {
+				border-bottom: 1px solid $cerulean-crayola;
+			}
 		}
 	}
 	&__edit {
@@ -75,6 +80,11 @@
 			color: #666;
 			background: transparent;
 			outline: none;
+			transition: all 150ms ease-out;
+
+			&:focus {
+				border-bottom: 1px solid $cerulean-crayola;
+			}
 		}
 
 		&::first-letter {
@@ -97,20 +107,34 @@
 		outline: none;
 	}
 	&__button {
-		width: 100px;
+		width: 150px;
+		align-self: flex-start;
 		border: none;
+		font-family: 'Poppins';
+		text-transform: uppercase;
 		background: green;
 		color: white;
 		padding: 10px;
 		border-radius: 5px;
 		cursor: pointer;
-		// text-transform: uppercase;
-		// align-self: flex-end;
 		margin-top: 30px;
 		transition: all 150ms ease-out;
 
 		&:hover {
 			background: $cerulean-crayola;
+		}
+	}
+}
+
+body.dark {
+	.singlePost {
+		&__title {
+			color: white;
+			opacity: 0.87;
+		}
+		&__desc {
+			color: white;
+			opacity: 0.6;
 		}
 	}
 }
