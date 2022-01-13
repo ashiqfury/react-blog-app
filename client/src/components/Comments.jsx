@@ -41,16 +41,17 @@ const Comments = ({ post, path }) => {
 				<span className="comments__title">Comments: </span>
 			)}
 			{user._id !== post.userId && (
-				<>
+				<div className="comments__input__wrapper">
 					<textarea
 						className="comments__input"
 						placeholder="Type your comments..."
 						onChange={e => setComment(e.target.value)}
 					></textarea>
 					<button className="comments__button" onClick={handleSubmit}>
-						Submit
+						{/* Submit <i className="fas fa-check"></i> */}
+						<i className="comments__button--icon fas fa-check"></i>
 					</button>
-				</>
+				</div>
 			)}
 			<div className="comment__wrapper">
 				{comments?.length !== 0 &&

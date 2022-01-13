@@ -9,28 +9,48 @@
 		margin-bottom: 5px;
 	}
 
+	&__input__wrapper {
+		display: flex;
+		align-items: center;
+	}
+
 	&__input {
-		width: 100%;
-		padding: 10px;
+		flex: 20;
+		min-height: 50px;
+		width: 80%;
+		padding: 5px 10px;
 		font-size: 1rem;
 		color: #444;
 		font-family: 'Varela Round', sans-serif;
 		background: transparent;
 		resize: none;
 		border: none;
+		margin-top: 10px;
 		border-bottom: 1px solid lightgrey;
 		outline: none;
+		transition: all 150ms ease-out;
+
+		&:focus {
+			border-bottom: 1px solid $cerulean-crayola;
+		}
 	}
 	&__button {
-		padding: 10px 30px;
+		flex: 1;
+		margin-left: 20px;
+		padding: 10px;
+		// padding: 10px 20px;
 		margin-top: 10px;
 		border-radius: 5px;
-		background: green;
+		background: teal;
 		color: white;
 		font-size: 1rem;
 		cursor: pointer;
 		border: none;
 		transition: all 150ms ease-out;
+
+		&--icon {
+			font-size: 1.2rem;
+		}
 
 		&:hover {
 			background: $cerulean-crayola;

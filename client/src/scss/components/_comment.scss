@@ -1,16 +1,22 @@
 // in comments component => .comment__wrapper
 .comment__wrapper {
-	margin: 20px 0;
+	margin: 40px 0;
 
 	.comment {
 		width: 100%;
 		padding: 10px 30px;
 		border-radius: 5px;
-		background: rgb(245, 245, 245);
+		// background: rgb(245, 245, 245);
 		margin: 15px 0;
 		box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
 		font-family: 'Varela Round', sans-serif;
 		border-bottom: 1px solid lightgrey;
+		transition: all 150ms ease-out;
+
+		&:hover {
+			border-bottom: 1px solid $cerulean-crayola;
+			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+		}
 
 		&__info {
 			width: 100%;
