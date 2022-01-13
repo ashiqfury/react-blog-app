@@ -16,6 +16,7 @@ const SinglePost = () => {
 	const [title, setTitle] = useState('')
 	const [desc, setDesc] = useState('')
 	const [cats, setCats] = useState([])
+	const [catsString, setCatsString] = useState('')
 	const [updateMode, setUpdateMode] = useState(false)
 	const [hidden, setHidden] = useState(true)
 
@@ -27,6 +28,7 @@ const SinglePost = () => {
 				setTitle(res.data.title)
 				setDesc(res.data.desc)
 				setCats(res.data.categories)
+				setCatsString(res.data.categories.toString())
 			} catch (err) {}
 		}
 		getPost()
@@ -44,10 +46,17 @@ const SinglePost = () => {
 
 	const handleUpdate = async () => {
 		setUpdateMode(false)
+		const categories = catsString
+			.trim()
+			.toLowerCase()
+			.split(/\W/)
+			.filter(c => c)
+		setCats(categories)
 		try {
 			await axios.put(`/posts/${path}`, {
 				title,
 				desc,
+				categories,
 				userId: user._id,
 				admin: user.admin,
 			})
@@ -89,14 +98,25 @@ const SinglePost = () => {
 				</div>
 				<div className="singlePost__info">
 					<div className="singlePost__categories">
-						{cats.length !== 0 && (
+						{(cats.length !== 0 || updateMode) && <span>Categories: </span>}
+						{updateMode ? (
+							<input
+								type="text"
+								className="singlePost__cats--input"
+								value={catsString}
+								onChange={e => setCatsString(e.target.value)}
+							/>
+						) : (
 							<>
-								<span>Categories: </span>
-								{cats.map(c => (
-									<Link to={`/?cat=${c}`} key={c} className="link">
-										<strong>{`${c} `}&nbsp;</strong>
-									</Link>
-								))}
+								{cats.length !== 0 && (
+									<>
+										{cats.map(c => (
+											<Link to={`/?cat=${c}`} key={c} className="link">
+												<strong>{`${c} `}&nbsp;</strong>
+											</Link>
+										))}
+									</>
+								)}
 							</>
 						)}
 					</div>

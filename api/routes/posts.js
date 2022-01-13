@@ -27,6 +27,7 @@ router.put('/:id', async (req, res) => {
 						$set: {
 							title: req.body.title,
 							desc: req.body.desc,
+							categories: req.body.categories,
 						},
 					},
 					{ new: true }
