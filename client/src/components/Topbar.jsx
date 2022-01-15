@@ -1,11 +1,14 @@
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Context } from '../context/Context'
 import avatar from '../assets/avatar.jpg'
+import { retriveTheme, saveTheme } from '../localStorage'
 import { gsap } from 'gsap'
 
-const Topbar = ({ dark, setDark }) => {
+const Topbar = () => {
 	const { user, dispatch } = useContext(Context)
+	const [dark, setDark] = useState(false)
+
 	const PF = 'http://localhost:2506/images/'
 
 	const handleLogout = () => {
@@ -16,6 +19,14 @@ const Topbar = ({ dark, setDark }) => {
 	useEffect(() => {
 		gsap.from('.topbar', { y: '-100%', duration: 0.5, ease: 'ease-out' })
 	}, [])
+
+	useEffect(() => retriveTheme(setDark), [])
+
+	useEffect(() => {
+		document.body.classList.toggle('dark')
+		dark ? document.body.classList.add('dark') : document.body.classList.remove('dark')
+		saveTheme(dark)
+	}, [dark])
 
 	return (
 		<div className="topbar">
@@ -61,12 +72,7 @@ const Topbar = ({ dark, setDark }) => {
 							{user.profilePic ? (
 								<img className="topbar__img" src={PF + user.profilePic} alt="" />
 							) : (
-								<img
-									className="topbar__img"
-									// src={'http://localhost:2506/images/avatar.jpg'}
-									src={avatar}
-									alt=""
-								/>
+								<img className="topbar__img" src={avatar} alt="" />
 							)}
 						</Link>
 						<Link to="/settings" className="link">

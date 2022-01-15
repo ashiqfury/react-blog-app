@@ -8,7 +8,7 @@ import { Context } from '../context/Context'
 import SidebarUsers from '../components/SidebarUsers'
 import Footer from '../components/Footer'
 
-const Home = ({ dark }) => {
+const Home = () => {
 	const [posts, setPosts] = useState([])
 	const { user } = useContext(Context)
 
@@ -24,7 +24,7 @@ const Home = ({ dark }) => {
 
 	return (
 		<>
-			<Header dark={dark} />
+			<Header />
 			<div className="home" id="home">
 				<Posts posts={posts} />
 				{user && <>{search.includes('userId') ? <SidebarUsers /> : <Sidebar />}</>}
