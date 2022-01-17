@@ -64,16 +64,18 @@ const SidebarUsers = () => {
 				<span className="sidebar__name">{user?.name}</span>
 				<p className="sidebar__bio">{user?.bio}</p>
 			</div>
-			<div className="sidebar__item">
-				<span className="sidebar__title">CATEGORIES</span>
-				<ul className="sidebar__list">
-					{cats.map(c => (
-						<Link to={`/?cat=${c}`} className="sidebar__list--item category link" key={c}>
-							<li className="cat">{c}</li>
-						</Link>
-					))}
-				</ul>
-			</div>
+			{cats.length !== 0 && (
+				<div className="sidebar__item">
+					<span className="sidebar__title">CATEGORIES</span>
+					<ul className="sidebar__list">
+						{cats.map(c => (
+							<Link to={`/?cat=${c}`} className="sidebar__list--item category link" key={c}>
+								<li className="cat">{c}</li>
+							</Link>
+						))}
+					</ul>
+				</div>
+			)}
 
 			<div className="sidebar__item">
 				<span className="sidebar__title">USERS</span>

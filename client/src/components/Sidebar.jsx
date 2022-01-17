@@ -44,42 +44,44 @@ const Sidebar = () => {
 				<span className="sidebar__name">{user?.name}</span>
 				<p className="sidebar__bio">{user?.bio}</p>
 			</div>
-			<div className="sidebar__item">
-				<span className="sidebar__title">CATEGORIES</span>
-				<ul className="sidebar__list">
-					{cats.map(c => (
-						<Link to={`/?cat=${c}`} className="sidebar__list--item category link" key={c}>
-							<li className="cat">{c}</li>
-						</Link>
-					))}
-				</ul>
-			</div>
-
-			<div className="sidebar__item">
-				<span className="sidebar__title">USERS</span>
-				<ul className="sidebar__list">
-					{users.map(u => (
-						<Link to={`/?userId=${u._id}`} className="link sidebar__list--item" key={u.username}>
-							{u?.profilePic ? (
-								<img src={PF + u.profilePic} alt="Profile" className="sidebar__list--img" />
-							) : (
-								<img src={avatar} alt="Profile" className="sidebar__list--img" />
-							)}
-
-							<li className="sidebar__list--name">
-								{u.admin === true ? (
-									<>
-										{u.username} <i className="sidebar__admin fas fa-crown"></i>
-									</>
+			{cats.length !== 0 && (
+				<div className="sidebar__item">
+					<span className="sidebar__title">CATEGORIES</span>
+					<ul className="sidebar__list">
+						{cats.map(c => (
+							<Link to={`/?cat=${c}`} className="sidebar__list--item category link" key={c}>
+								<li className="cat">{c}</li>
+							</Link>
+						))}
+					</ul>
+				</div>
+			)}
+			{users.length !== 0 && (
+				<div className="sidebar__item">
+					<span className="sidebar__title">USERS</span>
+					<ul className="sidebar__list">
+						{users.map(u => (
+							<Link to={`/?userId=${u._id}`} className="link sidebar__list--item" key={u.username}>
+								{u?.profilePic ? (
+									<img src={PF + u.profilePic} alt="Profile" className="sidebar__list--img" />
 								) : (
-									<>{u.username}</>
+									<img src={avatar} alt="Profile" className="sidebar__list--img" />
 								)}
-							</li>
-						</Link>
-					))}
-				</ul>
-			</div>
 
+								<li className="sidebar__list--name">
+									{u.admin === true ? (
+										<>
+											{u.username} <i className="sidebar__admin fas fa-crown"></i>
+										</>
+									) : (
+										<>{u.username}</>
+									)}
+								</li>
+							</Link>
+						))}
+					</ul>
+				</div>
+			)}
 			<div className="sidebar__item">
 				{(user?.facebook || user?.instagram || user?.twitter) && (
 					<>

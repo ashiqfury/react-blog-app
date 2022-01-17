@@ -14,6 +14,8 @@ const Comment = ({ comment }) => {
 		}
 	}
 
+	console.log(comment)
+
 	return (
 		<div className="comment">
 			<div className="comment__info">
@@ -24,9 +26,9 @@ const Comment = ({ comment }) => {
 				<div className="comment__info--right">
 					<span>{new Date(comment.createdAt).toDateString()}</span>
 					<i className="comment__icon far fa-edit edit"></i>
-					{(comment.postUserId === user._id ||
-						comment.commentedUserId === user._id ||
-						user.admin) && (
+					{(comment.postUserId === user?._id ||
+						comment.commentedUserId === user?._id ||
+						user?.admin) && (
 						<i className="comment__icon far fa-trash-alt delete" onClick={handleDelete}></i>
 					)}
 				</div>

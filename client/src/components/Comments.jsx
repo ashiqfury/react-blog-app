@@ -20,6 +20,7 @@ const Comments = ({ post, path }) => {
 		getComments()
 	}, [path])
 
+	console.log(user)
 	const handleSubmit = async () => {
 		try {
 			await axios
@@ -37,10 +38,10 @@ const Comments = ({ post, path }) => {
 
 	return (
 		<div className="comments">
-			{(comments?.length !== 0 || user._id !== post.userId) && (
+			{(comments?.length !== 0 || (user?._id !== post.userId && user !== null)) && (
 				<span className="comments__title">Comments: </span>
 			)}
-			{user._id !== post.userId && (
+			{user?._id !== post.userId && user !== null && (
 				<div className="comments__input__wrapper">
 					<textarea
 						className="comments__input"
