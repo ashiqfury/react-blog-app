@@ -3,6 +3,7 @@
 fury.todo
 blog.http
 css/
+.env
 
 # dependencies
 /node_modules
