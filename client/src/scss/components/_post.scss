@@ -9,6 +9,7 @@
 	border-radius: 7px;
 	transition: all 300ms ease-in-out;
 	cursor: pointer;
+	overflow: hidden;
 
 	&:hover {
 		transform: scale(1.03);
@@ -19,6 +20,25 @@
 	}
 	&:hover &__img {
 		filter: grayscale(0.6);
+	}
+
+	&:hover &__tag {
+		opacity: 1;
+	}
+
+	&__tag {
+		position: absolute;
+		top: 0;
+		right: 0;
+		color: #be9656;
+		opacity: 0;
+		font-family: 'Josefin Sans', sans-serif;
+		font-size: 1rem;
+		font-weight: 300;
+		padding: 10px 15px;
+		z-index: 10;
+		border-radius: 3px;
+		transition: all 300ms 300ms ease-out;
 	}
 
 	&__img {
