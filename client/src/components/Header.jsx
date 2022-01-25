@@ -5,28 +5,28 @@ const Header = () => {
 	useEffect(() => {
 		// gsap.fromTo(".header__title--sm", {opacity: 0}, {opacity: 0.5, duration: 1});
 		gsap.from('.header__title--sm', {
-			y: '-50',
+			y: '-30',
 			duration: 0.5,
 			ease: 'ease-out',
 			delay: 0.5,
 			opacity: 0,
-			scale: 0,
+			// scale: 0,
 		})
 		gsap.from('.header__title--lg', {
-			y: '-100',
+			y: '-30',
 			duration: 0.5,
 			ease: 'ease-out',
 			delay: 0.8,
 			opacity: 0,
-			scale: 0,
+			// scale: 0,
 		})
 		gsap.from('.header__explore', {
-			y: '-100',
+			y: '-30',
 			duration: 0.5,
 			ease: 'ease-out',
 			delay: 1,
 			opacity: 0,
-			scale: 0,
+			// scale: 0,
 		})
 	}, [])
 

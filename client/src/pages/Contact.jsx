@@ -1,5 +1,6 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import emailjs from '@emailjs/browser'
+import gsap from 'gsap'
 
 const Contact = () => {
 	const formRef = useRef(null)
@@ -32,6 +33,21 @@ const Contact = () => {
 				}
 			)
 	}
+
+	useEffect(() => {
+		gsap.from('.contactInfo', {
+			x: '-50',
+			duration: 0.5,
+			ease: 'ease-out',
+			opacity: 0.9,
+		})
+		gsap.from('.contactForm', {
+			x: '50',
+			duration: 0.5,
+			ease: 'ease-out',
+			opacity: 0.9,
+		})
+	})
 
 	return (
 		<section className="contact">
