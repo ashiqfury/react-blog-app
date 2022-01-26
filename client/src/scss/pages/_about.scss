@@ -180,7 +180,7 @@
 		transition: all 150ms ease-out;
 
 		&:hover {
-			transform: scale(1.05);
+			transform: scale(1.05) !important;
 		}
 
 		&--img {
