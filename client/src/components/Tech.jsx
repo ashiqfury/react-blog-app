@@ -17,7 +17,7 @@ const Tech = ({ img, name, desc, alt }) => {
 				opacity: 1,
 			}
 		)
-	})
+	}, [])
 
 	return (
 		<div className={`about__tech about__tech--${alt}`}>

@@ -50,7 +50,7 @@ const About = () => {
 			delay: 1,
 			opacity: 0,
 		})
-	})
+	}, [])
 
 	return (
 		<div className="about">

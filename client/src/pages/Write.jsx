@@ -1,6 +1,16 @@
 import axios from 'axios'
-import { useContext, useState } from 'react'
+import gsap from 'gsap'
+import { useContext, useEffect, useState } from 'react'
 import { Context } from '../context/Context'
+
+const classAnim = [
+	'.write__heading',
+	'.write__icon',
+	'.write__input.title',
+	'.write__input.cats',
+	'.write__input.write__text',
+	'.write__submit',
+]
 
 const Write = () => {
 	const [title, setTitle] = useState('')
@@ -44,6 +54,25 @@ const Write = () => {
 		} catch (err) {}
 	}
 
+	useEffect(() => {
+		classAnim.forEach((e, i) => {
+			gsap.fromTo(
+				e,
+				{
+					y: '50',
+					duration: 1,
+					ease: 'ease-out',
+					opacity: 0,
+				},
+				{
+					y: 0,
+					delay: 0.2 * (i + 1),
+					opacity: 1,
+				}
+			)
+		})
+	}, [])
+
 	return (
 		<div className="write">
 			<h3 className="write__heading">Create a new post</h3>
@@ -62,7 +91,7 @@ const Write = () => {
 					<input
 						type="text"
 						placeholder="Title"
-						className="write__input"
+						className="write__input title"
 						onChange={e => setTitle(e.target.value)}
 						autoFocus
 						required
