@@ -1,32 +1,25 @@
 import { useEffect } from 'react'
 import { gsap } from 'gsap'
 
+const animArray = ['.header__title--sm', '.header__title--lg', '.header__explore']
+
 const Header = () => {
 	useEffect(() => {
-		// gsap.fromTo(".header__title--sm", {opacity: 0}, {opacity: 0.5, duration: 1});
-		gsap.from('.header__title--sm', {
-			y: '-30',
-			duration: 0.5,
-			ease: 'ease-out',
-			delay: 0.5,
-			opacity: 0,
-			// scale: 0,
-		})
-		gsap.from('.header__title--lg', {
-			y: '-30',
-			duration: 0.5,
-			ease: 'ease-out',
-			delay: 0.8,
-			opacity: 0,
-			// scale: 0,
-		})
-		gsap.from('.header__explore', {
-			y: '-30',
-			duration: 0.5,
-			ease: 'ease-out',
-			delay: 1,
-			opacity: 0,
-			// scale: 0,
+		animArray.forEach((e, i) => {
+			gsap.fromTo(
+				e,
+				{
+					y: '-30',
+					duration: 1,
+					ease: 'ease-out',
+					opacity: 0,
+				},
+				{
+					y: 0,
+					delay: 0.3 * (i + 1),
+					opacity: 1,
+				}
+			)
 		})
 	}, [])
 
