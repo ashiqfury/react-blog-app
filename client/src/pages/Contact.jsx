@@ -2,6 +2,14 @@ import React, { useEffect, useRef, useState } from 'react'
 import emailjs from '@emailjs/browser'
 import gsap from 'gsap'
 
+const animArray = [
+	'.infolist__user',
+	'.infolist__email',
+	'.infolist__phone',
+	'.infolist__location',
+	'.sci',
+]
+
 const Contact = () => {
 	const formRef = useRef(null)
 	const [success, setSuccess] = useState(false)
@@ -47,6 +55,22 @@ const Contact = () => {
 			ease: 'ease-out',
 			opacity: 0.9,
 		})
+		animArray.forEach((e, i) => {
+			gsap.fromTo(
+				e,
+				{
+					y: '50',
+					duration: 1,
+					ease: 'ease-out',
+					opacity: 0,
+				},
+				{
+					y: 0,
+					delay: 0.2 * (i + 1),
+					opacity: 1,
+				}
+			)
+		})
 	})
 
 	return (
@@ -56,25 +80,25 @@ const Contact = () => {
 					<div>
 						<h2>Contact Info</h2>
 						<ul className="info">
-							<li>
+							<li className="infolist__user">
 								<span>
 									<i className="fas fa-user"></i>
 								</span>
 								<span>ashiq @fury</span>
 							</li>
-							<li>
+							<li className="infolist__email">
 								<span>
 									<i className="fas fa-envelope"></i>
 								</span>
 								<span>ashiqasraf07@gmail.com</span>
 							</li>
-							<li>
+							<li className="infolist__phone">
 								<span>
 									<i className="fas fa-phone"></i>
 								</span>
 								<span>+91 733-927-8868</span>
 							</li>
-							<li>
+							<li className="infolist__location">
 								<span>
 									<i className="fas fa-map-marker-alt"></i>
 								</span>

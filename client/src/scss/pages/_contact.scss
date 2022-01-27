@@ -93,7 +93,7 @@
 				margin-right: 15px;
 
 				&:hover a i {
-					opacity: 1;
+					opacity: 1 !important;
 				}
 
 				a {
@@ -102,7 +102,7 @@
 					i {
 						color: white;
 						font-size: 1.5rem;
-						opacity: 0.5;
+						opacity: 0.5 !important;
 						transition: all 150ms ease-in-out;
 					}
 				}
