@@ -18,6 +18,20 @@ const Topbar = () => {
 
 	useEffect(() => {
 		gsap.from('.topbar', { y: '-100%', duration: 0.5, ease: 'ease-out' })
+		gsap.from('.topbar__left', {
+			y: '-30',
+			duration: 1,
+			ease: 'ease-out',
+			opacity: 0,
+			delay: 0.5,
+		})
+		gsap.from('.topbar__right', {
+			y: '-30',
+			duration: 1,
+			ease: 'ease-out',
+			opacity: 0,
+			delay: 0.5,
+		})
 	}, [])
 
 	useEffect(() => retriveTheme(setDark), [])
@@ -39,7 +53,7 @@ const Topbar = () => {
 				</Link>
 			</div>
 			<div className="topbar__center">
-				<ul className="topbar__list">
+				<ul className="topbar__list list">
 					<li className="topbar__list--item">
 						<Link to="/" className="link">
 							HOME
