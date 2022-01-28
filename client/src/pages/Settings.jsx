@@ -137,7 +137,12 @@ const Settings = () => {
 					</div>
 
 					<label>Password</label>
-					<input type="password" required onChange={e => setPassword(e.target.value)} />
+					<input
+						type="password"
+						required
+						placeholder="Enter your password to update profile..."
+						onChange={e => setPassword(e.target.value)}
+					/>
 
 					<button className="settings__submit" type="submit">
 						Update

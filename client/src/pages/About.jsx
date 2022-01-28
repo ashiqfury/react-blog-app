@@ -9,47 +9,14 @@ import sass from '../assets/sass.png'
 import redux from '../assets/redux.png'
 import git from '../assets/git.png'
 import github from '../assets/github.png'
-import gsap from 'gsap'
+import { bioAnim, containerAnim } from '../animations/about'
 // import email from '../assets/email.png'
-
-const classLeft = [
-	'.about__left__logo',
-	'.about__left__dev',
-	'.about__left__name',
-	'.about__left__desc',
-	'.about__left__button',
-]
 
 const About = () => {
 	useEffect(() => {
-		gsap.from('.about__left', {
-			x: '-50',
-			duration: 1,
-			ease: 'ease-out',
-		})
-		classLeft.forEach((e, i) => {
-			gsap.fromTo(
-				e,
-				{
-					y: '50',
-					duration: 1,
-					ease: 'ease-out',
-					opacity: 0,
-				},
-				{
-					y: 0,
-					delay: 0.2 * (i + 1),
-					opacity: 1,
-				}
-			)
-		})
-		gsap.from('.about__right', {
-			x: '50',
-			duration: 1,
-			ease: 'ease-out',
-			delay: 1,
-			opacity: 0,
-		})
+		bioAnim()
+		containerAnim('left')
+		containerAnim('right')
 	}, [])
 
 	return (

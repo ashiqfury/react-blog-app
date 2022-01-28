@@ -1,14 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import emailjs from '@emailjs/browser'
-import gsap from 'gsap'
-
-const animArray = [
-	'.infolist__user',
-	'.infolist__email',
-	'.infolist__phone',
-	'.infolist__location',
-	'.sci',
-]
+import { containerAnim, animation, button, inputAnim } from '../animations/contact'
 
 const Contact = () => {
 	const formRef = useRef(null)
@@ -43,34 +35,11 @@ const Contact = () => {
 	}
 
 	useEffect(() => {
-		gsap.from('.contactInfo', {
-			x: '-50',
-			duration: 0.5,
-			ease: 'ease-out',
-			opacity: 0.9,
-		})
-		gsap.from('.contactForm', {
-			x: '50',
-			duration: 0.5,
-			ease: 'ease-out',
-			opacity: 0.9,
-		})
-		animArray.forEach((e, i) => {
-			gsap.fromTo(
-				e,
-				{
-					y: '50',
-					duration: 1,
-					ease: 'ease-out',
-					opacity: 0,
-				},
-				{
-					y: 0,
-					delay: 0.2 * (i + 1),
-					opacity: 1,
-				}
-			)
-		})
+		containerAnim('Info')
+		containerAnim('Form')
+		animation()
+		button()
+		inputAnim()
 	})
 
 	return (
@@ -145,27 +114,27 @@ const Contact = () => {
 				<form className="contactForm" ref={formRef} onSubmit={sendEmail}>
 					<h2>Send a message</h2>
 					<div className="formBox">
-						<div className="inputBox w50">
+						<div className="inputBox w50 fname">
 							<input type="text" name="fname" required />
 							<span>First name</span>
 						</div>
-						<div className="inputBox w50">
+						<div className="inputBox w50 lname">
 							<input type="text" name="lname" required />
 							<span>Last name</span>
 						</div>
-						<div className="inputBox w50">
+						<div className="inputBox w50 email">
 							<input type="email" name="email" required />
 							<span>Email Address</span>
 						</div>
-						<div className="inputBox w50">
+						<div className="inputBox w50 phone">
 							<input type="tel" maxLength="10" name="number" required />
 							<span>Phone Number</span>
 						</div>
-						<div className="inputBox w100">
+						<div className="inputBox w100 message">
 							<textarea type="text" name="message" required></textarea>
 							<span>Write your message here...</span>
 						</div>
-						<div className="inputBox w100">
+						<div className="inputBox w100 btn-submit">
 							{/* <input type="submit" value="Send" /> */}
 							{isSending ? (
 								<button type="submit">
