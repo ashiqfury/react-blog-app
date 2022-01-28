@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Context } from '../context/Context'
 import avatar from '../assets/avatar.jpg'
+import { animation } from '../animations/sidebar'
 
 const Sidebar = () => {
 	const [cats, setCats] = useState([])
@@ -32,10 +33,14 @@ const Sidebar = () => {
 		getUsers()
 	}, [user?._id])
 
+	useEffect(() => {
+		animation()
+	}, [])
+
 	return (
 		<div className="sidebar">
 			<div className="sidebar__item">
-				<span className="sidebar__title">ABOUT ME</span>
+				<span className="sidebar__title author">ABOUT ME</span>
 				{user?.profilePic ? (
 					<img className="sidebar__img" src={PF + user?.profilePic} alt="Avatar" />
 				) : (
@@ -46,8 +51,8 @@ const Sidebar = () => {
 			</div>
 			{cats.length !== 0 && (
 				<div className="sidebar__item">
-					<span className="sidebar__title">CATEGORIES</span>
-					<ul className="sidebar__list">
+					<span className="sidebar__title cats">CATEGORIES</span>
+					<ul className="sidebar__list cats">
 						{cats.map(c => (
 							<Link to={`/?cat=${c}`} className="sidebar__list--item category link" key={c}>
 								<li className="cat">{c}</li>
@@ -58,8 +63,8 @@ const Sidebar = () => {
 			)}
 			{users.length !== 0 && (
 				<div className="sidebar__item">
-					<span className="sidebar__title">USERS</span>
-					<ul className="sidebar__list">
+					<span className="sidebar__title users">USERS</span>
+					<ul className="sidebar__list users">
 						{users.map(u => (
 							<Link to={`/?userId=${u._id}`} className="link sidebar__list--item" key={u.username}>
 								{u?.profilePic ? (
@@ -85,8 +90,8 @@ const Sidebar = () => {
 			<div className="sidebar__item">
 				{(user?.facebook || user?.instagram || user?.twitter) && (
 					<>
-						<span className="sidebar__title">FOLLOW US</span>
-						<div className="sidebar__social">
+						<span className="sidebar__title social">FOLLOW US</span>
+						<div className="sidebar__social social">
 							{user?.facebook && (
 								<a
 									href={`https://facebook.com/${user?.facebook}`}

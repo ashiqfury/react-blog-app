@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import axios from 'axios'
 import { Context } from '../context/Context'
 import Comments from './Comments'
+import { animation } from '../animations/single'
 
 const SinglePost = () => {
 	const location = useLocation()
@@ -62,6 +63,10 @@ const SinglePost = () => {
 			})
 		} catch (err) {}
 	}
+
+	useEffect(() => {
+		animation()
+	}, [])
 
 	return (
 		<div className="singlePost">

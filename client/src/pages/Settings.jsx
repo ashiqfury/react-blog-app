@@ -1,7 +1,8 @@
 import axios from 'axios'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import Sidebar from '../components/Sidebar'
 import { Context } from '../context/Context'
+import { animation } from '../animations/settings'
 
 const Settings = () => {
 	const { user, dispatch } = useContext(Context)
@@ -58,6 +59,10 @@ const Settings = () => {
 		} catch (err) {}
 	}
 
+	useEffect(() => {
+		animation()
+	}, [])
+
 	return (
 		<div className="settings">
 			<div className="settings__wrapper">
@@ -68,7 +73,7 @@ const Settings = () => {
 					</span>
 				</div>
 				<form className="form settings__form" onSubmit={handleSubmit}>
-					<label>Profile picture</label>
+					<label className="profile-label">Profile picture</label>
 					<div className="settings__profilePicture">
 						<img
 							src={
@@ -91,57 +96,64 @@ const Settings = () => {
 						/>
 					</div>
 
-					<label>Username</label>
+					<label className="uname-label">Username</label>
 					<input
 						type="text"
 						placeholder={user.username}
 						onChange={e => setUsername(e.target.value)}
+						className="uname-input"
 					/>
-
-					<label>Email</label>
-					<input type="email" placeholder={user.email} onChange={e => setEmail(e.target.value)} />
-
-					<label>Full Name</label>
+					<label className="email-label">Email</label>
+					<input
+						type="email"
+						placeholder={user.email}
+						onChange={e => setEmail(e.target.value)}
+						className="email-input"
+					/>
+					<label className="flname-label">Full Name</label>
 					<input
 						type="text"
 						placeholder={user?.name || 'full name'}
 						onChange={e => setName(e.target.value)}
+						className="flname-input"
 					/>
 
-					<label>Bio</label>
+					<label className="bio-label">Bio</label>
 					<textarea
 						placeholder="Enter your interests..."
 						onChange={e => setBio(e.target.value)}
+						className="bio-input"
 					></textarea>
 
-					<label>Social Media</label>
+					<label className="social-label">Social Media</label>
 					<div className="settings__social">
 						<input
 							type="text"
 							placeholder={user.facebook ? `facebook @${user.facebook}` : 'facebook'}
-							className="settings__social--input"
+							className="settings__social--input facebook"
 							onChange={e => setFacebook(e.target.value)}
 						/>
 						<input
 							type="text"
 							placeholder={user.instagram ? `instagram @${user.instagram}` : 'instagram'}
-							className="settings__social--input"
+							className="settings__social--input instagram"
 							onChange={e => setInstagram(e.target.value)}
 						/>
 						<input
 							type="text"
 							placeholder={user.twitter ? `twitter @${user.twitter}` : 'twitter'}
-							className="settings__social--input"
+							className="settings__social--input twitter"
 							onChange={e => setTwitter(e.target.value)}
 						/>
 					</div>
 
-					<label>Password</label>
+					<label className="pwd-label">Password</label>
 					<input
 						type="password"
 						required
 						placeholder="Enter your password to update profile..."
 						onChange={e => setPassword(e.target.value)}
+						className="pwd-input"
 					/>
 
 					<button className="settings__submit" type="submit">
