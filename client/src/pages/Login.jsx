@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useContext, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Context } from '../context/Context'
-import { gsap } from 'gsap'
+import { sliderAnim } from '../animations/login'
 
 const Login = () => {
 	const usernameRef = useRef()
@@ -11,7 +11,7 @@ const Login = () => {
 	const { dispatch, isFetching } = useContext(Context)
 
 	useEffect(() => {
-		gsap.from('.login__right', { x: '-100%', duration: 0.5, ease: 'ease-out' })
+		sliderAnim()
 	}, [])
 
 	const handleSubmit = async e => {

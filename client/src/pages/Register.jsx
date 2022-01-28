@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { gsap } from 'gsap'
+import { sliderAnim } from '../animations/register'
 
 const Register = () => {
 	const [username, setUsername] = useState('')
@@ -10,7 +10,7 @@ const Register = () => {
 	const [error, setError] = useState(false)
 
 	useEffect(() => {
-		gsap.from('.register__left', { x: '100%', duration: 0.5, ease: 'ease-out' })
+		sliderAnim()
 	}, [])
 
 	const handleSubmit = async e => {
