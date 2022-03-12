@@ -85,7 +85,7 @@ const Settings = () => {
 							}
 							alt=""
 						/>
-						<label htmlFor="fileInput">
+						<label htmlFor="fileInput" className="settings__form__profile--icon">
 							<i className="settings__profilePicture--icon far fa-user-circle"></i>
 						</label>
 						<input

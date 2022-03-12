@@ -80,7 +80,6 @@ const Write = () => {
 						placeholder="Categories eg. music, life"
 						className="write__input cats"
 						onChange={handleCats}
-						required
 					/>
 				</div>
 				<div className="write__form--group">
