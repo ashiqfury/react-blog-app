@@ -20,7 +20,6 @@ const Comments = ({ post, path }) => {
 		getComments()
 	}, [path])
 
-	console.log(user)
 	const handleSubmit = async () => {
 		try {
 			await axios

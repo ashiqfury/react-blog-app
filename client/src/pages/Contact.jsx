@@ -40,7 +40,7 @@ const Contact = () => {
 		animation()
 		button()
 		inputAnim()
-	})
+	}, [])
 
 	return (
 		<section className="contact">

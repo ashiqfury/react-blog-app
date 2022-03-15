@@ -244,6 +244,11 @@ body.dark {
 			input:valid ~ span {
 				color: $cerulean-crayola !important;
 			}
+			textarea,
+			input {
+				color: white !important;
+				opacity: 0.87 !important;
+			}
 		}
 	}
 }

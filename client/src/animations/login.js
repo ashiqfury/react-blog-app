@@ -7,6 +7,7 @@ export const sliderAnim = () =>
 			x: '-100%',
 			duration: 0.5,
 			ease: 'ease-out',
+			delay: 0.2,
 		},
 		{
 			x: 0,
