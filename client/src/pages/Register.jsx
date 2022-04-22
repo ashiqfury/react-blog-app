@@ -2,6 +2,7 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { sliderAnim } from '../animations/register'
+import PasswordEye from '../components/passwordEye'
 
 const Register = () => {
 	const [username, setUsername] = useState('')
@@ -57,14 +58,8 @@ const Register = () => {
 						onChange={e => setEmail(e.target.value)}
 						required
 					/>
-					<label>Password</label>
-					<input
-						className="register__input"
-						type="password"
-						placeholder="Enter your password..."
-						onChange={e => setPassword(e.target.value)}
-						required
-					/>
+					<PasswordEye setPassword={setPassword} page="register" />
+
 					<button className="register__button">Register</button>
 
 					{error && <span className="register__error">Something went wrong!</span>}

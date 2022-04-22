@@ -3,6 +3,7 @@ import { useContext, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Context } from '../context/Context'
 import { sliderAnim } from '../animations/login'
+import PasswordEye from '../components/passwordEye'
 
 const Login = () => {
 	const usernameRef = useRef()
@@ -44,14 +45,7 @@ const Login = () => {
 						required
 						autoFocus
 					/>
-					<label>Password</label>
-					<input
-						className="login__input"
-						type="password"
-						placeholder="Enter your password..."
-						ref={passwordRef}
-						required
-					/>
+					<PasswordEye passwordRef={passwordRef} page="login" />
 					<button className="login__button" disabled={isFetching}>
 						{isFetching ? 'Loading...' : 'Login'}
 					</button>

@@ -80,6 +80,8 @@
 		}
 	}
 	.login__right {
+		position: relative;
+		z-index: 20;
 		flex: 4;
 		height: 100%;
 		padding: 50px;
