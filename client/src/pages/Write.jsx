@@ -2,6 +2,7 @@ import axios from 'axios'
 import { useContext, useEffect, useState } from 'react'
 import { Context } from '../context/Context'
 import { animation } from '../animations/write'
+import { useHistory } from 'react-router-dom'
 
 const Write = () => {
 	const [title, setTitle] = useState('')
@@ -9,6 +10,7 @@ const Write = () => {
 	const [cats, setCats] = useState([])
 	const [file, setFile] = useState(null)
 	const { user } = useContext(Context)
+	const history = useHistory()
 
 	const handleCats = e => {
 		const text = e.target.value
@@ -41,7 +43,7 @@ const Write = () => {
 		}
 		try {
 			const res = await axios.post('/posts', newPost)
-			window.location.replace(`/post/${res.data._id}`)
+			history.replace(`/post/${res.data._id}`)
 		} catch (err) {}
 	}
 

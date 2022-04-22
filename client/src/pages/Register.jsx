@@ -1,14 +1,15 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 import { sliderAnim } from '../animations/register'
 import PasswordEye from '../components/passwordEye'
+import { useHistory } from 'react-router-dom'
 
 const Register = () => {
 	const [username, setUsername] = useState('')
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [error, setError] = useState(false)
+	const history = useHistory()
 
 	useEffect(() => {
 		sliderAnim()
@@ -66,9 +67,9 @@ const Register = () => {
 
 					<p className="register__login">
 						Already have an account?{' '}
-						<Link className="link signin" to="/login">
+						<span className="link signin" onClick={() => history.push('/login')}>
 							Sign In
-						</Link>
+						</span>
 					</p>
 				</form>
 			</div>

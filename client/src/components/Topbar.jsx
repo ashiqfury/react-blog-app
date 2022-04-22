@@ -4,10 +4,13 @@ import { Context } from '../context/Context'
 import avatar from '../assets/avatar.jpg'
 import { retriveTheme, saveTheme } from '../localStorage'
 import { topbar, topbar__element } from '../animations/topbar'
+import { useHistory } from 'react-router-dom'
 
 const Topbar = () => {
 	const { user, dispatch } = useContext(Context)
 	const [dark, setDark] = useState(false)
+
+	const history = useHistory()
 
 	const PF = 'http://localhost:2506/images/'
 
@@ -42,25 +45,17 @@ const Topbar = () => {
 			</div>
 			<div className="topbar__center">
 				<ul className="topbar__list list">
-					<li className="topbar__list--item">
-						<Link to="/" className="link">
-							HOME
-						</Link>
+					<li className="topbar__list--item" onClick={() => history.push('/')}>
+						HOME
 					</li>
-					<li className="topbar__list--item">
-						<Link to="/write" className="link">
-							WRITE
-						</Link>
+					<li className="topbar__list--item" onClick={() => history.push('/write')}>
+						WRITE
 					</li>
-					<li className="topbar__list--item">
-						<Link to="/contact" className="link">
-							CONTACT
-						</Link>
+					<li className="topbar__list--item" onClick={() => history.push('/contact')}>
+						CONTACT
 					</li>
-					<li className="topbar__list--item">
-						<Link to="/about" className="link">
-							ABOUT
-						</Link>
+					<li className="topbar__list--item" onClick={() => history.push('/about')}>
+						ABOUT
 					</li>
 					<li className="topbar__list--item" onClick={handleLogout}>
 						{user && 'LOGOUT'}
@@ -83,15 +78,11 @@ const Topbar = () => {
 					</>
 				) : (
 					<ul className="topbar__list">
-						<li className="topbar__list--item">
-							<Link className="link" to="/login">
-								LOGIN
-							</Link>
+						<li className="topbar__list--item" onClick={() => history.push('/login')}>
+							LOGIN
 						</li>
-						<li className="topbar__list--item">
-							<Link className="link" to="/register">
-								REGISTER
-							</Link>
+						<li className="topbar__list--item" onClick={() => history.push('/register')}>
+							REGISTER
 						</li>
 					</ul>
 				)}
