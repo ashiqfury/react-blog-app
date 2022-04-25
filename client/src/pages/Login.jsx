@@ -66,31 +66,29 @@ const Login = () => {
 			<div className="login__left">
 				<span className="login__title">Login</span>
 				<form className="login__form">
-					<label>Username</label>
+					<label htmlFor="username">Username</label>
 					<input
 						className="login__input"
 						type="text"
+						id="username"
 						placeholder="Enter your username..."
 						name="username"
-						onChange={formik.handleChange}
-						value={formik.values.username}
-						onBlur={formik.handleBlur}
+						{...formik.getFieldProps('username')}
 						// autoFocus
 					/>
 					{formik.errors.username && formik.touched.username ? (
 						<p className="error">{formik.errors.username}</p>
 					) : null}
 
-					<label>Password</label>
+					<label htmlFor="password">Password</label>
 					<div className="eye">
 						<input
 							className="eye__input register__input"
 							type={`${passVisiblity ? 'text' : 'password'}`}
 							placeholder="Enter your password..."
-							onChange={formik.handleChange}
-							value={formik.values.password}
-							onBlur={formik.handleBlur}
+							id="password"
 							name="password"
+							{...formik.getFieldProps('password')}
 						/>
 						<i
 							className={`fa-solid eye__icon ${eyeIcon ? 'fa-eye-slash' : 'fa-eye'}`}
@@ -108,7 +106,7 @@ const Login = () => {
 					{error && <span className="register__error">Something went wrong!</span>}
 
 					<p className="login__register">
-						You don't have an account?&nbsp;
+						You don't have an account?{' '}
 						<span className="link signup" onClick={() => history.push('/register')}>
 							Sign Up
 						</span>
