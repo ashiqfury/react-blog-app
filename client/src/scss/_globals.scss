@@ -46,3 +46,8 @@ body {
 	margin-top: -15px;
 	margin-bottom: 1rem;
 }
+
+button:disabled {
+	cursor: not-allowed;
+	opacity: 0.87;
+}

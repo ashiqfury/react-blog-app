@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom'
 import { useFormik } from 'formik'
 
 const Register = () => {
-	const [error, setError] = useState(false)
+	const [error, setError] = useState('')
 	const history = useHistory()
 
 	const initialValues = {
@@ -14,12 +14,13 @@ const Register = () => {
 		password: '',
 	}
 	const onSubmit = async values => {
-		setError(false)
+		setError('')
 		try {
 			const res = await axios.post('/auth/register', values)
 			res.data && history.replace('/login')
 		} catch (err) {
-			setError(true)
+			console.log(err.response.data)
+			setError(err.response.data)
 		}
 	}
 	const validate = values => {
@@ -28,17 +29,14 @@ const Register = () => {
 		else if (values.username.length < 3) errors.username = 'Must be 3 characters or more'
 		else if (values.username.length > 15) errors.username = 'Must be 15 characters or less'
 		else if (!/^[a-zA-Z0-9]+$/.test(values.username)) errors.username = 'Must be alphanumeric'
-
 		if (!values.email) errors.email = 'Required'
 		else if (values.email.length > 30) errors.email = 'Must be 30 characters or less'
 		else if (values.email.length < 5) errors.email = 'Must be 5 characters or more'
 		else if (values.email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email))
 			errors.email = 'Invalid email format'
-
 		if (!values.password) errors.password = 'Required'
 		else if (values.password.length < 8) errors.password = 'Must be at least 8 characters'
 		else if (values.password.length > 30) errors.password = 'Must be less than 30 characters'
-
 		return errors
 	}
 
@@ -111,11 +109,11 @@ const Register = () => {
 					{formik.errors.password && formik.touched.password && (
 						<p className="error">{formik.errors.password}</p>
 					)}
-					<button type="submit" className="register__button">
+					<button type="submit" className="register__button" disabled={!formik.isValid}>
 						Register
 					</button>
 
-					{error && <span className="register__error">Something went wrong!</span>}
+					{error && <span className="register__error">{error.toString()}</span>}
 
 					<p className="register__login">
 						Already have an account?{' '}

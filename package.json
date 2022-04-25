@@ -1,0 +1,21 @@
+{
+	"name": "blog-app",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"api": "cd api && yarn start",
+		"client": "cd client && yarn start"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ashiqfury/react-blog-app.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/ashiqfury/react-blog-app/issues"
+	},
+	"homepage": "https://github.com/ashiqfury/react-blog-app#readme"
+}

@@ -6,47 +6,44 @@ import { useHistory } from 'react-router-dom'
 import { useFormik } from 'formik'
 
 const Login = () => {
-	const [error, setError] = useState(false)
+	const [error, setError] = useState('')
 	const { dispatch, isFetching } = useContext(Context)
 	const history = useHistory()
 
-	const formik = useFormik({
-		initialValues: {
-			username: '',
-			password: '',
-		},
-		onSubmit: async values => {
-			setError(false)
-			dispatch({ type: 'LOGIN_START' })
-			try {
-				const res = await axios.post('auth/login', values)
-				dispatch({ type: 'LOGIN_SUCCESS', payload: res.data })
-			} catch (err) {
-				dispatch({ type: 'LOGIN_FAILURE' })
-				setError(true)
-			}
-		},
-		validate: values => {
-			const errors = {}
-			if (!values.username) {
-				errors.username = 'Required'
-			} else if (values.username.length < 3) {
-				errors.username = 'Must be 3 characters or more'
-			} else if (values.username.length > 15) {
-				errors.username = 'Must be 15 characters or less'
-			} else if (!/^[a-zA-Z0-9]+$/.test(values.username)) {
-				errors.username = 'Must be alphanumeric'
-			}
+	const initialValues = {
+		username: '',
+		password: '',
+	}
 
-			if (!values.password) {
-				errors.password = 'Required'
-			} else if (values.password.length < 8) {
-				errors.password = 'Password must be at least 8 characters'
-			} else if (values.password.length > 30) {
-				errors.password = 'Password must be less than 30 characters'
-			}
-			return errors
-		},
+	const onSubmit = async values => {
+		setError('')
+		dispatch({ type: 'LOGIN_START' })
+		try {
+			const res = await axios.post('auth/login', values)
+			dispatch({ type: 'LOGIN_SUCCESS', payload: res.data })
+		} catch (err) {
+			dispatch({ type: 'LOGIN_FAILURE' })
+			setError(err.response.data)
+			console.log(err.response.data)
+		}
+	}
+
+	const validate = values => {
+		const errors = {}
+		if (!values.username) errors.username = 'Required'
+		else if (values.username.length < 3) errors.username = 'Must be 3 characters or more'
+		else if (values.username.length > 15) errors.username = 'Must be 15 characters or less'
+		else if (!/^[a-zA-Z0-9]+$/.test(values.username)) errors.username = 'Must be alphanumeric'
+		if (!values.password) errors.password = 'Required'
+		else if (values.password.length < 8) errors.password = 'Must be at least 8 characters'
+		else if (values.password.length > 30) errors.password = 'Must be less than 30 characters'
+		return errors
+	}
+
+	const formik = useFormik({
+		initialValues,
+		onSubmit,
+		validate,
 	})
 
 	useEffect(() => {
@@ -62,10 +59,10 @@ const Login = () => {
 	}
 
 	return (
-		<div className="login" onSubmit={formik.handleSubmit}>
+		<div className="login">
 			<div className="login__left">
 				<span className="login__title">Login</span>
-				<form className="login__form">
+				<form className="login__form" onSubmit={formik.handleSubmit}>
 					<label htmlFor="username">Username</label>
 					<input
 						className="login__input"
@@ -99,11 +96,11 @@ const Login = () => {
 						<p className="error">{formik.errors.password}</p>
 					) : null}
 
-					<button className="login__button" disabled={isFetching}>
+					<button type="submit" className="login__button" disabled={isFetching || !formik.isValid}>
 						{isFetching ? 'Loading...' : 'Login'}
 					</button>
 
-					{error && <span className="register__error">Something went wrong!</span>}
+					{error && <span className="register__error">{error.toString()}</span>}
 
 					<p className="login__register">
 						You don't have an account?{' '}
