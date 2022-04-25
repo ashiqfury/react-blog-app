@@ -8,7 +8,6 @@ const PasswordEye = ({ passwordRef, page, setPassword }) => {
 		setEyeIcon(!eyeIcon)
 		setPassVisiblity(!passVisiblity)
 	}
-
 	return (
 		<>
 			<label>Password</label>
