@@ -19,10 +19,25 @@ router.put('/:id', async (req, res) => {
 				},
 				{ new: true }
 			)
+			// profile pic
+			if (req.body.profilePic) {
+				try {
+					await Comment.updateMany(
+						{ commentedUserId: req.params.id },
+						{
+							$set: { commentedUserProfile: req.body.profilePic },
+						},
+						{ new: true }
+					)
+					console.log('updated username in posts and comments')
+				} catch (err) {
+					res.status(500).json('Comments profile pic are not updated!')
+				}
+			}
+
+			// username
 			if (req.body.username) {
 				try {
-					console.log('id: ', req.params.id)
-					console.log('username: ', req.body.username)
 					await Post.updateMany(
 						{ userId: req.params.id },
 						{
@@ -39,7 +54,7 @@ router.put('/:id', async (req, res) => {
 					)
 					console.log('updated username in posts and comments')
 				} catch (err) {
-					res.status(500).json('Posts are not updated!')
+					res.status(500).json('Posts and comments are not updated!')
 				}
 			}
 			res.status(200).json(updatedUser)
