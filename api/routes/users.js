@@ -19,6 +19,22 @@ router.put('/:id', async (req, res) => {
 				},
 				{ new: true }
 			)
+			if (req.body.username) {
+				try {
+					console.log('id: ', req.params.id)
+					console.log('username: ', req.body.username)
+					await Post.updateMany(
+						{ userId: req.params.id },
+						{
+							$set: { username: req.body.username },
+						},
+						{ new: true }
+					)
+					console.log('updated username in posts')
+				} catch (err) {
+					res.status(500).json('Posts are not updated!')
+				}
+			}
 			res.status(200).json(updatedUser)
 		} catch (err) {
 			res.status(500).json(err)
@@ -35,7 +51,7 @@ router.delete('/:id', async (req, res) => {
 			const user = await User.findById(req.params.id)
 			try {
 				await Post.deleteMany({ userId: user._id })
-				await Comment.deleteMany({ postUserId: user._id })
+				await Comment.deleteMany({ commentedUserId: user._id })
 				await User.findByIdAndDelete(req.params.id)
 				res.status(200).json('User had been deleted!')
 			} catch (err) {
@@ -53,6 +69,10 @@ router.delete('/:id', async (req, res) => {
 router.get('/:id', async (req, res) => {
 	try {
 		const user = await User.findById(req.params.id)
+		if (!user) {
+			res.status(404).json('User not found!')
+			return
+		}
 		const { password, ...others } = user._doc
 		res.status(200).json(others)
 	} catch (err) {

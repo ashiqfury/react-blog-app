@@ -1,18 +1,27 @@
 {
-	"name": "blog-app",
+	"name": "blog-application",
 	"version": "1.0.0",
-	"description": "",
+	"description": "A blog application using Node.js, Express, MongoDB and Mongoose as a backend and React as a frontend with authentication and authorization.",
 	"main": "index.js",
 	"scripts": {
 		"api": "cd api && yarn start",
-		"client": "cd client && yarn start"
+		"client": "cd client && yarn start",
+		"sass": "cd client && yarn sass"
 	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/ashiqfury/react-blog-app.git"
 	},
-	"keywords": [],
-	"author": "",
+	"keywords": [
+		"blog",
+		"node",
+		"express",
+		"mongodb",
+		"mongoose",
+		"react",
+		"react-router"
+	],
+	"author": "ashiqfury",
 	"license": "ISC",
 	"bugs": {
 		"url": "https://github.com/ashiqfury/react-blog-app/issues"

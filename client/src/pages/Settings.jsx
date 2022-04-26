@@ -49,6 +49,7 @@ const Settings = () => {
 			e.target.reset()
 		} catch (err) {
 			dispatch({ type: 'UPDATE_FAILURE' })
+			console.log(err.response.data)
 		}
 	}
 
