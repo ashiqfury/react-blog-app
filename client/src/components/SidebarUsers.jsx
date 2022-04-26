@@ -57,9 +57,14 @@ const SidebarUsers = () => {
 			<div className="sidebar__item">
 				<span className="sidebar__title">ABOUT ME</span>
 				{user?.profilePic ? (
-					<img className="sidebar__img" src={PF + user?.profilePic} alt="Avatar" />
+					<img
+						className="sidebar__img"
+						src={PF + user?.profilePic}
+						alt="Avatar"
+						crossOrigin="true"
+					/>
 				) : (
-					<img className="sidebar__img" src={avatar} alt="Avatar" />
+					<img className="sidebar__img" src={avatar} alt="Avatar" crossOrigin="true" />
 				)}
 				<span className="sidebar__name">{user?.name}</span>
 				<p className="sidebar__bio">{user?.bio}</p>
@@ -83,9 +88,14 @@ const SidebarUsers = () => {
 					{users.map(u => (
 						<Link to={`/?userId=${u._id}`} className="link sidebar__list--item" key={u.username}>
 							{u?.profilePic ? (
-								<img src={PF + u.profilePic} alt="Profile" className="sidebar__list--img" />
+								<img
+									src={PF + u.profilePic}
+									alt="Profile"
+									className="sidebar__list--img"
+									crossOrigin="true"
+								/>
 							) : (
-								<img src={avatar} alt="Profile" className="sidebar__list--img" />
+								<img src={avatar} alt="Profile" className="sidebar__list--img" crossOrigin="true" />
 							)}
 
 							<li className="sidebar__list--name">{u.username}</li>

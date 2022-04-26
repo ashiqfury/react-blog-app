@@ -54,7 +54,9 @@ const Write = () => {
 	return (
 		<div className="write">
 			<h3 className="write__heading">Create a new post</h3>
-			{file && <img src={URL.createObjectURL(file)} alt="Post" className="write__img" />}
+			{file && (
+				<img src={URL.createObjectURL(file)} alt="Post" className="write__img" crossOrigin="true" />
+			)}
 			<form className="write__form" onSubmit={handleSubmit}>
 				<div className="write__form--group">
 					<label htmlFor="fileInput">

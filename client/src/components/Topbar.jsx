@@ -67,9 +67,9 @@ const Topbar = () => {
 					<>
 						<Link to="/settings" className="link">
 							{user.profilePic ? (
-								<img className="topbar__img" src={PF + user.profilePic} alt="" />
+								<img className="topbar__img" src={PF + user.profilePic} alt="" crossOrigin="true" />
 							) : (
-								<img className="topbar__img" src={avatar} alt="" />
+								<img className="topbar__img" src={avatar} alt="" crossOrigin="true" />
 							)}
 						</Link>
 						<Link to="/settings" className="link">

@@ -25,7 +25,12 @@ const About = () => {
 				<div className="about__left">
 					<span className="about__left__logo">Fury Blogz.</span>
 					<div>
-						<img src={fury} alt="Developer Profile" className="about__left__dev" />
+						<img
+							src={fury}
+							alt="Developer Profile"
+							className="about__left__dev"
+							crossOrigin="true"
+						/>
 						<span className="about__left__name">Ashiq Fury</span>
 						<span className="about__left__desc">
 							Building fullstack projects with passion and love. I am creating a new world with

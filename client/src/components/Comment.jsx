@@ -18,7 +18,7 @@ const Comment = ({ comment }) => {
 		<div className="comment">
 			<div className="comment__info">
 				<div className="comment__info--left">
-					<img src={PF + comment.commentedUserProfile} alt="" />
+					<img src={PF + comment.commentedUserProfile} alt="" crossOrigin="true" />
 					<span>{comment.commentedUsername}</span>
 				</div>
 				<div className="comment__info--right">

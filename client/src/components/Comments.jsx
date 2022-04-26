@@ -55,7 +55,9 @@ const Comments = ({ post, path }) => {
 			)}
 			<div className="comment__wrapper">
 				{comments?.length !== 0 &&
-					comments?.map(comment => <Comment key={comment._id} comment={comment} />)}
+					comments
+						?.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+						?.map(comment => <Comment key={comment._id} comment={comment} />)}
 			</div>
 		</div>
 	)

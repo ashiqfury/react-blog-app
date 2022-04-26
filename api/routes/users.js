@@ -30,7 +30,14 @@ router.put('/:id', async (req, res) => {
 						},
 						{ new: true }
 					)
-					console.log('updated username in posts')
+					await Comment.updateMany(
+						{ commentedUserId: req.params.id },
+						{
+							$set: { commentedUsername: req.body.username },
+						},
+						{ new: true }
+					)
+					console.log('updated username in posts and comments')
 				} catch (err) {
 					res.status(500).json('Posts are not updated!')
 				}

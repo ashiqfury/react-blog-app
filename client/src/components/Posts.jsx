@@ -10,7 +10,7 @@ const Posts = ({ posts }) => {
 
 			{posts.length === 0 && (
 				<div className="posts__error">
-					<img src={noPostImg} alt="Not Found" className="posts__error--img" />
+					<img src={noPostImg} alt="Not Found" className="posts__error--img" crossOrigin="true" />
 					<p className="posts__error--message">No Posts Available!</p>
 				</div>
 			)}

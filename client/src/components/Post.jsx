@@ -6,7 +6,9 @@ const Post = ({ post }) => {
 		<div className="post">
 			<Link to={`/post/${post._id}`} className="link">
 				<div className="post__tag">{post.username}</div>
-				{post.photo && <img src={PF + post.photo} alt="Post" className="post__img" />}
+				{post.photo && (
+					<img src={PF + post.photo} alt="Post" className="post__img" crossOrigin="true" />
+				)}
 				<div className="post__info">
 					<div className="post__info--cats">
 						{post?.categories.map(cat => (
