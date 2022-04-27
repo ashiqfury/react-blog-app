@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useContext } from 'react'
+import toast, { Toaster } from 'react-hot-toast'
 import { Context } from '../context/Context'
 
 const Comment = ({ comment }) => {
@@ -9,13 +10,15 @@ const Comment = ({ comment }) => {
 	const handleDelete = async () => {
 		try {
 			await axios.delete(`/comments/${comment._id}`).then(() => window.location.reload())
+			toast.success('Comment has been deleted!', { position: 'bottom-center', className: 'toast' })
 		} catch (err) {
-			console.log(err)
+			toast.error('Comment deleting failed!', { position: 'bottom-center', className: 'toast' })
 		}
 	}
 
 	return (
 		<div className="comment">
+			<Toaster />
 			<div className="comment__info">
 				<div className="comment__info--left">
 					<img src={PF + comment.commentedUserProfile} alt="" crossOrigin="true" />

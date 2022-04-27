@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from 'react'
 import Sidebar from '../components/Sidebar'
 import { Context } from '../context/Context'
 import { animation } from '../animations/settings'
+import toast, { Toaster } from 'react-hot-toast'
 
 const Settings = () => {
 	const { user, dispatch } = useContext(Context)
@@ -45,10 +46,12 @@ const Settings = () => {
 		try {
 			const res = await axios.put(`/users/${user._id}`, updatedUser)
 			setSuccess(true)
+			toast.success('Update Successful', { position: 'bottom-center', className: 'toast' })
 			dispatch({ type: 'UPDATE_SUCCESS', payload: res.data })
 			e.target.reset()
 		} catch (err) {
 			dispatch({ type: 'UPDATE_FAILURE' })
+			toast.error('Update failed', { position: 'bottom-center', className: 'toast' })
 			console.log(err.response.data)
 		}
 	}
@@ -56,8 +59,11 @@ const Settings = () => {
 	const handleDelete = async () => {
 		try {
 			await axios.delete(`/users/${user._id}`, { data: { userId: user._id } })
+			toast.success('Account has been deleted!', { position: 'bottom-center', className: 'toast' })
 			dispatch({ type: 'LOGOUT' })
-		} catch (err) {}
+		} catch (err) {
+			toast.err('Failed to delete account!', { position: 'bottom-center', className: 'toast' })
+		}
 	}
 
 	useEffect(() => {
@@ -66,6 +72,7 @@ const Settings = () => {
 
 	return (
 		<div className="settings">
+			<Toaster />
 			<div className="settings__wrapper">
 				<div className="settings__title">
 					<span className="settings__title--update">Update your account</span>

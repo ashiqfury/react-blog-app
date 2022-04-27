@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from 'react'
 import { Context } from '../context/Context'
 import { animation } from '../animations/write'
 import { useHistory } from 'react-router-dom'
+import toast, { Toaster } from 'react-hot-toast'
 
 const Write = () => {
 	const [title, setTitle] = useState('')
@@ -33,7 +34,7 @@ const Write = () => {
 		}
 		if (file) {
 			const data = new FormData()
-			const filename = Date.now() + file.name
+			const filename = user.username + Date.now()
 			data.append('name', filename)
 			data.append('file', file)
 			newPost.photo = filename
@@ -43,8 +44,11 @@ const Write = () => {
 		}
 		try {
 			const res = await axios.post('/posts', newPost)
+			toast.success('Post created!', { position: 'bottom-center', className: 'toast' })
 			history.replace(`/post/${res.data._id}`)
-		} catch (err) {}
+		} catch (err) {
+			toast.error('Post creation failed!', { position: 'bottom-center', className: 'toast' })
+		}
 	}
 
 	useEffect(() => {
@@ -53,6 +57,7 @@ const Write = () => {
 
 	return (
 		<div className="write">
+			<Toaster />
 			<h3 className="write__heading">Create a new post</h3>
 			{file && (
 				<img src={URL.createObjectURL(file)} alt="Post" className="write__img" crossOrigin="true" />

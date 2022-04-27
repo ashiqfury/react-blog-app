@@ -2,6 +2,7 @@ import axios from 'axios'
 import { useContext, useEffect, useState } from 'react'
 import { Context } from '../context/Context'
 import Comment from './Comment'
+import toast, { Toaster } from 'react-hot-toast'
 
 const Comments = ({ post, path }) => {
 	const { user } = useContext(Context)
@@ -32,11 +33,15 @@ const Comments = ({ post, path }) => {
 					commentedUserProfile: user.profilePic,
 				})
 				.then(() => window.location.reload())
-		} catch (err) {}
+			toast.success('Comment posted Successful!', { position: 'bottom-center', className: 'toast' })
+		} catch (err) {
+			toast.error('Comment posting failed!', { position: 'bottom-center', className: 'toast' })
+		}
 	}
 
 	return (
 		<div className="comments">
+			<Toaster />
 			{(comments?.length !== 0 || (user?._id !== post.userId && user !== null)) && (
 				<span className="comments__title">Comments: </span>
 			)}

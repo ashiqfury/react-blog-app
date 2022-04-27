@@ -19,7 +19,7 @@ router.put('/:id', async (req, res) => {
 				},
 				{ new: true }
 			)
-			// profile pic
+			// updating profile picture in user's comments
 			if (req.body.profilePic) {
 				try {
 					await Comment.updateMany(
@@ -35,7 +35,7 @@ router.put('/:id', async (req, res) => {
 				}
 			}
 
-			// username
+			// updating username in user's posts and comments
 			if (req.body.username) {
 				try {
 					await Post.updateMany(

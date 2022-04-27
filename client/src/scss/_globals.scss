@@ -51,3 +51,11 @@ button:disabled {
 	cursor: not-allowed;
 	opacity: 0.87;
 }
+
+.toast {
+	background: #00b3d6;
+	color: #fff;
+	font-family: Josefin Sans;
+	cursor: pointer;
+	border: 2px solid white;
+}

@@ -4,6 +4,7 @@ import axios from 'axios'
 import { Context } from '../context/Context'
 import Comments from './Comments'
 import { animation } from '../animations/single'
+import toast, { Toaster } from 'react-hot-toast'
 
 const SinglePost = () => {
 	const location = useLocation()
@@ -41,8 +42,11 @@ const SinglePost = () => {
 			await axios.delete(`/posts/${path}`, {
 				data: { username: user.username, userId: user._id, admin: user.admin },
 			})
+			toast.success('Post deleted Successful!', { position: 'bottom-center', className: 'toast' })
 			window.location.replace('/')
-		} catch (err) {}
+		} catch (err) {
+			toast.error('Post delete failed!', { position: 'bottom-center', className: 'toast' })
+		}
 	}
 
 	const handleUpdate = async () => {
@@ -61,7 +65,10 @@ const SinglePost = () => {
 				userId: user._id,
 				admin: user.admin,
 			})
-		} catch (err) {}
+			toast.success('Update Successful!', { position: 'bottom-center', className: 'toast' })
+		} catch (err) {
+			toast.error('Update failed!', { position: 'bottom-center', className: 'toast' })
+		}
 	}
 
 	useEffect(() => {
@@ -70,6 +77,7 @@ const SinglePost = () => {
 
 	return (
 		<div className="singlePost">
+			<Toaster />
 			<div className="singlePost__wrapper">
 				{post.photo && (
 					<img src={PF + post.photo} alt="" className="singlePost__img" crossOrigin="true" />

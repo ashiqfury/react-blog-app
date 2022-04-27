@@ -4,27 +4,26 @@ import { Context } from '../context/Context'
 import { sliderAnim } from '../animations/login'
 import { useHistory } from 'react-router-dom'
 import { useFormik } from 'formik'
+import toast, { Toaster } from 'react-hot-toast'
 
 const Login = () => {
 	const [error, setError] = useState('')
 	const { dispatch, isFetching } = useContext(Context)
 	const history = useHistory()
 
-	const initialValues = {
-		username: '',
-		password: '',
-	}
+	const initialValues = { username: '', password: '' }
 
 	const onSubmit = async values => {
 		setError('')
 		dispatch({ type: 'LOGIN_START' })
 		try {
 			const res = await axios.post('auth/login', values)
+			toast.success('Login Successful', { position: 'bottom-center', className: 'toast' })
 			dispatch({ type: 'LOGIN_SUCCESS', payload: res.data })
 		} catch (err) {
 			dispatch({ type: 'LOGIN_FAILURE' })
 			setError(err.response.data)
-			console.log(err.response.data)
+			toast.error(err.response.data, { position: 'bottom-center', className: 'toast' })
 		}
 	}
 
@@ -60,6 +59,7 @@ const Login = () => {
 
 	return (
 		<div className="login">
+			<Toaster />
 			<div className="login__left">
 				<span className="login__title">Login</span>
 				<form className="login__form" onSubmit={formik.handleSubmit}>

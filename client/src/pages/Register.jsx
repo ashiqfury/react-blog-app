@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { sliderAnim } from '../animations/register'
 import { useHistory } from 'react-router-dom'
 import { useFormik } from 'formik'
+import toast, { Toaster } from 'react-hot-toast'
 
 const Register = () => {
 	const [error, setError] = useState('')
@@ -17,9 +18,10 @@ const Register = () => {
 		setError('')
 		try {
 			const res = await axios.post('/auth/register', values)
+			toast.success('Register Successful', { position: 'bottom-center', className: 'toast' })
 			res.data && history.replace('/login')
 		} catch (err) {
-			console.log(err.response.data)
+			toast.error(err.response.data, { position: 'bottom-center', className: 'toast' })
 			setError(err.response.data)
 		}
 	}
@@ -56,6 +58,7 @@ const Register = () => {
 
 	return (
 		<div className="register">
+			<Toaster />
 			<div className="register__left">
 				<span>Fury Blogz.</span>
 				<p>
