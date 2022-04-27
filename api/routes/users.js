@@ -12,13 +12,9 @@ router.put('/:id', async (req, res) => {
 			req.body.password = await bcrypt.hash(req.body.password, salt)
 		}
 		try {
-			const updatedUser = await User.findByIdAndUpdate(
-				req.params.id,
-				{
-					$set: req.body,
-				},
-				{ new: true }
-			)
+			const updatedUser = await User.findByIdAndUpdate(req.params.id, {
+				$set: req.body,
+			})
 			// updating profile picture in user's comments
 			if (req.body.profilePic) {
 				try {
@@ -26,8 +22,7 @@ router.put('/:id', async (req, res) => {
 						{ commentedUserId: req.params.id },
 						{
 							$set: { commentedUserProfile: req.body.profilePic },
-						},
-						{ new: true }
+						}
 					)
 					console.log('updated username in posts and comments')
 				} catch (err) {

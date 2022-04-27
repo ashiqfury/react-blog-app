@@ -53,7 +53,6 @@ const Comments = ({ post, path }) => {
 						onChange={e => setComment(e.target.value)}
 					></textarea>
 					<button className="comments__button" onClick={handleSubmit}>
-						{/* Submit <i className="fas fa-check"></i> */}
 						<i className="comments__button--icon fas fa-check"></i>
 					</button>
 				</div>

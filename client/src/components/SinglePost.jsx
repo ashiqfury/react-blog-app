@@ -1,10 +1,11 @@
-import { useState, useEffect, useContext } from 'react'
+import { useState, useEffect, useContext, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import axios from 'axios'
 import { Context } from '../context/Context'
 import Comments from './Comments'
 import { animation } from '../animations/single'
 import toast, { Toaster } from 'react-hot-toast'
+import html2canvas from 'html2canvas'
 
 const SinglePost = () => {
 	const location = useLocation()
@@ -14,6 +15,7 @@ const SinglePost = () => {
 	const PF = 'http://localhost:2506/images/'
 
 	const { user } = useContext(Context)
+	const elementRef = useRef()
 
 	const [title, setTitle] = useState('')
 	const [desc, setDesc] = useState('')
@@ -71,6 +73,25 @@ const SinglePost = () => {
 		}
 	}
 
+	function downloadCanvas(element) {
+		html2canvas(element, { useCORS: true })
+			.then(canvas => {
+				var link = document.createElement('a')
+				document.body.appendChild(link)
+				link.download = 'html_image.jpg'
+				link.href = canvas.toDataURL()
+				link.target = '_blank'
+				link.click()
+				toast.success('Post download successful!', {
+					position: 'bottom-center',
+					className: 'toast',
+				})
+			})
+			.catch(err =>
+				toast.error('Post download failed!', { position: 'bottom-center', className: 'toast' })
+			)
+	}
+
 	useEffect(() => {
 		animation()
 	}, [])
@@ -78,7 +99,7 @@ const SinglePost = () => {
 	return (
 		<div className="singlePost">
 			<Toaster />
-			<div className="singlePost__wrapper">
+			<div className="singlePost__wrapper" ref={elementRef}>
 				{post.photo && (
 					<img src={PF + post.photo} alt="" className="singlePost__img" crossOrigin="true" />
 				)}
@@ -96,6 +117,10 @@ const SinglePost = () => {
 						{title}
 						{(post.userId === user?._id || user?.admin) && (
 							<div className="singlePost__edit" hidden={hidden}>
+								<i
+									className="singlePost__icon fa-solid fa-download"
+									onClick={() => downloadCanvas(elementRef.current)}
+								></i>
 								<i className="singlePost__icon far fa-edit" onClick={() => setUpdateMode(true)}></i>
 								<i className="singlePost__icon far fa-trash-alt" onClick={handleDelete}></i>
 							</div>

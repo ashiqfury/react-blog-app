@@ -50,6 +50,9 @@
 		}
 
 		&:first-child {
+			color: $star-command-blue;
+		}
+		&:nth-child(2) {
 			color: teal;
 		}
 		&:last-child {
