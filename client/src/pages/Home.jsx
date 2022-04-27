@@ -7,17 +7,22 @@ import { useLocation } from 'react-router-dom'
 import { Context } from '../context/Context'
 import SidebarUsers from '../components/SidebarUsers'
 import Footer from '../components/Footer'
+import LoadingIndicator from '../components/LoadingIndicator'
 
 const Home = () => {
 	const [posts, setPosts] = useState([])
+	const [isFetching, setIsFetching] = useState(false)
 	const { user } = useContext(Context)
 
 	const { search } = useLocation()
 
 	useEffect(() => {
 		const fetchPosts = async () => {
-			const res = await axios.get(`/posts/${search}`)
-			setPosts(res.data)
+			setIsFetching(true)
+			await axios.get(`/posts/${search}`).then(res => {
+				setPosts(res.data)
+				setIsFetching(false)
+			})
 		}
 		fetchPosts()
 	}, [search])
@@ -26,7 +31,7 @@ const Home = () => {
 		<>
 			<Header />
 			<div className="home" id="home">
-				<Posts posts={posts} />
+				{isFetching ? <LoadingIndicator /> : <Posts posts={posts} />}
 				{user && <>{search.includes('userId') ? <SidebarUsers /> : <Sidebar />}</>}
 			</div>
 			<Footer />

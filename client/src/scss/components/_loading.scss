@@ -1,0 +1,60 @@
+$color: $cerulean-crayola;
+$dot-size: 10px;
+
+.loadingIndicator {
+	flex: 9;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	margin: 20px;
+	margin-top: 50px;
+}
+
+.dotwrapper {
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	font-family: 'Josefin Sans', sans-serif;
+}
+
+.loading {
+	color: $color;
+	margin: 0 5px;
+	font-size: 2rem;
+}
+
+.dot0,
+.dot1,
+.dot2 {
+	background-color: $color;
+	border-radius: 50%;
+	width: $dot-size;
+	height: $dot-size;
+	margin: 0 5px;
+	animation: BounceAnimation 0.5s linear infinite;
+}
+
+.dot0 {
+	animation-delay: 0;
+}
+
+.dot1 {
+	animation-delay: 0.1s;
+}
+
+.dot2 {
+	animation-delay: 0.2s;
+}
+
+@keyframes BounceAnimation {
+	0% {
+		margin-bottom: 0;
+	}
+	50% {
+		margin-bottom: 15px;
+	}
+	100% {
+		margin-bottom: 0;
+	}
+}
