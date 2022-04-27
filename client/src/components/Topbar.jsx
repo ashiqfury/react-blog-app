@@ -4,19 +4,20 @@ import { Context } from '../context/Context'
 import avatar from '../assets/avatar.jpg'
 import { retriveTheme, saveTheme } from '../localStorage'
 import { topbar, topbar__element } from '../animations/topbar'
-import { useHistory } from 'react-router-dom'
+import { useLocation, useHistory } from 'react-router-dom'
 
 const Topbar = () => {
 	const { user, dispatch } = useContext(Context)
 	const [dark, setDark] = useState(false)
 
 	const history = useHistory()
+	const location = useLocation()
 
 	const PF = 'http://localhost:2506/images/'
 
 	const handleLogout = () => {
 		dispatch({ type: 'LOGOUT' })
-		window.location.replace('/login')
+		history.replace('/login')
 	}
 
 	useEffect(() => {
@@ -24,6 +25,13 @@ const Topbar = () => {
 		topbar__element('left')
 		topbar__element('right')
 	}, [])
+
+	useEffect(() => {
+		;[...document.querySelectorAll('.topbar__list--item')].forEach(item => {
+			item.classList.remove('active')
+			item.classList.contains(location.pathname) && item.classList.add('active')
+		})
+	}, [location.pathname])
 
 	useEffect(() => retriveTheme(setDark), [])
 
@@ -45,16 +53,16 @@ const Topbar = () => {
 			</div>
 			<div className="topbar__center">
 				<ul className="topbar__list list">
-					<li className="topbar__list--item" onClick={() => history.push('/')}>
+					<li className="topbar__list--item /" onClick={() => history.push('/')}>
 						HOME
 					</li>
-					<li className="topbar__list--item" onClick={() => history.push('/write')}>
+					<li className="topbar__list--item /write" onClick={() => history.push('/write')}>
 						WRITE
 					</li>
-					<li className="topbar__list--item" onClick={() => history.push('/contact')}>
+					<li className="topbar__list--item /contact" onClick={() => history.push('/contact')}>
 						CONTACT
 					</li>
-					<li className="topbar__list--item" onClick={() => history.push('/about')}>
+					<li className="topbar__list--item /about" onClick={() => history.push('/about')}>
 						ABOUT
 					</li>
 					<li className="topbar__list--item" onClick={handleLogout}>

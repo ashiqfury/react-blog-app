@@ -1,8 +1,9 @@
 import axios from 'axios'
 import { useContext, useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useHistory, useLocation } from 'react-router-dom'
 import avatar from '../assets/avatar.jpg'
 import { Context } from '../context/Context'
+import toast, { Toaster } from 'react-hot-toast'
 
 const SidebarUsers = () => {
 	const context = useContext(Context)
@@ -12,6 +13,7 @@ const SidebarUsers = () => {
 	const PF = 'http://localhost:2506/images/'
 	const { search } = useLocation()
 	const ID = search.split('=')[1]
+	const history = useHistory()
 
 	useEffect(() => {
 		const getUser = async () => {
@@ -48,12 +50,16 @@ const SidebarUsers = () => {
 			await axios.delete(`/users/${ID}`, {
 				data: { userId: context.user._id, admin: context.user.admin },
 			})
-			window.location.replace('/')
-		} catch (err) {}
+			toast.success('User delete Successful', { position: 'bottom-center', className: 'toast' })
+			history.replace('/')
+		} catch (err) {
+			toast.error('User delete failed!', { position: 'bottom-center', className: 'toast' })
+		}
 	}
 
 	return (
 		<div className="sidebar">
+			<Toaster />
 			<div className="sidebar__item">
 				<span className="sidebar__title">ABOUT ME</span>
 				{user?.profilePic ? (
