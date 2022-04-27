@@ -1,11 +1,12 @@
 import { useState, useEffect, useContext, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import axios from 'axios'
-import { Context } from '../context/Context'
-import Comments from './Comments'
-import { animation } from '../animations/single'
 import toast, { Toaster } from 'react-hot-toast'
+import axios from 'axios'
 import html2canvas from 'html2canvas'
+
+import { Context } from '../context/Context'
+import { animation } from '../animations/single'
+import Comments from './Comments'
 
 const SinglePost = () => {
 	const location = useLocation()

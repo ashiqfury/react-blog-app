@@ -1,10 +1,11 @@
-import axios from 'axios'
 import { useContext, useEffect, useState } from 'react'
-import { Context } from '../context/Context'
-import { sliderAnim } from '../animations/login'
 import { useHistory } from 'react-router-dom'
 import { useFormik } from 'formik'
 import toast, { Toaster } from 'react-hot-toast'
+import axios from 'axios'
+
+import { Context } from '../context/Context'
+import { sliderAnim } from '../animations/login'
 
 const Login = () => {
 	const [error, setError] = useState('')

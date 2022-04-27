@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useLocation, useHistory, Link } from 'react-router-dom'
+
 import { Context } from '../context/Context'
-import avatar from '../assets/avatar.jpg'
 import { retriveTheme, saveTheme } from '../localStorage'
 import { topbar, topbar__element } from '../animations/topbar'
-import { useLocation, useHistory } from 'react-router-dom'
+import avatar from '../assets/avatar.jpg'
 
 const Topbar = () => {
 	const { user, dispatch } = useContext(Context)

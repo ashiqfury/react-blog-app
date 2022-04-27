@@ -1,9 +1,10 @@
-import axios from 'axios'
 import { useContext, useEffect, useState } from 'react'
+import toast, { Toaster } from 'react-hot-toast'
+import axios from 'axios'
+
 import Sidebar from '../components/Sidebar'
 import { Context } from '../context/Context'
 import { animation } from '../animations/settings'
-import toast, { Toaster } from 'react-hot-toast'
 
 const Settings = () => {
 	const { user, dispatch } = useContext(Context)

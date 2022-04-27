@@ -1,6 +1,6 @@
 import { useContext } from 'react'
-import Sidebar from '../components/Sidebar'
-import SinglePost from '../components/SinglePost'
+
+import { Sidebar, SinglePost } from '../includes/components'
 import { Context } from '../context/Context'
 
 const Single = () => {

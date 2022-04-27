@@ -1,6 +1,7 @@
-import axios from 'axios'
 import { useContext } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
+import axios from 'axios'
+
 import { Context } from '../context/Context'
 
 const Comment = ({ comment }) => {

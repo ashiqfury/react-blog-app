@@ -24,9 +24,7 @@ $dot-size: 10px;
 	font-size: 2rem;
 }
 
-.dot0,
-.dot1,
-.dot2 {
+.dot {
 	background-color: $color;
 	border-radius: 50%;
 	width: $dot-size;

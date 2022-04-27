@@ -1,13 +1,16 @@
-import Header from '../components/Header'
-import Posts from '../components/Posts'
-import Sidebar from '../components/Sidebar'
-import axios from 'axios'
 import { useContext, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import axios from 'axios'
+
 import { Context } from '../context/Context'
-import SidebarUsers from '../components/SidebarUsers'
-import Footer from '../components/Footer'
-import LoadingIndicator from '../components/LoadingIndicator'
+import {
+	Header,
+	Footer,
+	LoadingIndicator,
+	Posts,
+	Sidebar,
+	SidebarUsers,
+} from '../includes/components'
 
 const Home = () => {
 	const [posts, setPosts] = useState([])

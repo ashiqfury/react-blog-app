@@ -1,5 +1,5 @@
-import gsap from 'gsap'
 import { useEffect } from 'react'
+import gsap from 'gsap'
 
 const Tech = ({ img, name, desc, alt }) => {
 	useEffect(() => {

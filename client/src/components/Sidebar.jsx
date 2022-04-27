@@ -1,9 +1,10 @@
-import axios from 'axios'
 import { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
+
 import { Context } from '../context/Context'
-import avatar from '../assets/avatar.jpg'
 import { animation } from '../animations/sidebar'
+import avatar from '../assets/avatar.jpg'
 
 const Sidebar = () => {
 	const [cats, setCats] = useState([])

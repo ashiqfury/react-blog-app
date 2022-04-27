@@ -1,9 +1,10 @@
-import axios from 'axios'
 import { useContext, useEffect, useState } from 'react'
 import { Link, useHistory, useLocation } from 'react-router-dom'
-import avatar from '../assets/avatar.jpg'
-import { Context } from '../context/Context'
 import toast, { Toaster } from 'react-hot-toast'
+import axios from 'axios'
+
+import { Context } from '../context/Context'
+import avatar from '../assets/avatar.jpg'
 
 const SidebarUsers = () => {
 	const context = useContext(Context)

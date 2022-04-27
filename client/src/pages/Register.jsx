@@ -1,9 +1,10 @@
-import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { sliderAnim } from '../animations/register'
 import { useHistory } from 'react-router-dom'
 import { useFormik } from 'formik'
 import toast, { Toaster } from 'react-hot-toast'
+import axios from 'axios'
+
+import { sliderAnim } from '../animations/register'
 
 const Register = () => {
 	const [error, setError] = useState('')

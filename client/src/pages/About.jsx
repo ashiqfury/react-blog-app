@@ -1,16 +1,8 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
+
 import Tech from '../components/Tech'
-import fury from '../assets/fury.jpg'
-import react from '../assets/react.png'
-import node from '../assets/node.png'
-import express from '../assets/express.png'
-import mongo from '../assets/mongo.png'
-import sass from '../assets/sass.png'
-import redux from '../assets/redux.png'
-import git from '../assets/git.png'
-import github from '../assets/github.png'
 import { bioAnim, containerAnim } from '../animations/about'
-// import email from '../assets/email.png'
+import { fury, react, node, express, mongo, sass, redux, git, github } from '../includes/assets'
 
 const About = () => {
 	useEffect(() => {

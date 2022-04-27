@@ -1,4 +1,3 @@
-import React from 'react'
 import img from '../assets/404.svg'
 const NotFound404 = () => {
 	return (

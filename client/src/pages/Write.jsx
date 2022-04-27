@@ -1,9 +1,10 @@
-import axios from 'axios'
 import { useContext, useEffect, useState } from 'react'
-import { Context } from '../context/Context'
-import { animation } from '../animations/write'
 import { useHistory } from 'react-router-dom'
 import toast, { Toaster } from 'react-hot-toast'
+import axios from 'axios'
+
+import { Context } from '../context/Context'
+import { animation } from '../animations/write'
 
 const Write = () => {
 	const [title, setTitle] = useState('')

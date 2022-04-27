@@ -1,5 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import emailjs from '@emailjs/browser'
+import toast, { Toaster } from 'react-hot-toast'
+
 import { containerAnim, animation, button, inputAnim } from '../animations/contact'
 
 const Contact = () => {
@@ -26,10 +28,15 @@ const Contact = () => {
 					setSuccess(true)
 					setIsSending(false)
 					e.target.reset()
+					toast.success('Email send Successful! 👍', {
+						position: 'bottom-center',
+						className: 'toast',
+					})
 				},
 				error => {
 					setFailure(true)
 					setIsSending(false)
+					toast.error('Email send failed! 😢', { position: 'bottom-center', className: 'toast' })
 				}
 			)
 	}
@@ -44,6 +51,7 @@ const Contact = () => {
 
 	return (
 		<section className="contact">
+			<Toaster />
 			<div className="container">
 				<div className="contact-info contactInfo">
 					<div>
@@ -135,7 +143,6 @@ const Contact = () => {
 							<span>Write your message here...</span>
 						</div>
 						<div className="inputBox w100 btn-submit">
-							{/* <input type="submit" value="Send" /> */}
 							{isSending ? (
 								<button type="submit">
 									Sending...<i className="fas fa-paper-plane"></i>
