@@ -29,7 +29,7 @@ const SidebarUsers = () => {
 		const getPosts = async () => {
 			const res = await axios.get('/posts')
 			await res.data.map(p => p.categories.map(cat => list.push(cat)))
-			list = [...new Set(list)] // remove duplicates
+			list = [...new Set(list)].reverse() // remove duplicates
 			list = (list.length > 6 && list.slice(0, 6)) || list // slice when list greater than 6
 			setCats(list)
 		}

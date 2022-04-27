@@ -10,7 +10,7 @@ import github from '../assets/github.png'
 
 export { fury, react, node, express, mongo, sass, redux, git, github }
 
-// returns images for production.
+// returns images object for production.
 const importAll = r => {
 	let images = {}
 	r.keys().forEach((item, index) => {
@@ -18,5 +18,7 @@ const importAll = r => {
 	})
 	return images
 }
-const images = importAll(require.context('../assets', false, /\.(png|jpe?g|svg)$/))
-console.log(images)
+importAll(require.context('../assets', false, /\.(png|jpe?g|svg)$/))
+// const images = importAll(require.context('../assets', false, /\.(png|jpe?g|svg)$/))
+
+// you can access these images as => fury = images['fury.jpg']
