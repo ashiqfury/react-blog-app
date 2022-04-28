@@ -1,17 +1,19 @@
-import Topbar from './components/Topbar'
-import Home from './pages/Home'
-import Login from './pages/Login'
-import Register from './pages/Register'
-import Settings from './pages/Settings'
-import Single from './pages/Single'
-import Write from './pages/Write'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { useContext } from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { Context } from './context/Context'
+import Topbar from './components/Topbar'
+import {
+	Home,
+	Login,
+	Register,
+	Settings,
+	Single,
+	Write,
+	About,
+	Contact,
+	NotFound404,
+} from './includes/pages'
 import '../src/scss/style.scss'
-import Contact from './pages/Contact'
-import NotFound404 from './pages/NotFound404'
-import About from './pages/About'
 
 const App = () => {
 	const { user } = useContext(Context)

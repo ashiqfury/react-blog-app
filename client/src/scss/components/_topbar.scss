@@ -148,6 +148,9 @@ body.dark {
 				opacity: 0.87;
 			}
 		}
+		&__list--item.active {
+			color: $cerulean-crayola;
+		}
 		&__list--item:hover,
 		&__username:hover {
 			color: $cerulean-crayola;

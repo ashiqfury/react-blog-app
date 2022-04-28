@@ -6,7 +6,7 @@ import html2canvas from 'html2canvas'
 
 import { Context } from '../context/Context'
 import { animation } from '../animations/single'
-import Comments from './Comments'
+import { Comments, LoadingIndicator } from '../includes/components'
 
 const SinglePost = () => {
 	const location = useLocation()
@@ -100,84 +100,93 @@ const SinglePost = () => {
 	return (
 		<div className="singlePost">
 			<Toaster />
-			<div className="singlePost__wrapper" ref={elementRef}>
-				{post.photo && (
-					<img src={PF + post.photo} alt="" className="singlePost__img" crossOrigin="true" />
-				)}
+			{post ? (
+				<div className="singlePost__wrapper" ref={elementRef}>
+					{post.photo && (
+						<img src={PF + post.photo} alt="" className="singlePost__img" crossOrigin="true" />
+					)}
 
-				{updateMode ? (
-					<input
-						type="text"
-						className="singlePost__title--input"
-						value={title}
-						autoFocus
-						onChange={e => setTitle(e.target.value)}
-					/>
-				) : (
-					<h1 className="singlePost__title">
-						{title}
-						{(post.userId === user?._id || user?.admin) && (
+					{updateMode ? (
+						<input
+							type="text"
+							className="singlePost__title--input"
+							value={title}
+							autoFocus
+							onChange={e => setTitle(e.target.value)}
+						/>
+					) : (
+						<h1 className="singlePost__title">
+							{title}
 							<div className="singlePost__edit" hidden={hidden}>
 								<i
 									className="singlePost__icon fa-solid fa-download"
 									onClick={() => downloadCanvas(elementRef.current)}
 								></i>
-								<i className="singlePost__icon far fa-edit" onClick={() => setUpdateMode(true)}></i>
-								<i className="singlePost__icon far fa-trash-alt" onClick={handleDelete}></i>
-							</div>
-						)}
-					</h1>
-				)}
-				<div className="singlePost__info">
-					<span className="singlePost__author">
-						Author:
-						<Link to={`/?userId=${post.userId}`} className="link">
-							<strong> {post.username}</strong>
-						</Link>
-					</span>
-					<span className="singlePost__date">{new Date(post.createdAt).toDateString()}</span>
-				</div>
-				<div className="singlePost__info">
-					<div className="singlePost__categories">
-						{(cats.length !== 0 || updateMode) && <span>Categories: </span>}
-						{updateMode ? (
-							<input
-								type="text"
-								className="singlePost__cats--input"
-								value={catsString}
-								onChange={e => setCatsString(e.target.value)}
-							/>
-						) : (
-							<>
-								{cats.length !== 0 && (
+								{(post.userId === user?._id || user?.admin) && (
 									<>
-										{cats.map(c => (
-											<Link to={`/?cat=${c}`} key={c} className="link">
-												<strong>{`${c} `}&nbsp;</strong>
-											</Link>
-										))}
+										<i
+											className="singlePost__icon far fa-edit"
+											onClick={() => setUpdateMode(true)}
+										></i>
+										<i className="singlePost__icon far fa-trash-alt" onClick={handleDelete}></i>
 									</>
 								)}
-							</>
-						)}
+							</div>
+						</h1>
+					)}
+					<div className="singlePost__info">
+						<span className="singlePost__author">
+							Author:
+							<Link to={`/?userId=${post.userId}`} className="link">
+								<strong> {post.username}</strong>
+							</Link>
+						</span>
+						<span className="singlePost__date">{new Date(post.createdAt).toDateString()}</span>
 					</div>
+					<div className="singlePost__info">
+						<div className="singlePost__categories">
+							{(cats.length !== 0 || updateMode) && <span>Categories: </span>}
+							{updateMode ? (
+								<input
+									type="text"
+									className="singlePost__cats--input"
+									value={catsString}
+									onChange={e => setCatsString(e.target.value)}
+								/>
+							) : (
+								<>
+									{cats.length !== 0 && (
+										<>
+											{cats.map(c => (
+												<Link to={`/?cat=${c}`} key={c} className="link">
+													<strong>{`${c} `}&nbsp;</strong>
+												</Link>
+											))}
+										</>
+									)}
+								</>
+							)}
+						</div>
+					</div>
+					{updateMode ? (
+						<textarea
+							value={desc}
+							className="singlePost__desc--input"
+							onChange={e => setDesc(e.target.value)}
+						/>
+					) : (
+						<p className="singlePost__desc">{desc}</p>
+					)}
+					{updateMode && (
+						<button className="singlePost__button" onClick={handleUpdate}>
+							Update
+						</button>
+					)}
+					<Comments post={post} path={path} />
 				</div>
-				{updateMode ? (
-					<textarea
-						value={desc}
-						className="singlePost__desc--input"
-						onChange={e => setDesc(e.target.value)}
-					/>
-				) : (
-					<p className="singlePost__desc">{desc}</p>
-				)}
-				{updateMode && (
-					<button className="singlePost__button" onClick={handleUpdate}>
-						Update
-					</button>
-				)}
-				<Comments post={post} path={path} />
-			</div>
+			) : (
+				<LoadingIndicator />
+			)}
 		</div>
 	)
 }
