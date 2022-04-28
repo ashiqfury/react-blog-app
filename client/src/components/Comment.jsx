@@ -3,9 +3,9 @@ import toast, { Toaster } from 'react-hot-toast'
 import axios from 'axios'
 
 import { Context } from '../context/Context'
+import { PF } from '../utils'
 
 const Comment = ({ comment }) => {
-	const PF = 'http://localhost:2506/images/'
 	const { user } = useContext(Context)
 
 	const handleDelete = async () => {

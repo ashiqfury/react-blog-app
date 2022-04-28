@@ -5,6 +5,7 @@ import axios from 'axios'
 import Sidebar from '../components/Sidebar'
 import { Context } from '../context/Context'
 import { animation } from '../animations/settings'
+import { PF } from '../utils'
 
 const Settings = () => {
 	const { user, dispatch } = useContext(Context)
@@ -18,7 +19,6 @@ const Settings = () => {
 	const [instagram, setInstagram] = useState('')
 	const [twitter, setTwitter] = useState('')
 	const [success, setSuccess] = useState(false)
-	const PF = 'http://localhost:2506/images/'
 
 	const handleSubmit = async e => {
 		e.preventDefault()

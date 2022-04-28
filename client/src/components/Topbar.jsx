@@ -5,6 +5,7 @@ import { Context } from '../context/Context'
 import { retriveTheme, saveTheme } from '../localStorage'
 import { topbar, topbar__element } from '../animations/topbar'
 import avatar from '../assets/avatar.jpg'
+import { PF } from '../utils'
 
 const Topbar = () => {
 	const { user, dispatch } = useContext(Context)
@@ -12,8 +13,6 @@ const Topbar = () => {
 
 	const history = useHistory()
 	const location = useLocation()
-
-	const PF = 'http://localhost:2506/images/'
 
 	const handleLogout = () => {
 		dispatch({ type: 'LOGOUT' })

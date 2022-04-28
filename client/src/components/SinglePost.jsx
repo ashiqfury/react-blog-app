@@ -7,13 +7,13 @@ import html2canvas from 'html2canvas'
 import { Context } from '../context/Context'
 import { animation } from '../animations/single'
 import { Comments, LoadingIndicator } from '../includes/components'
+import { PF } from '../utils'
 
 const SinglePost = () => {
 	const location = useLocation()
 	const path = location.pathname.split('/')[2]
 
 	const [post, setPost] = useState({})
-	const PF = 'http://localhost:2506/images/'
 
 	const { user } = useContext(Context)
 	const elementRef = useRef()

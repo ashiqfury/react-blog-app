@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
+import { PF } from '../utils'
 
 const Post = ({ post }) => {
-	const PF = 'http://localhost:2506/images/'
 	return (
 		<div className="post">
 			<Link to={`/post/${post._id}`} className="link">

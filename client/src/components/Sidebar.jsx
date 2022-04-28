@@ -5,12 +5,12 @@ import axios from 'axios'
 import { Context } from '../context/Context'
 import { animation } from '../animations/sidebar'
 import avatar from '../assets/avatar.jpg'
+import { PF } from '../utils'
 
 const Sidebar = () => {
 	const [cats, setCats] = useState([])
 	const [users, setUsers] = useState([])
 	const { user } = useContext(Context)
-	const PF = 'http://localhost:2506/images/'
 
 	useEffect(() => {
 		let list = []
