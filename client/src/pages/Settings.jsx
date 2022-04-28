@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
 import axios from 'axios'
+import { confirmAlert } from 'react-confirm-alert'
+import 'react-confirm-alert/src/react-confirm-alert.css'
 
 import Sidebar from '../components/Sidebar'
 import { Context } from '../context/Context'
@@ -71,13 +73,29 @@ const Settings = () => {
 		animation()
 	}, [])
 
+	const handleConfirm = () => {
+		confirmAlert({
+			title: 'Delete?',
+			message: 'Are you sure to delete this post?',
+			buttons: [
+				{
+					label: 'Yes',
+					onClick: () => handleDelete(),
+				},
+				{
+					label: 'No',
+					onClick: () => null,
+				},
+			],
+		})
+
 	return (
 		<div className="settings">
 			<Toaster />
 			<div className="settings__wrapper">
 				<div className="settings__title">
 					<span className="settings__title--update">Update your account</span>
-					<span className="settings__title--delete" onClick={handleDelete}>
+					<span className="settings__title--delete" onClick={handleConfirm}>
 						Delete account
 					</span>
 				</div>

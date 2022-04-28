@@ -3,6 +3,8 @@ import { Link, useLocation } from 'react-router-dom'
 import toast, { Toaster } from 'react-hot-toast'
 import axios from 'axios'
 import html2canvas from 'html2canvas'
+import { confirmAlert } from 'react-confirm-alert'
+import 'react-confirm-alert/src/react-confirm-alert.css'
 
 import { Context } from '../context/Context'
 import { animation } from '../animations/single'
@@ -97,6 +99,23 @@ const SinglePost = () => {
 		animation()
 	}, [])
 
+	const handleConfirm = () => {
+		confirmAlert({
+			title: 'Delete?',
+			message: 'Are you sure to delete this post?',
+			buttons: [
+				{
+					label: 'Yes',
+					onClick: () => handleDelete(),
+				},
+				{
+					label: 'No',
+					onClick: () => null,
+				},
+			],
+		})
+	}
+
 	return (
 		<div className="singlePost">
 			<Toaster />
@@ -128,7 +147,7 @@ const SinglePost = () => {
 											className="singlePost__icon far fa-edit"
 											onClick={() => setUpdateMode(true)}
 										></i>
-										<i className="singlePost__icon far fa-trash-alt" onClick={handleDelete}></i>
+										<i className="singlePost__icon far fa-trash-alt" onClick={handleConfirm}></i>
 									</>
 								)}
 							</div>

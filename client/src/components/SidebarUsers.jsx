@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from 'react'
 import { Link, useHistory, useLocation } from 'react-router-dom'
 import toast, { Toaster } from 'react-hot-toast'
 import axios from 'axios'
+import { confirmAlert } from 'react-confirm-alert'
+import 'react-confirm-alert/src/react-confirm-alert.css'
 
 import { Context } from '../context/Context'
 import avatar from '../assets/avatar.jpg'
@@ -56,6 +58,23 @@ const SidebarUsers = () => {
 		} catch (err) {
 			toast.error('User delete failed!', { position: 'bottom-center', className: 'toast' })
 		}
+	}
+
+	const handleConfirm = () => {
+		confirmAlert({
+			title: 'Delete?',
+			message: 'Are you sure to delete this user?',
+			buttons: [
+				{
+					label: 'Yes',
+					onClick: () => deleteUser(),
+				},
+				{
+					label: 'No',
+					onClick: () => null,
+				},
+			],
+		})
 	}
 
 	return (
@@ -153,7 +172,7 @@ const SidebarUsers = () => {
 
 			{context.user.admin && context.user._id !== user._id && (
 				<div className="sidebar__item">
-					<button className="sidebar__item--delete" onClick={deleteUser}>
+					<button className="sidebar__item--delete" onClick={handleConfirm}>
 						Delete User
 					</button>
 				</div>
