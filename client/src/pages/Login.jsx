@@ -21,6 +21,7 @@ const Login = () => {
 			const res = await axios.post('auth/login', values)
 			toast.success('Login Successful', { position: 'bottom-center', className: 'toast' })
 			dispatch({ type: 'LOGIN_SUCCESS', payload: res.data })
+			history.replace('/')
 		} catch (err) {
 			dispatch({ type: 'LOGIN_FAILURE' })
 			setError(err.response.data)

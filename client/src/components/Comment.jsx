@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
 import axios from 'axios'
+import { confirmAlert } from 'react-confirm-alert'
 
 import { Context } from '../context/Context'
 import { PF } from '../utils'
@@ -17,6 +18,23 @@ const Comment = ({ comment }) => {
 		}
 	}
 
+	const handleConfirm = () => {
+		confirmAlert({
+			title: 'Delete?',
+			message: 'Are you sure to delete this post?',
+			buttons: [
+				{
+					label: 'Yes',
+					onClick: () => handleDelete(),
+				},
+				{
+					label: 'No',
+					onClick: () => null,
+				},
+			],
+		})
+	}
+
 	return (
 		<div className="comment">
 			<Toaster />
@@ -31,7 +49,7 @@ const Comment = ({ comment }) => {
 					{(comment.postUserId === user?._id ||
 						comment.commentedUserId === user?._id ||
 						user?.admin) && (
-						<i className="comment__icon far fa-trash-alt delete" onClick={handleDelete}></i>
+						<i className="comment__icon far fa-trash-alt delete" onClick={handleConfirm}></i>
 					)}
 				</div>
 			</div>

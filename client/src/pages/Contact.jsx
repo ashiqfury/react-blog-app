@@ -135,11 +135,11 @@ const Contact = () => {
 							<span>Email Address</span>
 						</div>
 						<div className="inputBox w50 phone">
-							<input type="tel" maxLength="10" name="number" required />
+							<input type="number" maxLength="10" name="number" required />
 							<span>Phone Number</span>
 						</div>
 						<div className="inputBox w100 message">
-							<textarea type="text" name="message" required></textarea>
+							<textarea type="text" name="message" maxLength="150" required></textarea>
 							<span>Write your message here...</span>
 						</div>
 						<div className="inputBox w100 btn-submit">

@@ -2,6 +2,30 @@
 	padding-top: 50px;
 	background: linear-gradient(to bottom right, #efebea, white, #efebea);
 
+	// dot pattern
+	background-color: #efebea;
+	background-image: radial-gradient(#00b3d6 0.8px, transparent 0.8px),
+		radial-gradient(#00b3d6 0.8px, #efebea 0.8px);
+	background-size: 32px 32px;
+	background-position: 0 0, 16px 16px;
+
+	// gradient
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+
+	@keyframes gradient {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+
 	&__heading {
 		font-size: 2rem;
 		color: $color1;
@@ -92,6 +116,13 @@ body.dark {
 	.write {
 		background: #0d1117;
 		color: white;
+
+		// Dot pattern
+		background-color: #0d1117;
+		background-image: radial-gradient(#00b3d655 0.8px, transparent 0.8px),
+			radial-gradient(#00b3d655 0.8px, #0d1117 0.8px);
+		background-size: 32px 32px;
+		background-position: 0 0, 16px 16px;
 
 		&__heading {
 			color: $cerulean-crayola;
