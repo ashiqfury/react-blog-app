@@ -93,8 +93,9 @@
 		}
 	}
 	&__img {
-		width: 45px;
-		height: 45px;
+		$size: 45px;
+		width: $size;
+		height: $size;
 		border-radius: 50%;
 		object-fit: cover;
 		cursor: pointer;
