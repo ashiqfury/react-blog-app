@@ -23,7 +23,7 @@ const Home = () => {
 		const fetchPosts = async () => {
 			setIsFetching(true)
 			await axios.get(`/posts/${search}`).then(res => {
-				setPosts(res.data)
+				setPosts(res.data.reverse())
 				setIsFetching(false)
 			})
 		}
