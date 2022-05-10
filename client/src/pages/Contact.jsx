@@ -6,13 +6,9 @@ import { containerAnim, animation, button, inputAnim } from '../animations/conta
 
 const Contact = () => {
 	const formRef = useRef(null)
-	const [success, setSuccess] = useState(false)
-	const [failure, setFailure] = useState(false)
 	const [isSending, setIsSending] = useState(false)
 
 	const sendEmail = e => {
-		setSuccess(false)
-		setFailure(false)
 		setIsSending(true)
 		e.preventDefault()
 
@@ -25,7 +21,6 @@ const Contact = () => {
 			)
 			.then(
 				result => {
-					setSuccess(true)
 					setIsSending(false)
 					e.target.reset()
 					toast.success('Email send Successful! 👍', {
@@ -34,7 +29,6 @@ const Contact = () => {
 					})
 				},
 				error => {
-					setFailure(true)
 					setIsSending(false)
 					toast.error('Email send failed! 😢', { position: 'bottom-center', className: 'toast' })
 				}
@@ -152,10 +146,6 @@ const Contact = () => {
 									Send<i className="fas fa-paper-plane"></i>
 								</button>
 							)}
-						</div>
-						<div className="formMessage">
-							{success && <span className="formSuccess">Email successfully sent! 👍 </span>}
-							{failure && <span className="formFailure">Email not sent! 👎</span>}
 						</div>
 					</div>
 				</form>

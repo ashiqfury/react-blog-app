@@ -20,7 +20,6 @@ const Settings = () => {
 	const [facebook, setFacebook] = useState('')
 	const [instagram, setInstagram] = useState('')
 	const [twitter, setTwitter] = useState('')
-	const [success, setSuccess] = useState(false)
 
 	const handleSubmit = async e => {
 		e.preventDefault()
@@ -48,7 +47,6 @@ const Settings = () => {
 		}
 		try {
 			const res = await axios.put(`/users/${user._id}`, updatedUser)
-			setSuccess(true)
 			toast.success('Update Successful', { position: 'bottom-center', className: 'toast' })
 			dispatch({ type: 'UPDATE_SUCCESS', payload: res.data })
 			e.target.reset()
@@ -188,7 +186,6 @@ const Settings = () => {
 					<button className="settings__submit" type="submit">
 						Update
 					</button>
-					{success && <span className="settings__success">Your profile has been updated!</span>}
 				</form>
 			</div>
 			<Sidebar />

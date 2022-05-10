@@ -7,7 +7,6 @@ import axios from 'axios'
 import { sliderAnim } from '../animations/register'
 
 const Register = () => {
-	const [error, setError] = useState('')
 	const history = useHistory()
 
 	const initialValues = {
@@ -16,14 +15,12 @@ const Register = () => {
 		password: '',
 	}
 	const onSubmit = async values => {
-		setError('')
 		try {
 			const res = await axios.post('/auth/register', values)
 			toast.success('Register Successful', { position: 'bottom-center', className: 'toast' })
 			res.data && history.replace('/login')
 		} catch (err) {
 			toast.error(err.response.data, { position: 'bottom-center', className: 'toast' })
-			setError(err.response.data)
 		}
 	}
 	const validate = values => {
@@ -116,8 +113,6 @@ const Register = () => {
 					<button type="submit" className="register__button" disabled={!formik.isValid}>
 						Register
 					</button>
-
-					{error && <span className="register__error">{error.toString()}</span>}
 
 					<p className="register__login">
 						Already have an account?{' '}

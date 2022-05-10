@@ -8,14 +8,12 @@ import { Context } from '../context/Context'
 import { sliderAnim } from '../animations/login'
 
 const Login = () => {
-	const [error, setError] = useState('')
 	const { dispatch, isFetching } = useContext(Context)
 	const history = useHistory()
 
 	const initialValues = { username: '', password: '' }
 
 	const onSubmit = async values => {
-		setError('')
 		dispatch({ type: 'LOGIN_START' })
 		try {
 			const res = await axios.post('auth/login', values)
@@ -24,7 +22,6 @@ const Login = () => {
 			history.replace('/')
 		} catch (err) {
 			dispatch({ type: 'LOGIN_FAILURE' })
-			setError(err.response.data)
 			toast.error(err.response.data, { position: 'bottom-center', className: 'toast' })
 		}
 	}
@@ -101,8 +98,6 @@ const Login = () => {
 					<button type="submit" className="login__button" disabled={isFetching || !formik.isValid}>
 						{isFetching ? 'Loading...' : 'Login'}
 					</button>
-
-					{error && <span className="register__error">{error.toString()}</span>}
 
 					<p className="login__register">
 						You don't have an account?{' '}

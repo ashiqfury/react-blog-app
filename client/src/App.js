@@ -1,18 +1,10 @@
 import { useContext } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { Context } from './context/Context'
+
 import Topbar from './components/Topbar'
-import {
-	Home,
-	Login,
-	Register,
-	Settings,
-	Single,
-	Write,
-	About,
-	Contact,
-	NotFound404,
-} from './includes/pages'
+import { Home, Login, Register, Settings, Single, Write, About, Contact } from './includes/pages'
+import { NotFound404 } from './includes/pages'
 import '../src/scss/style.scss'
 
 const App = () => {
