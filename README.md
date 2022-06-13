@@ -108,7 +108,7 @@ a writer or a group of writers share their views on an individual subject.
 
 Insert gif or link to demo
 
-[furyblogz. : https://furyblogz.herokuapp.com](https://furyblogz.herokuapp.com)
+[furyblogz. : https://furyblogz.herokuapp.com](https://furyblogz.herokuapp.com) Live Application In Under Maintenance!
 
 ## Environment Variables
 
